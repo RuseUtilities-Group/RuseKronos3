@@ -16,7 +16,7 @@ function readFile() {
 				alert("The file that you uploaded is invalid.\n Try again with a different iCal file."); // If error occurs thru ical parsing alert the end user.
 			}
 
-			resolve(data); // If reading is successful resole the code through the promise to return in this function.
+			resolve(data); // If reading is successful resolve the code through the promise to return in this function.
 		};
 		fileReader.onerror = function(e) {
 			reject(e); // On a file reader error send a reject code output to the console for it handle.
