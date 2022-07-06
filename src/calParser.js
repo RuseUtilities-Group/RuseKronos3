@@ -29,13 +29,14 @@ function readFile() {
 }
 
 function convertSentralDateToJSDate(events){
+    // We take in the event[i].getFirstPropertyValue('FOO') and we individually pluck data and wham it inside an initialised date and return it for future processing
     var date = new Date();
-    date.setUTCDate(events[i].getFirstPropertyValue('dtstart')._time.day);
-    date.setUTCMonth(events[i].getFirstPropertyValue('dtstart')._time.month-1);
-    date.setUTCFullYear(events[i].getFirstPropertyValue('dtstart')._time.year);
-    date.setUTCHours(events[i].getFirstPropertyValue('dtstart')._time.hour);
-    date.setUTCMinutes(events[i].getFirstPropertyValue('dtstart')._time.minute);
-    date.setUTCSeconds(events[i].getFirstPropertyValue('dtstart')._time.second);
+    date.setUTCDate(events._time.day);
+    date.setUTCMonth(events._time.month-1);
+    date.setUTCFullYear(events._time.year);
+    date.setUTCHours(events._time.hour);
+    date.setUTCMinutes(events._time.minute);
+    date.setUTCSeconds(events._time.second);
     date.setUTCMilliseconds(0);
     return date;
 }
@@ -48,13 +49,16 @@ async function icalProcess() {
 
     var jcalDataComp = new ICAL.Component(icalData);
 	var events = jcalDataComp.getAllSubcomponents("vevent");
-    console.log(events);
+    //console.log(events);
 
     for(var i = 0; i < events.length; i++) {
-        console.log(events[i].getFirstPropertyValue('description'));
-        console.log(events[i].getFirstPropertyValue('dtstart')._time);
-        console.log(events[i].getFirstPropertyValue('location'));
-        var date = convertSentralDateToJSDate(events);
-        console.log(date);
+        // PLucking raw data from the iCal abomination into readable individual variables
+        var teacher = events[i].getFirstPropertyValue('description').split("\n")[0].split(": ")[1];
+        var period = events[i].getFirstPropertyValue('description').split("\n")[1].split(": ")[1];
+        var subject = events[i].getFirstPropertyValue('summary');
+        var room = events[i].getFirstPropertyValue('location').split(": ")[1];
+        var startDate = convertSentralDateToJSDate(events[i].getFirstPropertyValue('dtstart'));
+        var endDate = convertSentralDateToJSDate(events[i].getFirstPropertyValue('dtend'));
+        console.log(`Period ${period}: ${subject} with ${teacher} at ${room}, from ${startDate} to ${endDate}.`);
     }
 }
