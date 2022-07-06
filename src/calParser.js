@@ -736,7 +736,8 @@ async function icalProcess() {
     var jcalDataComp = new ICAL.Component(icalData);
 	var events = jcalDataComp.getAllSubcomponents("vevent");
 
-    var firstDay = convertSentralDateToJSDate(events[0].getFirstPropertyValue('dtstart')).getDate();
+    var firstDay = convertSentralDateToJSDate(events[0].getFirstPropertyValue('dtstart'));
+    firstDa
     var passedFirstDay = 0;
 
     for(var i = 0; i < events.length; i++) {
@@ -760,9 +761,9 @@ async function icalProcess() {
         var day = startDate.getDay();
 
         // Check if we have passed the week twice or once
-        if(day === firstDay) passedFirstDay++;
-        if(passedFirstDay === 2 && period) week = "B" // If we pass the all the days once we change the week from A to B or vice versa
-        if(passedFirstDay === 3) return; // If we pass all the days again
+        if(day === firstDay+7 || day === firstDay+14) passedFirstDay++;
+        if(passedFirstDay === 1) week = "B" // If we pass the all the days once we change the week from A to B or vice versa
+        if(passedFirstDay === 2) return; // If we pass all the days again
 
         var day = startDate.getDay()+week;
 
