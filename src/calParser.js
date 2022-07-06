@@ -736,8 +736,10 @@ async function icalProcess() {
     var jcalDataComp = new ICAL.Component(icalData);
 	var events = jcalDataComp.getAllSubcomponents("vevent");
 
-    var firstDay = convertSentralDateToJSDate(events[0].getFirstPropertyValue('dtstart'));
-    firstDa
+    var firstDay = convertSentralDateToJSDate(events[0].getFirstPropertyValue('dtstart')).getDay();
+    if(firstDay === 1) firstDay = 5;
+    else firstDay--;
+    console.log(firstDay);
     var passedFirstDay = 0;
 
     for(var i = 0; i < events.length; i++) {
@@ -759,21 +761,23 @@ async function icalProcess() {
         var startDate = convertSentralDateToJSDate(events[i].getFirstPropertyValue('dtstart'));
         var endDate = convertSentralDateToJSDate(events[i].getFirstPropertyValue('dtend'));
         var day = startDate.getDay();
-
+        console.log("day");
         // Check if we have passed the week twice or once
-        if(day === firstDay+7 || day === firstDay+14) passedFirstDay++;
-        if(passedFirstDay === 1) week = "B" // If we pass the all the days once we change the week from A to B or vice versa
-        if(passedFirstDay === 2) return; // If we pass all the days again
-
-        var day = startDate.getDay()+week;
-
-        // Setting the Object "timetable" data from the readed data above
-        timetable[`${day}`][period].teacher = teacher;
-        timetable[`${day}`][period].subjectCode = subjectCode;
-        timetable[`${day}`][period].subjectName = subjectName;
-        timetable[`${day}`][period].room = room;
-        timetable[`${day}`][period].startDate= startDate;
-        timetable[`${day}`][period].endDate = endDate;
+        if(day === firstDay && period === "5") passedFirstDay++;
+        if(passedFirstDay === 2){
+            week = "B"
+        } // If we pass the all the days once we change the week from A to B or vice versa
+        if(passedFirstDay === 3) i = events.length + 69; // If we pass all the days again
+        else{
+            var day = startDate.getDay()+week;
+            // Setting the Object "timetable" data from the readed data above
+            timetable[`${day}`][period].teacher = teacher;
+            timetable[`${day}`][period].subjectCode = subjectCode;
+            timetable[`${day}`][period].subjectName = subjectName;
+            timetable[`${day}`][period].room = room;
+            timetable[`${day}`][period].startDate= startDate;
+            timetable[`${day}`][period].endDate = endDate;
+        }
     }
 
     console.log(timetable);
