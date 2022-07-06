@@ -34,5 +34,8 @@ async function icalProcess() {
     // Taking the parsed data from the readFile function into this main function, also waiting for it to end before moving on.
     var icalData = await readFile();
 
-    console.log(icalData);
+    var jcalDataComp = new ICAL.Component(icalData);
+	var events = jcalDataComp.getAllSubcomponents("vevent");
+
+    console.log(events);
 }
