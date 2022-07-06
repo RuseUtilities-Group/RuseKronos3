@@ -28,6 +28,18 @@ function readFile() {
 
 }
 
+function convertSentralDateToJSDate(events){
+    var date = new Date();
+    date.setUTCDate(events[i].getFirstPropertyValue('dtstart')._time.day);
+    date.setUTCMonth(events[i].getFirstPropertyValue('dtstart')._time.month-1);
+    date.setUTCFullYear(events[i].getFirstPropertyValue('dtstart')._time.year);
+    date.setUTCHours(events[i].getFirstPropertyValue('dtstart')._time.hour);
+    date.setUTCMinutes(events[i].getFirstPropertyValue('dtstart')._time.minute);
+    date.setUTCSeconds(events[i].getFirstPropertyValue('dtstart')._time.second);
+    date.setUTCMilliseconds(0);
+    return date;
+}
+
 
 async function icalProcess() {
 
@@ -36,6 +48,13 @@ async function icalProcess() {
 
     var jcalDataComp = new ICAL.Component(icalData);
 	var events = jcalDataComp.getAllSubcomponents("vevent");
-
     console.log(events);
+
+    for(var i = 0; i < events.length; i++) {
+        console.log(events[i].getFirstPropertyValue('description'));
+        console.log(events[i].getFirstPropertyValue('dtstart')._time);
+        console.log(events[i].getFirstPropertyValue('location'));
+        var date = convertSentralDateToJSDate(events);
+        console.log(date);
+    }
 }
