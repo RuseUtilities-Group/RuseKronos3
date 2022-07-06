@@ -732,11 +732,11 @@ async function icalProcess() {
     // Taking the parsed data from the readFile function into this main function, also waiting for it to end before moving on.
     var icalData = await readFile();
 
+    // Turning all the raw ical text data into something a computer can read for future processing and storing the data into events
     var jcalDataComp = new ICAL.Component(icalData);
 	var events = jcalDataComp.getAllSubcomponents("vevent");
-    //console.log(events);
 
-    var firstDay = convertSentralDateToJSDate(events[0].getFirstPropertyValue('dtstart')).getDay();
+    var firstDay = convertSentralDateToJSDate(events[0].getFirstPropertyValue('dtstart')).getDate();
     var passedFirstDay = 0;
 
     for(var i = 0; i < events.length; i++) {
@@ -759,12 +759,11 @@ async function icalProcess() {
         var endDate = convertSentralDateToJSDate(events[i].getFirstPropertyValue('dtend'));
         var day = startDate.getDay();
 
-        /*
         // Check if we have passed the week twice or once
         if(day === firstDay) passedFirstDay++;
-        if(passedFirstDay === 2) week = "B" // If we pass the all the days once we change the week from A to B or vice versa
+        if(passedFirstDay === 2 && period) week = "B" // If we pass the all the days once we change the week from A to B or vice versa
         if(passedFirstDay === 3) return; // If we pass all the days again
-        */
+
         var day = startDate.getDay()+week;
 
         // Setting the Object "timetable" data from the readed data above
