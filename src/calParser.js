@@ -728,57 +728,68 @@ function capitalize(word) {
 
 
 async function icalProcess() {
+    try {
+        // Taking the parsed data from the readFile function into this main function, also waiting for it to end before moving on.
+        var icalData = await readFile();
 
-    // Taking the parsed data from the readFile function into this main function, also waiting for it to end before moving on.
-    var icalData = await readFile();
+        // Turning all the raw ical text data into something a computer can read for future processing and storing the data into events.
+        var jcalDataComp = new ICAL.Component(icalData);
+        var events = jcalDataComp.getAllSubcomponents("vevent");
 
-    // Turning all the raw ical text data into something a computer can read for future processing and storing the data into events
-    var jcalDataComp = new ICAL.Component(icalData);
-	var events = jcalDataComp.getAllSubcomponents("vevent");
-
-    var firstDay = convertSentralDateToJSDate(events[0].getFirstPropertyValue('dtstart')).getDay();
-    if(firstDay === 1) firstDay = 5;
-    else firstDay--;
-    console.log(firstDay);
-    var passedFirstDay = 0;
-
-    for(var i = 0; i < events.length; i++) {
+        // Processing the first day on the whole events list on the iCal and the SCHOOL day before it to check for week A/B processing.
+        var firstDay = convertSentralDateToJSDate(events[0].getFirstPropertyValue('dtstart')).getDay();
+        if(firstDay === 1) var lastDay = 5;
+        else lastDay = firstDay - 1;
+        console.log(firstDay);
+        var passedFirstDay = 0;
+        var currLastDay = 69;
         var week = "A";
-        // Plucking raw data from the iCal abomination into readable individual variables
-        var teacher = events[i].getFirstPropertyValue('description').split("\n")[0].split(": ")[1];
-        // Formating the teacher name because Mr looks like MR on sentral's idiotic formatting
-        if(teacher.startsWith("M") || teacher.startsWith("D")){ // If it starts with M for Ms or D for Dr, if theres any new titles add a or statement with the first letter of the title
-            var titleName = capitalize(teacher.split(" ")[0]);
-            var firstName = teacher.split(" ")[1];
-            var lastName = teacher.split(" ")[2];
-            teacher = `${titleName} ${firstName} ${lastName}`;
-        }
-        // Plucking raw data continued from the iCal abomination into readable individual variables
-        var period = events[i].getFirstPropertyValue('description').split("\n")[1].split(": ")[1];
-        var subjectCode = events[i].getFirstPropertyValue('summary').split(": ")[0];
-        var subjectName = events[i].getFirstPropertyValue('summary').split(": ")[1].split(" Yr")[0];
-        var room = events[i].getFirstPropertyValue('location').split(": ")[1];
-        var startDate = convertSentralDateToJSDate(events[i].getFirstPropertyValue('dtstart'));
-        var endDate = convertSentralDateToJSDate(events[i].getFirstPropertyValue('dtend'));
-        var day = startDate.getDay();
-        console.log("day");
-        // Check if we have passed the week twice or once
-        if(day === firstDay && period === "5") passedFirstDay++;
-        if(passedFirstDay === 2){
-            week = "B"
-        } // If we pass the all the days once we change the week from A to B or vice versa
-        if(passedFirstDay === 3) i = events.length + 69; // If we pass all the days again
-        else{
-            var day = startDate.getDay()+week;
-            // Setting the Object "timetable" data from the readed data above
-            timetable[`${day}`][period].teacher = teacher;
-            timetable[`${day}`][period].subjectCode = subjectCode;
-            timetable[`${day}`][period].subjectName = subjectName;
-            timetable[`${day}`][period].room = room;
-            timetable[`${day}`][period].startDate= startDate;
-            timetable[`${day}`][period].endDate = endDate;
-        }
-    }
 
-    console.log(timetable);
+        for(var i = 0; i < events.length; i++) {
+            // Plucking raw data from the iCal abomination into readable individual variables
+            var teacher = events[i].getFirstPropertyValue('description').split("\n")[0].split(": ")[1];
+            // Formating the teacher name because Mr looks like MR on sentral's idiotic formatting
+            if(teacher.startsWith("M") || teacher.startsWith("D")){ // If it starts with M for Ms or D for Dr, if theres any new titles add a or statement with the first letter of the title
+                var titleName = capitalize(teacher.split(" ")[0]);
+                var firstName = teacher.split(" ")[1];
+                var lastName = teacher.split(" ")[2];
+                teacher = `${titleName} ${firstName} ${lastName}`;
+            }
+            // Plucking raw data continued from the iCal abomination into readable individual variables
+            var period = events[i].getFirstPropertyValue('description').split("\n")[1].split(": ")[1];
+            var subjectCode = events[i].getFirstPropertyValue('summary').split(": ")[0];
+            var subjectName = events[i].getFirstPropertyValue('summary').split(": ")[1].split(" Yr")[0];
+            var room = events[i].getFirstPropertyValue('location').split(": ")[1];
+            var startDate = convertSentralDateToJSDate(events[i].getFirstPropertyValue('dtstart'));
+            var endDate = convertSentralDateToJSDate(events[i].getFirstPropertyValue('dtend'));
+            var day = startDate.getDay();
+            console.log("day");
+            // Check if we have passed the week twice or once
+            if(day === firstDay && currLastDay === lastDay) passedFirstDay++;
+            if(passedFirstDay === 1){
+                week = "B";
+            } // If we pass the all the days once we change the week from A to B or vice versa
+            if(passedFirstDay === 2) i = events.length + 69; // If we pass all the days again
+            else{
+                // Thanks to Sentral's idiotic and inconsiderate formatting, MonA follows FriB and MonB follows FriA so we need to switch the weeks around for monday.
+                if(day === 1 && week === "B") week = "A";
+                if(day === 1 && week === "A") week = "B";
+
+                var day = startDate.getDay()+week;
+                // Setting the Object "timetable" data from the readed data above.
+                timetable[`${day}`][period].teacher = teacher;
+                timetable[`${day}`][period].subjectCode = subjectCode;
+                timetable[`${day}`][period].subjectName = subjectName;
+                timetable[`${day}`][period].room = room;
+                timetable[`${day}`][period].startDate= startDate;
+                timetable[`${day}`][period].endDate = endDate;
+                currLastDay = startDate.getDay();
+            }
+        }
+
+        localStorage.setItem("timetable", JSON.stringify(timetable)); // Saving the timetable as a JSON string on local host for future use.
+        console.log(timetable);
+    } catch(e) {
+        alert(e); // If theres an error in the processing prompt the user with a HTML alert with the error in the body.
+    }
 }
