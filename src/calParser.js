@@ -1,3 +1,4 @@
+// Manually constructing javascript timetable object (record)
 var timetable = {
     "1A": {
         "BS":{
@@ -711,7 +712,7 @@ function convertSentralDateToJSDate(events){
     // We take in the event[i].getFirstPropertyValue('FOO') and we individually pluck data and wham it inside an initialised date and return it for future processing
     var date = new Date();
     date.setUTCDate(events._time.day);
-    date.setUTCMonth(events._time.month-1);
+    date.setUTCMonth(events._time.month-1); // -1 coz javascript is weird and the month starts on 0 for January
     date.setUTCFullYear(events._time.year);
     date.setUTCHours(events._time.hour);
     date.setUTCMinutes(events._time.minute);
@@ -723,7 +724,7 @@ function convertSentralDateToJSDate(events){
 function capitalize(word) {
     const lower = word.toLowerCase();
     return word.charAt(0).toUpperCase() + lower.slice(1);
-  }
+}
   
 
 
@@ -740,7 +741,6 @@ async function icalProcess() {
         var firstDay = convertSentralDateToJSDate(events[0].getFirstPropertyValue('dtstart')).getDay();
         if(firstDay === 1) var lastDay = 5;
         else lastDay = firstDay - 1;
-        console.log(firstDay);
         var passedFirstDay = 0;
         var currLastDay = 69;
         var week = "A";
@@ -763,17 +763,17 @@ async function icalProcess() {
             var startDate = convertSentralDateToJSDate(events[i].getFirstPropertyValue('dtstart'));
             var endDate = convertSentralDateToJSDate(events[i].getFirstPropertyValue('dtend'));
             var day = startDate.getDay();
-            console.log("day");
+
             // Check if we have passed the week twice or once
             if(day === firstDay && currLastDay === lastDay) passedFirstDay++;
             if(passedFirstDay === 1){
                 week = "B";
             } // If we pass the all the days once we change the week from A to B or vice versa
-            if(passedFirstDay === 2) i = events.length + 69; // If we pass all the days again
+            if(passedFirstDay === 2) i = events.length+69; // If we pass all the days again
             else{
                 // Thanks to Sentral's idiotic and inconsiderate formatting, MonA follows FriB and MonB follows FriA so we need to switch the weeks around for monday.
                 if(day === 1 && week === "B") week = "A";
-                if(day === 1 && week === "A") week = "B";
+                else if(day === 1 && week === "A") week = "B";
 
                 var day = startDate.getDay()+week;
                 // Setting the Object "timetable" data from the readed data above.
