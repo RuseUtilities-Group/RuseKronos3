@@ -788,7 +788,7 @@ async function icalProcess() {
         }
 
         localStorage.setItem("timetable", JSON.stringify(timetable)); // Saving the timetable as a JSON string on local host for future use.
-        // console.log(timetable);
+        console.log(timetable);
     } catch(e) {
         alert(e); // If theres an error in the processing prompt the user with a HTML alert with the error in the body.
     }
