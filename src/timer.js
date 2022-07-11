@@ -30,7 +30,118 @@ function nextPeriod(){
     
 }
 
+function numToPeriod(num){
+    // Converts a number to the period i.e. 0 -> BS, 1-> 1, 2-> 2 etc etc
+    var period;
+    switch(num) {
+        case 0:
+            period = "BS";
+            break;
+        case 1:
+            period = "1";
+            break;
+        case 2:
+            period = "2";
+            break;
+        case 3:
+            period = "R";
+            break;
+        case 4:
+            period = "3";
+            break;
+        case 5:
+            period = "4";
+            break;
+        case 6:
+            period = "L";
+            break;
+        case 7:
+            period = "5";
+            break;
+        case 8:
+            period = "AS1";
+            break;
+        case 9:
+            period = "AS2";
+            break;
 
+    }
+    return period;
+}
+
+function wednesdayNumToPeriod(num){
+    // Converts a number to the period i.e. 0 -> BS, 1-> 1, 2-> 2 etc etc
+    var period;
+    switch(num) {
+        case 0:
+            period = "BS";
+            break;
+        case 1:
+            period = "1";
+            break;
+        case 2:
+            period = "2";
+            break;
+        case 3:
+            period = "ASS";
+            break;
+        case 4:
+            period = "R";
+            break;
+        case 5:
+            period = "3";
+            break;
+        case 6:
+            period = "L";
+            break;
+        case 7:
+            period = "4";
+            break;
+        case 8:
+            period = "5";
+            break;
+        case 9:
+            period = "AS";
+            break;
+        case 10:
+            period = "AS1";
+            break;
+        case 11:
+            period = "AS2";
+            break;
+    }
+    return period;
+}
+
+function findNextPeriod(dayWeek, currHour, currMinute, currSecond){
+    for(i = 0; i < 9; i++) {
+        if(timetable[dayWeek][numToPeriod(i)].subjectName){
+            var startDate = new Date(timetable[dayWeek][numToPeriod(i)].startDate);
+            if(startDate.getHours() >= currHour){
+                if(startDate.getMinutes() > currMinute){
+                    if(59 >= currSecond){
+                        return numToPeriod(i);
+                    }
+                }
+            }
+        }
+    }
+}
+
+function wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond){
+    for(i = 0; i < 9; i++) {
+        if(timetable[dayWeek][wednesdayNumToPeriod(i)].subjectName){
+            var startDate = new Date(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate);
+            if(startDate.getHours() >= currHour){
+                if(startDate.getMinutes() > currMinute){
+                    if(59 >= currSecond){
+                        return wednesdayNumToPeriod(i);
+                    }
+                }
+            }
+        }
+    }
+}
 
 function countdownTimer(){
     var timeLeft;
@@ -38,12 +149,13 @@ function countdownTimer(){
     var minutesLeft;
     var secondsLeft;
     const currDate = new Date();
-    const currDay = currDate.getDay();
+    var currDay = currDate.getDay();
     const currHour = currDate.getHours();
     const currMinute = currDate.getMinutes();
     const currSecond = currDate.getSeconds();
     const currWeek = currDate.getWeek();
     var weekLetter = "A";
+    var nextPeriod;
 
     // Odd weeks are Week A, i.e. Week 1 of the year is always A unless a blood moon rises over saturn
     if(currWeek % 2 === 0) weekLetter = "B";
@@ -51,9 +163,28 @@ function countdownTimer(){
     // If Saturday and Sunday, force showing Monday
     if(currDay === 0 || currDay === 6) currDay = 1;
 
-    var dayWeek = day+weekLetter;
+    var dayWeek = currDay+weekLetter;
 
-    return timeLeft;
+    if(localStorage.getItem("timetable")){
+        if(currDay !== 3){
+            nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
+            if(!nextPeriod){
+                if(currDay === 5) currDay = 1;
+                else currDay++;
+                dayWeek = (currDay)+weekLetter;
+                if(currDay === 3){
+                    nextPeriod = wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond);
+                } else nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
+            }
+        } if(currDay === 3){
+            nextPeriod = wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond);
+            if(!nextPeriod){
+                dayWeek = (currDay+1)+weekLetter;
+                nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
+            }
+        }
+    }
+    console.log(timetable[dayWeek][nextPeriod].subjectName);
 }
 
 
@@ -84,6 +215,14 @@ if (localStorage.getItem("timetable") === null) {
                 "startDate": "",
                 "endDate": ""
             },
+            "R":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T01:00:00.000Z",
+                "endDate": ""
+            },
             "3":{
                 "teacher": "",
                 "room": "",
@@ -98,6 +237,14 @@ if (localStorage.getItem("timetable") === null) {
                 "subjectCode": "",
                 "subjectName": "",
                 "startDate": "",
+                "endDate": ""
+            },
+            "L":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T03:25:00.000Z",
                 "endDate": ""
             },
             "5":{
@@ -150,6 +297,14 @@ if (localStorage.getItem("timetable") === null) {
                 "startDate": "",
                 "endDate": ""
             },
+            "R":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T01:00:00.000Z",
+                "endDate": ""
+            },
             "3":{
                 "teacher": "",
                 "room": "",
@@ -164,6 +319,14 @@ if (localStorage.getItem("timetable") === null) {
                 "subjectCode": "",
                 "subjectName": "",
                 "startDate": "",
+                "endDate": ""
+            },
+            "L":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T03:25:00.000Z",
                 "endDate": ""
             },
             "5":{
@@ -216,12 +379,36 @@ if (localStorage.getItem("timetable") === null) {
                 "startDate": "",
                 "endDate": ""
             },
+            "ASS":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T00:40:00.000Z",
+                "endDate": ""
+            },
+            "R":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T00:55:00.000Z",
+                "endDate": ""
+            },
             "3":{
                 "teacher": "",
                 "room": "",
                 "subjectCode": "",
                 "subjectName": "",
                 "startDate": "",
+                "endDate": ""
+            },
+            "L":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T02:10:00.000Z",
                 "endDate": ""
             },
             "4":{
@@ -241,72 +428,6 @@ if (localStorage.getItem("timetable") === null) {
                 "endDate": ""
             },
             "AS":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            }
-        },
-        "4A": {
-            "BS":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "3":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "4":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "5":{
                 "teacher": "",
                 "room": "",
                 "subjectCode": "",
@@ -356,6 +477,14 @@ if (localStorage.getItem("timetable") === null) {
                 "startDate": "",
                 "endDate": ""
             },
+            "R":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T01:00:00.000Z",
+                "endDate": ""
+            },
             "3":{
                 "teacher": "",
                 "room": "",
@@ -370,6 +499,14 @@ if (localStorage.getItem("timetable") === null) {
                 "subjectCode": "",
                 "subjectName": "",
                 "startDate": "",
+                "endDate": ""
+            },
+            "L":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T03:25:00.000Z",
                 "endDate": ""
             },
             "5":{
@@ -422,6 +559,14 @@ if (localStorage.getItem("timetable") === null) {
                 "startDate": "",
                 "endDate": ""
             },
+            "R":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T01:00:00.000Z",
+                "endDate": ""
+            },
             "3":{
                 "teacher": "",
                 "room": "",
@@ -436,6 +581,14 @@ if (localStorage.getItem("timetable") === null) {
                 "subjectCode": "",
                 "subjectName": "",
                 "startDate": "",
+                "endDate": ""
+            },
+            "L":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T03:25:00.000Z",
                 "endDate": ""
             },
             "5":{
@@ -488,6 +641,14 @@ if (localStorage.getItem("timetable") === null) {
                 "startDate": "",
                 "endDate": ""
             },
+            "R":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T01:00:00.000Z",
+                "endDate": ""
+            },
             "3":{
                 "teacher": "",
                 "room": "",
@@ -502,6 +663,14 @@ if (localStorage.getItem("timetable") === null) {
                 "subjectCode": "",
                 "subjectName": "",
                 "startDate": "",
+                "endDate": ""
+            },
+            "L":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T03:25:00.000Z",
                 "endDate": ""
             },
             "5":{
@@ -554,12 +723,36 @@ if (localStorage.getItem("timetable") === null) {
                 "startDate": "",
                 "endDate": ""
             },
+            "ASS":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T00:40:00.000Z",
+                "endDate": ""
+            },
+            "R":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T00:55:00.000Z",
+                "endDate": ""
+            },
             "3":{
                 "teacher": "",
                 "room": "",
                 "subjectCode": "",
                 "subjectName": "",
                 "startDate": "",
+                "endDate": ""
+            },
+            "L":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T02:10:00.000Z",
                 "endDate": ""
             },
             "4":{
@@ -628,6 +821,14 @@ if (localStorage.getItem("timetable") === null) {
                 "startDate": "",
                 "endDate": ""
             },
+            "R":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T01:00:00.000Z",
+                "endDate": ""
+            },
             "3":{
                 "teacher": "",
                 "room": "",
@@ -642,6 +843,14 @@ if (localStorage.getItem("timetable") === null) {
                 "subjectCode": "",
                 "subjectName": "",
                 "startDate": "",
+                "endDate": ""
+            },
+            "L":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T03:25:00.000Z",
                 "endDate": ""
             },
             "5":{
@@ -694,6 +903,14 @@ if (localStorage.getItem("timetable") === null) {
                 "startDate": "",
                 "endDate": ""
             },
+            "R":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T01:00:00.000Z",
+                "endDate": ""
+            },
             "3":{
                 "teacher": "",
                 "room": "",
@@ -708,6 +925,14 @@ if (localStorage.getItem("timetable") === null) {
                 "subjectCode": "",
                 "subjectName": "",
                 "startDate": "",
+                "endDate": ""
+            },
+            "L":{
+                "teacher": "",
+                "room": "",
+                "subjectCode": "",
+                "subjectName": "",
+                "startDate": "2022-07-31T03:25:00.000Z",
                 "endDate": ""
             },
             "5":{

@@ -25,6 +25,14 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T01:00:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
@@ -39,6 +47,14 @@ var timetable = {
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T03:25:00.000Z",
             "endDate": ""
         },
         "5":{
@@ -91,6 +107,14 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T01:00:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
@@ -105,6 +129,14 @@ var timetable = {
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T03:25:00.000Z",
             "endDate": ""
         },
         "5":{
@@ -157,12 +189,36 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "ASS":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T00:40:00.000Z",
+            "endDate": ""
+        },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T00:55:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T02:10:00.000Z",
             "endDate": ""
         },
         "4":{
@@ -231,6 +287,14 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T01:00:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
@@ -245,6 +309,14 @@ var timetable = {
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T03:25:00.000Z",
             "endDate": ""
         },
         "5":{
@@ -297,6 +369,14 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T01:00:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
@@ -311,6 +391,14 @@ var timetable = {
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T03:25:00.000Z",
             "endDate": ""
         },
         "5":{
@@ -363,6 +451,14 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T01:00:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
@@ -377,6 +473,14 @@ var timetable = {
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T03:25:00.000Z",
             "endDate": ""
         },
         "5":{
@@ -429,6 +533,14 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T01:00:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
@@ -443,6 +555,14 @@ var timetable = {
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T03:25:00.000Z",
             "endDate": ""
         },
         "5":{
@@ -495,12 +615,36 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "ASS":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T00:40:00.000Z",
+            "endDate": ""
+        },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T00:55:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T02:10:00.000Z",
             "endDate": ""
         },
         "4":{
@@ -569,6 +713,14 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T01:00:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
@@ -583,6 +735,14 @@ var timetable = {
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T03:25:00.000Z",
             "endDate": ""
         },
         "5":{
@@ -635,6 +795,14 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T01:00:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
@@ -649,6 +817,14 @@ var timetable = {
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "",
+            "startDate": "2022-07-31T03:25:00.000Z",
             "endDate": ""
         },
         "5":{
@@ -765,31 +941,33 @@ async function icalProcess() {
             var day = startDate.getDay();
 
             // Check if we have passed the week twice or once
-            if(day === firstDay && currLastDay === lastDay) passedFirstDay++;
+            if(day === firstDay && currLastDay === lastDay && day !== currLastDay) passedFirstDay++;
             if(passedFirstDay === 1){
-                week = "B";
+                if(week === "A") week = "B";
+                else week = "A";
             } // If we pass the all the days once we change the week from A to B or vice versa
-            if(passedFirstDay === 2) i = events.length+69; // If we pass all the days again
+            if(passedFirstDay === 2) i = events.length+69; // If we pass all the days again end the loop
             else{
                 // Thanks to Sentral's idiotic and inconsiderate formatting, MonA follows FriB and MonB follows FriA so we need to switch the weeks around for monday.
-                if(day === 1 && week === "B") week = "A";
-                else if(day === 1 && week === "A") week = "B";
+                if(day === 1 && week === "B" && currLastDay !== day) week = "A";
+                else if(day === 1 && week === "A" && currLastDay !== day) week = "B";
 
-                var day = startDate.getDay()+week;
+                day = day+week;
                 // Setting the Object "timetable" data from the readed data above.
                 timetable[`${day}`][period].teacher = teacher;
                 timetable[`${day}`][period].subjectCode = subjectCode;
                 timetable[`${day}`][period].subjectName = subjectName;
                 timetable[`${day}`][period].room = room;
-                timetable[`${day}`][period].startDate= startDate;
-                timetable[`${day}`][period].endDate = endDate;
+                timetable[`${day}`][period].startDate = new Date(startDate);
+                timetable[`${day}`][period].endDate = new Date(endDate);
                 currLastDay = startDate.getDay();
             }
         }
-
-        localStorage.setItem("timetable", JSON.stringify(timetable)); // Saving the timetable as a JSON string on local host for future use.
         console.log(timetable);
+        localStorage.setItem("timetable", JSON.stringify(timetable)); // Saving the timetable as a JSON string on local host for future use.
+        
     } catch(e) {
-        alert(e); // If theres an error in the processing prompt the user with a HTML alert with the error in the body.
+        alert(e);
+        console.log(e); // If theres an error in the processing prompt the user with a HTML alert with the error in the body.
     }
 }
