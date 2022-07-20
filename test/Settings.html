@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+
+<title>Settings</title>
+
+<link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+
+
+<div class="topnav">
+	<a class="fa fa-fw fa-calendar" href="Timetable.html" style="height: 50%; width: 5%;"></a>
+  	<a href="Bell Times.html"><img src="https://cdn.discordapp.com/attachments/865410734481473596/997008086646673418/unknown.png" style="height: 50%; width: 5%"></a>
+  	<a class="fa fa-fw fa-cog" href="Settings.html" style="height: 50%; width: 5%;"></a>
+</div>
+
+
+<h3 id="headerText" >Kronos Prototype Bell Times</h3>
+<div id="buttonText">
+	<p>Choose your preferred colours:</p>
+	<div>
+    	<input type="color" id="primaryColor">
+    	<label for="body">Primary Color</label>
+	</div>
+
+	<div>
+    	<input type="color" id="secondaryColor">
+    	<label for="body">Secondary Color</label>
+	</div>
+
+	<div>
+		<input type="color" id="tertiaryColor"><label for="body">Tertiary Color</label>
+	</div>
+
+	<div>
+		<input type="color" id="fourthColor"><label for="body">Fourth Color</label>
+	</div>
+	<button type="button" id="colorButton" class="tableRow" onclick="changeColor()">Click to Change Colour</button>
+</div>
+<script>
+	function changeColor() {
+		let primaryColor = document.getElementById('primaryColor').value;
+		document.body.style.backgroundColor = primaryColor;
+		let secondaryColor = document.getElementById('secondaryColor').value;
+
+		var ele = document.getElementsByClassName('tableRow');
+		for (var i = 0; i < ele.length; i++ ) {
+    		ele[i].style.backgroundColor = secondaryColor;
+		}
+
+		let tertiaryColor = document.getElementById('tertiaryColor').value;
+		document.body.style.color = tertiaryColor;
+
+		let fourthColor = document.getElementById('fourthColor').value;
+		document.getElementById('buttonText').style.color = fourthColor;
+		document.getElementById('headerText').style.color = fourthColor;
+
+
+	}
+</script>
+</body>
+</html>
