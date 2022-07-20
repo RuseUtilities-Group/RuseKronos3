@@ -1,8 +1,13 @@
+	:root {
+  		--primary-color: #2E3440;
+	  	--secondary-color: #D8DEE9;
+	}
+
 	body {
 		font-family: 'Quicksand', sans-serif;
 		font-size: 145%;
-		background-color:#2E3440;
-		color: #2E3440;
+		background-color: var(--primary-color);
+		color: var(--primary-color);
 		text-align: center;
 	}
 	table.center {
@@ -14,9 +19,9 @@
 	.tableRow{
 		outline: thick solid;
 		border-radius: 5px !important;
-		border-color: #D8DEE9;
+		border-color: var(--secondary-color, #D8DEE9);
 		text-align: left;
-		background-color: #D8DEE9;
+		background-color: var(--secondary-color, #D8DEE9);
 	}
 	table.center td{
 		padding-right: 2%;
@@ -25,6 +30,9 @@
 		padding-bottom: 2%;
 		font-size: 125%;
 	}
+	#timetable{
+		color: var(--secondary-color);
+	}
 
 	.smallFont{
 		font-size: 70% !important;
@@ -32,6 +40,7 @@
 		padding-left: 3% !important;
 	}
 	.smallColumn{
+
 		width: 15%;
 		text-align: center;
 	}
@@ -39,12 +48,12 @@
 		text-align: center;
 		padding-left: 2% !important;
 	}
-	#headerText{
-		color: #D8DEE9;
+	.headerText{
+		color: var(--secondary-color, #D8DEE9);
 		text-align: center;
 	}
 	#buttonText{
-		color: #D8DEE9;
+		color: var(--secondary-color, #D8DEE9);
 		text-align: center;
 	}
 
@@ -59,7 +68,7 @@
 		border: 2px solid;
 		border-radius: 15px;
 		padding: 0.5%;
-		border-color: white;
+		border-color: var(--secondary-color, #D8DEE9);
 		text-align: center;
 	}
 
@@ -82,7 +91,7 @@
 		.topnav a {
 		float: center;
 		display: inline-block;
-		color: #D8DEE9;
+		color: var(--secondary-color, #D8DEE9);
 		text-align: center;
 		padding: 1% 2%;
 		text-decoration: none;
@@ -90,27 +99,37 @@
 
 		/* Change the color of links on hover */
 		.topnav a:hover {
-		background-color: #D8DEE9;
+		background-color: var(--secondary-color, #D8DEE9);
 		color: black;
 		}
 
 	.UIButton{
 		border-radius: 5px !important;
-		border-color: #D8DEE9;
-		background-color: #D8DEE9;
+		border-color: var(--secondary-color, #D8DEE9);
+		background-color: var(--secondary-color, #D8DEE9);
 	}
 
 	.uploadButton{
 		outline: thin solid;
-		color: #2E3440;
+		color: var(--primary-color, #2E3440);
 		padding: 0.5%;
 		font-size: 70%;
 		text-align: center;
 		border-radius: 5px !important;
-		border-color: #D8DEE9;
-		background-color: #D8DEE9;
+		border-color: var(--secondary-color, #D8DEE9);
+		background-color: var(--secondary-color, #D8DEE9);
 	}
 
-	input[type="file"] {
-    display: none;
+	.colorPicker{
+		height: 1%;
 	}
+
+	.presetColors{
+		padding: 1%;
+		font-size: 70%;
+		text-align: center;
+		border-radius: 5px !important;
+		margin-left: 2%;
+	}
+
+

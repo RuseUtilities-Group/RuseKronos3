@@ -4,72 +4,66 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="../styles/main.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<script type="text/javascript" src="../src/settings.js"></script>
 <title>Settings</title>
 
 </head>
-<body>
+<body onLoad='alterColor()'>
 
 <div class="topnav">
 	<a class="fa fa-fw fa-calendar" href="Timetable.html" style="height: 20%; width: 3%;"></a>
-  	<a href="Bell Times.html" style="width: 5%;" ><img src="https://cdn.discordapp.com/attachments/865410734481473596/999175031588397066/KronosLogo.png" style="height: 15%; width: 35%; padding-top: 5% !important;" ></a>
+  	<a href="Bell Times.html" style="width: 5%;" ><img src="../data/KronosLogo.png" style="height: 15%; width: 35%; padding-top: 5% !important;" ></a>
   	<a class="fa fa-fw fa-cog" href="Settings.html" style="height: 20%; width: 3%;"></a>
 </div>
 
 
-<h3 id="headerText" >Kronos Prototype Bell Times</h3>
+<h3 class="headerText">Kronos Prototype Bell Times</h3>
 
 <div id="buttonText">
 	<p>Upload your timetable here:</p>
 
-	<label class="uploadButton" style="margin-right: 4%;"><input type="file" onclick="icalProcess()"/>Choose File</label>
+	<input type="file" class="uploadButton"/>
 
 	<input type="button" class="uploadButton" value="Upload" onClick="icalProcess()"/>
 </div>
 
 <div id="buttonText">
+	<p>Upload a background image here:</p>
+	<input id="test" type="file" class="uploadButton"/>
+	<button type="button" class="uploadButton">Upload</button>
+	<br>
+	<button type="button" class="uploadButton" style="margin-top: 1%">Clear background</button>
+
+</div>
+
+<div id="buttonText">
 	<p>Choose your preferred colours:</p>
 	<div>
-    	<input type="color" id="primaryColor">
-    	<label for="body">Primary Color</label>
+		<label for="body" class="colorPicker">Primary Color</label>
+    	<input type="color" id="_primaryColor">
 	</div>
 
 	<div>
-    	<input type="color" id="secondaryColor">
-    	<label for="body">Secondary Color</label>
+		<label for="body" class = "colorPicker">Secondary Color</label>
+    	<input type="color" id="_secondaryColor">
 	</div>
 
-	<div>
-		<input type="color" id="tertiaryColor"><label for="body">Tertiary Color</label>
-	</div>
+	<button type="button" class="uploadButton" class="UIButton" style="margin-top: 1%" onclick="changeColor()">Click to Change Colour</button>
+	<button type="button" class="uploadButton" class="UIButton" style="margin-top: 1%" onclick="changeDefaultColor()">Click to Revert to Default</button>
 
-	<div>
-		<input type="color" id="fourthColor"><label for="body">Fourth Color</label>
-	</div>
-	<button type="button" class="uploadButton" style="margin-top: 1%" onclick="changeColor()">Click to Change Colour</button>
 </div>
-<script>
-	function changeColor() {
-		let primaryColor = document.getElementById('primaryColor').value;
-		document.body.style.backgroundColor = primaryColor;
-		let secondaryColor = document.getElementById('secondaryColor').value;
 
-		var ele = document.getElementsByClassName('tableRow');
-		for (var i = 0; i < ele.length; i++ ) {
-    		ele[i].style.backgroundColor = secondaryColor;
-		}
+<div id="buttonText">
+	<h4>Some of our favourite colourways (click to apply):</h4>
+	<button type="button" class="presetColors" onclick="Olivia()" style="color: #f7f2ea; background-color: #c87e74;">GMK Olivia</button>
+	<button type="button" class="presetColors" onclick="Wavez()" style="color: #00773a; background-color: #171718;">GMK Wavez</button>
+	<button type="button" class="presetColors" onclick="Metro()" style="color: #00a4a9; background-color: #171718;">GMK Metropolis R2</button>
+	<button type="button" class="presetColors" onclick="BlueSamurai()" style="color: #e5a100; background-color: #00589f;">GMK Blue Samurai</button>
+	<button type="button" class="presetColors" onclick="RedSamurai()" style="color: #e5a100; background-color: #bc251e;">GMK Red Samurai</button>
 
-		let tertiaryColor = document.getElementById('tertiaryColor').value;
-		document.body.style.color = tertiaryColor;
+</div>
 
-		let fourthColor = document.getElementById('fourthColor').value;
-		document.getElementById('buttonText').style.color = fourthColor;
-		document.getElementById('headerText').style.color = fourthColor;
-
-
-	}
-</script>
 </body>
 </html>
