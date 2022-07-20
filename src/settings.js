@@ -46,7 +46,7 @@ function Olivia(){
 }
 
 function Wavez(){
-	primaryColor = '#171718';
+	primaryColor = '#323437';
 	secondaryColor = '#00773a';
 
 	root.style.setProperty('--primary-color', primaryColor);
@@ -58,8 +58,20 @@ function Wavez(){
 }
 
 function Metro(){
-	primaryColor = '#171718';
+	primaryColor = '#323437';
 	secondaryColor = '#00a4a9';
+
+	root.style.setProperty('--primary-color', primaryColor);
+	root.style.setProperty('--secondary-color', secondaryColor);
+
+	localStorage.setItem("---primary-color", primaryColor);
+  	localStorage.setItem("---secondary-color", secondaryColor);
+
+}
+
+function MonkeyType(){
+	primaryColor = '#323437';
+	secondaryColor = '#e2b714';
 
 	root.style.setProperty('--primary-color', primaryColor);
 	root.style.setProperty('--secondary-color', secondaryColor);
