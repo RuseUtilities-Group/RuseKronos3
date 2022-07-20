@@ -82,7 +82,7 @@ function MonkeyType(){
 }
 
 function BlueSamurai(){
-	primaryColor = '#00589f';
+	primaryColor = '#0058a3';
 	secondaryColor = '#e5a100';
 
 	root.style.setProperty('--primary-color', primaryColor);
@@ -94,7 +94,7 @@ function BlueSamurai(){
 }
 
 function RedSamurai(){
-	primaryColor = '#bc251e';
+	primaryColor = '#84202c';
 	secondaryColor = '#e5a100';
 
 	root.style.setProperty('--primary-color', primaryColor);
