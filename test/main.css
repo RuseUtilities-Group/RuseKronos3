@@ -8,7 +8,7 @@
 	table.center {
   		margin-left: auto; 
   		margin-right: auto;
-		width: 50%;
+		width: 55%;
 	  	border-spacing: 0 15px;
 	}
 	.tableRow{
@@ -27,7 +27,7 @@
 	}
 
 	.smallFont{
-		font-size: 80% !important;
+		font-size: 70% !important;
 		text-align: left !important;
 		padding-left: 3% !important;
 	}
@@ -93,3 +93,24 @@
 		background-color: #D8DEE9;
 		color: black;
 		}
+
+	.UIButton{
+		border-radius: 5px !important;
+		border-color: #D8DEE9;
+		background-color: #D8DEE9;
+	}
+
+	.uploadButton{
+		outline: thin solid;
+		color: #2E3440;
+		padding: 0.5%;
+		font-size: 70%;
+		text-align: center;
+		border-radius: 5px !important;
+		border-color: #D8DEE9;
+		background-color: #D8DEE9;
+	}
+
+	input[type="file"] {
+    display: none;
+	}

@@ -4,23 +4,31 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <title>Settings</title>
-
-<link rel="stylesheet" href="main.css">
 
 </head>
 <body>
 
-
 <div class="topnav">
-	<a class="fa fa-fw fa-calendar" href="Timetable.html" style="height: 50%; width: 5%;"></a>
-  	<a href="Bell Times.html"><img src="https://cdn.discordapp.com/attachments/865410734481473596/997008086646673418/unknown.png" style="height: 50%; width: 5%"></a>
-  	<a class="fa fa-fw fa-cog" href="Settings.html" style="height: 50%; width: 5%;"></a>
+	<a class="fa fa-fw fa-calendar" href="Timetable.html" style="height: 20%; width: 3%;"></a>
+  	<a href="Bell Times.html" style="width: 5%;" ><img src="https://cdn.discordapp.com/attachments/865410734481473596/999175031588397066/KronosLogo.png" style="height: 15%; width: 35%; padding-top: 5% !important;" ></a>
+  	<a class="fa fa-fw fa-cog" href="Settings.html" style="height: 20%; width: 3%;"></a>
 </div>
 
 
 <h3 id="headerText" >Kronos Prototype Bell Times</h3>
+
+<div id="buttonText">
+	<p>Upload your timetable here:</p>
+
+	<label class="uploadButton" style="margin-right: 4%;"><input type="file" onclick="icalProcess()"/>Choose File</label>
+
+	<input type="button" class="uploadButton" value="Upload" onClick="icalProcess()"/>
+</div>
+
 <div id="buttonText">
 	<p>Choose your preferred colours:</p>
 	<div>
@@ -40,7 +48,7 @@
 	<div>
 		<input type="color" id="fourthColor"><label for="body">Fourth Color</label>
 	</div>
-	<button type="button" id="colorButton" class="tableRow" onclick="changeColor()">Click to Change Colour</button>
+	<button type="button" class="uploadButton" style="margin-top: 1%" onclick="changeColor()">Click to Change Colour</button>
 </div>
 <script>
 	function changeColor() {
