@@ -9,6 +9,9 @@
 		<script type="text/javascript" src="./src/settings.js"></script>
 		<title>RuseKronos</title>
         <link rel="icon" href="./data/KronosLogo.png" type="image/icon type">
+        <script>
+            if(!JSON.parse(localStorage.getItem("timetable"))) window.location.href = "./upload.html";
+        </script>
 	</head>
 	<body onLoad='alterColor()'>
 
