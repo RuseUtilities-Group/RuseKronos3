@@ -24,6 +24,7 @@ table.center {
   text-align: left;
   background-color: var(--secondary-color, #D8DEE9);
 }
+
 table.center td{
   padding-top: 2%;
   padding-bottom: 2%;
@@ -100,7 +101,7 @@ td.firstCol {
   /* Change the color of links on hover */
   .topnav a:hover {
   background-color: var(--secondary-color, #D8DEE9);
-  color: black;
+  color: var(--primary-color, #D8DEE9);
   }
 
 .UIButton{
