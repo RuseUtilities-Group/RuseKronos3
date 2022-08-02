@@ -201,8 +201,8 @@ function countdownTimer(){
                 if(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate){
                     if(wednesdayNumToPeriod(i) === "R") tstr += `<tr class="tableRow"><td class="alignRight">R</td><td class="smallFont"><b>Recess</b> - 10:55</td><td class="smallColumn"> </td></tr>`;
                     else if(wednesdayNumToPeriod(i) === "L") tstr += `<tr class="tableRow"><td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 12:10</td><td class="smallColumn"> </td></tr>`;
-                    else if(wednesdayNumToPeriod(i) === "ASS") tstr += `<tr class="tableRow"><td class="alignRight">A</td><td class="smallFont"><b>Recess</b> - 10:40</td><td class="smallColumn"> </td></tr>`;
-                    else tstr += `<td class="alignRight">${wednesdayNumToPeriod(i)}</td><td class="smallFont"><b>${timetable[dayWeek][wednesdayNumToPeriod(i)].subjectName}</b> <br> 08:50 - ${timetable[dayWeek][wednesdayNumToPeriod(i)].teacher}</td><td class="smallColumn">${timetable[dayWeek][wednesdayNumToPeriod(i)].room}</td></tr>`;
+                    else if(wednesdayNumToPeriod(i) === "ASS") tstr += `<tr class="tableRow"><td class="alignRight">A</td><td class="smallFont"><b>Assembly</b> - 10:40</td><td class="smallColumn"> </td></tr>`;
+                    else tstr += `<tr class="tableRow"><td class="alignRight">${wednesdayNumToPeriod(i)}</td><td class="smallFont"><b>${timetable[dayWeek][wednesdayNumToPeriod(i)].subjectName}</b> <br> 08:50 - ${timetable[dayWeek][wednesdayNumToPeriod(i)].teacher}</td><td class="smallColumn">${timetable[dayWeek][wednesdayNumToPeriod(i)].room}</td></tr>`;
                 }
             }
         } else {
