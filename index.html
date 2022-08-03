@@ -60,6 +60,8 @@
                 <input type="file" class="uploadButton" type="file" accept=".ics,.ical" id="icalFileReader"/>
             
                 <input type="button" class="uploadButton" value="Upload" onClick="icalProcess()"/>
+                <br>
+                <button type="button" class="uploadButton" onClick="localStorage.removeItem('timetable'); location.reload();" style="margin-top: 1%">Clear Timetable</button>
             </div>
             
             <div id="buttonText">
