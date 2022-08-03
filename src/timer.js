@@ -214,4 +214,6 @@ function countdownTimer(){
         }
         document.getElementById("classes").innerHTML = tstr;
     } 
-    window.setInterval(countdownTimer, 1000);
+
+    if(!timetable) document.getElementById("HMS").innerHTML = "Upload your timetable in the Settings Tab to continue!"
+    else window.setInterval(countdownTimer, 1000);
