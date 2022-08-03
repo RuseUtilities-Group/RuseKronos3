@@ -15,7 +15,7 @@ table.center {
 	margin-right: auto;
   	width: 50%;
 	border-spacing: 0 15px;
-	margin-top: -2%;
+	margin-top: -2.6%;
 }
 .tableRow{
   outline: thick solid;
@@ -84,6 +84,8 @@ td.firstCol {
   /* Add a black background color to the top navigation */
   .topnav {
   overflow: hidden;
+  zoom: 0.8;
+  -moz-transform: scale(0.8);
   }
 
   /* Style the links inside the navigation bar */
@@ -92,7 +94,7 @@ td.firstCol {
   display: inline-block;
   color: var(--secondary-color, #D8DEE9);
   text-align: center;
-  padding: 1% 2%;
+  padding: 0.5% 2%;
   text-decoration: none;
   font-size: 175%;
   }
@@ -146,3 +148,9 @@ margin: 0.5%;
 	text-align: center;
 	margin: 0.5%;
 } 
+
+#bellTimesPage{
+	  zoom: 0.9;
+  -moz-transform: scale(0.9);
+
+}
