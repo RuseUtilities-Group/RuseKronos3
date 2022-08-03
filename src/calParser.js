@@ -970,3 +970,4 @@ async function icalProcess() {
         alert(e); // If theres an error in the processing prompt the user with a HTML alert with the error in the body.
     }
 }
+

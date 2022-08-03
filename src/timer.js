@@ -26,202 +26,199 @@ Date.prototype.getWeek = function (dowOffset) {
             weeknum = Math.floor((daynum+day-1)/7);
         }
         return weeknum;
-    };
+};
+function nextPeriod(){
 
-    function nextPeriod(){
-    
+}
+
+function numToPeriod(num){
+    // Converts a number to the period i.e. 0 -> BS, 1-> 1, 2-> 2 etc etc
+    var period;
+    switch(num) {
+        case 0:
+            period = "BS";
+            break;
+        case 1:
+            period = "1";
+            break;
+        case 2:
+            period = "2";
+            break;
+        case 3:
+            period = "R";
+            break;
+        case 4:
+            period = "3";
+            break;
+        case 5:
+            period = "4";
+            break;
+        case 6:
+            period = "L";
+            break;
+        case 7:
+            period = "5";
+            break;
+        case 8:
+            period = "AS1";
+            break;
+        case 9:
+            period = "AS2";
+            break;
+
     }
-    
-    function numToPeriod(num){
-        // Converts a number to the period i.e. 0 -> BS, 1-> 1, 2-> 2 etc etc
-        var period;
-        switch(num) {
-            case 0:
-                period = "BS";
-                break;
-            case 1:
-                period = "1";
-                break;
-            case 2:
-                period = "2";
-                break;
-            case 3:
-                period = "R";
-                break;
-            case 4:
-                period = "3";
-                break;
-            case 5:
-                period = "4";
-                break;
-            case 6:
-                period = "L";
-                break;
-            case 7:
-                period = "5";
-                break;
-            case 8:
-                period = "AS1";
-                break;
-            case 9:
-                period = "AS2";
-                break;
-    
-        }
-        return period;
+    return period;
+}
+
+function wednesdayNumToPeriod(num){
+    // Converts a number to the period i.e. 0 -> BS, 1-> 1, 2-> 2 etc etc
+    var period;
+    switch(num) {
+        case 0:
+            period = "BS";
+            break;
+        case 1:
+            period = "1";
+            break;
+        case 2:
+            period = "2";
+            break;
+        case 3:
+            period = "ASS";
+            break;
+        case 4:
+            period = "R";
+            break;
+        case 5:
+            period = "3";
+            break;
+        case 6:
+            period = "L";
+            break;
+        case 7:
+            period = "4";
+            break;
+        case 8:
+            period = "5";
+            break;
+        case 9:
+            period = "AS";
+            break;
+        case 10:
+            period = "AS1";
+            break;
+        case 11:
+            period = "AS2";
+            break;
     }
-    
-    function wednesdayNumToPeriod(num){
-        // Converts a number to the period i.e. 0 -> BS, 1-> 1, 2-> 2 etc etc
-        var period;
-        switch(num) {
-            case 0:
-                period = "BS";
-                break;
-            case 1:
-                period = "1";
-                break;
-            case 2:
-                period = "2";
-                break;
-            case 3:
-                period = "ASS";
-                break;
-            case 4:
-                period = "R";
-                break;
-            case 5:
-                period = "3";
-                break;
-            case 6:
-                period = "L";
-                break;
-            case 7:
-                period = "4";
-                break;
-            case 8:
-                period = "5";
-                break;
-            case 9:
-                period = "AS";
-                break;
-            case 10:
-                period = "AS1";
-                break;
-            case 11:
-                period = "AS2";
-                break;
-        }
-        return period;
-    }
-    
-    function findNextPeriod(dayWeek, currHour, currMinute, currSecond){
-        for(i = 0; i < 10; i++) {
-            console.log(timetable[dayWeek][numToPeriod(i)]);
-            if(timetable[dayWeek][numToPeriod(i)].subjectName){
-                var startDate = new Date(timetable[dayWeek][numToPeriod(i)].startDate);
-                if((startDate.getHours() === currHour && startDate.getMinutes() > currMinute) || startDate.getHours() > currHour){
-                    return numToPeriod(i);
-                }
+    return period;
+}
+
+function findNextPeriod(dayWeek, currHour, currMinute, currSecond){
+    for(i = 0; i < 10; i++) {
+        console.log(timetable[dayWeek][numToPeriod(i)]);
+        if(timetable[dayWeek][numToPeriod(i)].subjectName){
+            var startDate = new Date(timetable[dayWeek][numToPeriod(i)].startDate);
+            if((startDate.getHours() === currHour && startDate.getMinutes() > currMinute) || startDate.getHours() > currHour){
+                return numToPeriod(i);
             }
         }
     }
+}
+
+function wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond){
+    for(i = 0; i < 12; i++) {
+        console.log(wednesdayNumToPeriod(i));
+        if(timetable[dayWeek][wednesdayNumToPeriod(i)].subjectName){
+            var startDate = new Date(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate);
+            if((startDate.getHours() === currHour && startDate.getMinutes() > currMinute)|| startDate.getHours() > currHour){
+                return wednesdayNumToPeriod(i);
+            }
+        }
+    }
+}
+
+function countdownTimer(){
+    var timeLeft;
+    var hoursLeft;
+    var minutesLeft;
+    var secondsLeft;
+    const currDate = new Date();
+    var currDay = currDate.getDay();
+    const currHour = currDate.getHours();
+    const currMinute = currDate.getMinutes();
+    const currSecond = currDate.getSeconds();
+    const currWeek = currDate.getWeek();
+    var weekLetter = "A";
+    var nextPeriod;
+
+    // Odd weeks are Week A, i.e. Week 1 of the year is always A unless a blood moon rises over saturn
+    if(currWeek % 2 === 0) weekLetter = "B";
     
-    function wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond){
+    // If Saturday and Sunday, force showing Monday
+    if(currDay === 0 || currDay === 6) currDay = 1;
+
+    var dayWeek = currDay+weekLetter;
+
+    if(localStorage.getItem("timetable")){
+        if(currDay === 1 || weekLetter === "A") nextPeriod = findNextPeriod("1B", currHour, currMinute, currSecond);
+        else if(currDay === 1 || weekLetter === "B") nextPeriod = findNextPeriod("1A", currHour, currMinute, currSecond);
+        else if(currDay === 3) nextPeriod = wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond);
+        else nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
+        if(!nextPeriod){
+            currDay++;
+            if(currDay === 6 || currDay === 7) currDay = 1;
+            dayWeek = (currDay)+weekLetter;
+            if(currDay === 3) nextPeriod = wednesdayfindNextPeriod(dayWeek, 0, 0, 0);
+            else nextPeriod = findNextPeriod(dayWeek, 0, 0, 0);
+        }
+    }
+    var nextPeriodDate = new Date(timetable[dayWeek][nextPeriod].startDate);
+    var nextPeriodSubject = timetable[dayWeek][nextPeriod].subjectName;
+    
+    secondsLeft = 60 - currSecond;
+    if(currDate.getDay() < nextPeriodDate.getDay()) hoursLeft = nextPeriodDate.getHours() + (24 - currHour);
+    else if(currDate.getDay() === 0) hoursLeft = nextPeriodDate.getHours() + (24 - currHour);
+    else if(currDate.getDay() === 6) hoursLeft = nextPeriod.getHours() + 24 + (24 - currHour);
+    else hoursLeft = nextPeriodDate.getHours() - currHour;
+    if(currMinute <= nextPeriodDate.getMinutes()) minutesLeft = nextPeriodDate.getMinutes() - currMinute;
+    else minutesLeft = 60 - currMinute + nextPeriodDate.getMinutes() -1;
+    if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) location.reload();
+
+    if(hoursLeft / 10 < 1) hoursLeft = "0" + hoursLeft;
+
+    if(minutesLeft / 10 < 1) minutesLeft = "0" + minutesLeft;
+
+    if(secondsLeft / 10 < 1) secondsLeft = "0" + secondsLeft;
+
+    var TMS = `${hoursLeft}:${minutesLeft}:${secondsLeft}`
+    
+    
+    console.log(`${nextPeriodSubject} in ${TMS}`);
+    document.getElementById("HMS").innerHTML = `${nextPeriodSubject} in ${TMS}`;
+    document.querySelector('title').textContent = `${nextPeriodSubject} in ${TMS}`;
+
+    var tstr;
+    if(currDay === 3){
         for(i = 0; i < 12; i++) {
             console.log(wednesdayNumToPeriod(i));
-            if(timetable[dayWeek][wednesdayNumToPeriod(i)].subjectName){
-                var startDate = new Date(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate);
-                if((startDate.getHours() === currHour && startDate.getMinutes() > currMinute)|| startDate.getHours() > currHour){
-                    return wednesdayNumToPeriod(i);
-                }
+            if(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate){
+                if(wednesdayNumToPeriod(i) === "R") tstr += `<tr class="tableRow"><td class="alignRight">R</td><td class="smallFont"><b>Recess</b> - 10:55</td><td class="smallColumn"> </td></tr>`;
+                else if(wednesdayNumToPeriod(i) === "L") tstr += `<tr class="tableRow"><td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 12:10</td><td class="smallColumn"> </td></tr>`;
+                else if(wednesdayNumToPeriod(i) === "ASS") tstr += `<tr class="tableRow"><td class="alignRight">A</td><td class="smallFont"><b>Recess</b> - 10:40</td><td class="smallColumn"> </td></tr>`;
+                else tstr += `<td class="alignRight">${wednesdayNumToPeriod(i)}</td><td class="smallFont"><b>${timetable[dayWeek][wednesdayNumToPeriod(i)].subjectName}</b> <br> 08:50 - ${timetable[dayWeek][wednesdayNumToPeriod(i)].teacher}</td><td class="smallColumn">${timetable[dayWeek][wednesdayNumToPeriod(i)].room}</td></tr>`;
+            }
+        }
+    } else {
+        for(i = 0; i < 10; i++) {
+            if(timetable[dayWeek][numToPeriod(i)].startDate){
+                if(numToPeriod(i) === "R") tstr += `<tr class="tableRow"><td class="alignRight">R</td><td class="smallFont"><b>Recess</b> - 11:00</td><td class="smallColumn"> </td></tr>`;
+                else if(numToPeriod(i) === "L") tstr += `<tr class="tableRow"><td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 13:25</td><td class="smallColumn"> </td></tr>`;
+                else tstr += `<tr class="tableRow"><td class="alignRight">${numToPeriod(i)}</td><td class="smallFont"><b>${timetable[dayWeek][numToPeriod(i)].subjectName}</b> <br> 08:50 - ${timetable[dayWeek][numToPeriod(i)].teacher}</td><td class="smallColumn">${timetable[dayWeek][numToPeriod(i)].room}</td></tr>`;
             }
         }
     }
-    
-    function countdownTimer(){
-        var timeLeft;
-        var hoursLeft;
-        var minutesLeft;
-        var secondsLeft;
-        const currDate = new Date();
-        var currDay = currDate.getDay();
-        const currHour = currDate.getHours();
-        const currMinute = currDate.getMinutes();
-        const currSecond = currDate.getSeconds();
-        const currWeek = currDate.getWeek();
-        var weekLetter = "A";
-        var nextPeriod;
-    
-        // Odd weeks are Week A, i.e. Week 1 of the year is always A unless a blood moon rises over saturn
-        if(currWeek % 2 === 0) weekLetter = "B";
-        
-        // If Saturday and Sunday, force showing Monday
-        if(currDay === 0 || currDay === 6) currDay = 1;
-    
-        var dayWeek = currDay+weekLetter;
-    
-        if(localStorage.getItem("timetable")){
-            if(currDay === 1 || weekLetter === "A") nextPeriod = findNextPeriod("1B", currHour, currMinute, currSecond);
-            else if(currDay === 1 || weekLetter === "B") nextPeriod = findNextPeriod("1A", currHour, currMinute, currSecond);
-            else if(currDay === 3) nextPeriod = wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond);
-            else nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
-            if(!nextPeriod){
-                currDay++;
-                if(currDay === 6 || currDay === 7) currDay = 1;
-                dayWeek = (currDay)+weekLetter;
-                if(currDay === 3) nextPeriod = wednesdayfindNextPeriod(dayWeek, 0, 0, 0);
-                else nextPeriod = findNextPeriod(dayWeek, 0, 0, 0);
-            }
-        }
+    document.getElementById("classes").innerHTML = tstr;
 
-        var nextPeriodDate = new Date(timetable[dayWeek][nextPeriod].startDate);
-        var nextPeriodSubject = timetable[dayWeek][nextPeriod].subjectName;
-        
-        secondsLeft = 60 - currSecond;
-        if(currDate.getDay() < nextPeriodDate.getDay()) hoursLeft = nextPeriodDate.getHours() + (24 - currHour);
-        else if(currDate.getDay() === 0) hoursLeft = nextPeriodDate.getHours() + (24 - currHour);
-        else if(currDate.getDay() === 6) hoursLeft = nextPeriod.getHours() + 24 + (24 - currHour);
-        else hoursLeft = nextPeriodDate.getHours() - currHour;
-        if(currMinute <= nextPeriodDate.getMinutes()) minutesLeft = nextPeriodDate.getMinutes() - currMinute;
-        else minutesLeft = 60 - currMinute + nextPeriodDate.getMinutes() -1;
-        if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) location.reload();
-
-        if(hoursLeft / 10 < 1) hoursLeft = "0" + hoursLeft;
-
-        if(minutesLeft / 10 < 1) minutesLeft = "0" + minutesLeft;
-
-        if(secondsLeft / 10 < 1) secondsLeft = "0" + secondsLeft;
-
-        var TMS = `${hoursLeft}:${minutesLeft}:${secondsLeft}`
-        
-
-        console.log(`${nextPeriodSubject} in ${TMS}`);
-        document.getElementById("HMS").innerHTML = `${nextPeriodSubject} in ${TMS}`;
-        document.querySelector('title').textContent = `${nextPeriodSubject} in ${TMS}`;
-
-        var tstr;
-        if(currDay === 3){
-            for(i = 0; i < 12; i++) {
-                console.log(wednesdayNumToPeriod(i));
-                if(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate){
-                    if(wednesdayNumToPeriod(i) === "R") tstr += `<tr class="tableRow"><td class="alignRight">R</td><td class="smallFont"><b>Recess</b> - 10:55</td><td class="smallColumn"> </td></tr>`;
-                    else if(wednesdayNumToPeriod(i) === "L") tstr += `<tr class="tableRow"><td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 12:10</td><td class="smallColumn"> </td></tr>`;
-                    else if(wednesdayNumToPeriod(i) === "ASS") tstr += `<tr class="tableRow"><td class="alignRight">A</td><td class="smallFont"><b>Recess</b> - 10:40</td><td class="smallColumn"> </td></tr>`;
-                    else tstr += `<td class="alignRight">${wednesdayNumToPeriod(i)}</td><td class="smallFont"><b>${timetable[dayWeek][wednesdayNumToPeriod(i)].subjectName}</b> <br> 08:50 - ${timetable[dayWeek][wednesdayNumToPeriod(i)].teacher}</td><td class="smallColumn">${timetable[dayWeek][wednesdayNumToPeriod(i)].room}</td></tr>`;
-                }
-            }
-        } else {
-            for(i = 0; i < 10; i++) {
-                if(timetable[dayWeek][numToPeriod(i)].startDate){
-                    if(numToPeriod(i) === "R") tstr += `<tr class="tableRow"><td class="alignRight">R</td><td class="smallFont"><b>Recess</b> - 11:00</td><td class="smallColumn"> </td></tr>`;
-                    else if(numToPeriod(i) === "L") tstr += `<tr class="tableRow"><td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 13:25</td><td class="smallColumn"> </td></tr>`;
-                    else tstr += `<tr class="tableRow"><td class="alignRight">${numToPeriod(i)}</td><td class="smallFont"><b>${timetable[dayWeek][numToPeriod(i)].subjectName}</b> <br> 08:50 - ${timetable[dayWeek][numToPeriod(i)].teacher}</td><td class="smallColumn">${timetable[dayWeek][numToPeriod(i)].room}</td></tr>`;
-                }
-            }
-        }
-        document.getElementById("classes").innerHTML = tstr;
-
-    }
-
-	window.setInterval(countdownTimer, 1000);
+}
+window.setInterval(countdownTimer, 1000);
