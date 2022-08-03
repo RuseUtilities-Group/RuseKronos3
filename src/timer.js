@@ -194,9 +194,12 @@ Date.prototype.getWeek = function (dowOffset) {
         else minutesleft = 60 - currMinute + nextPeriodDate.getMinutes() -1;
 
         if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) //reload page;
+        if(hoursLeft === 0) hoursLeft = "00";
+        else if(hoursLeft / 10 <= 0) hoursleft = `0${hoursLeft}`
 
-        if(hoursLeft / 10 <= 0) hoursleft = `0${hoursLeft}`;
-        if(minutesLeft / 10 <= 0) minutesLeft = `0${minutesLeft}`;
+        if(minutesLeft === 0) minutesLeft = `00`;
+        else if(minutesLeft / 10 <= 0) minutesLeft = `0${minutesLeft}`;
+
         if(secondsLeft / 10 <= 0) secondsLeft = `0${secondsLeft}`;
 
         var TMS = `${hoursLeft}:${minutesLeft}:${secondsLeft}`
