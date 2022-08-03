@@ -198,7 +198,6 @@ Date.prototype.getWeek = function (dowOffset) {
 
         console.log(`${nextPeriodSubject} in ${TMS}`);
         document.getElementById("HMS").innerHTML = `${nextPeriodSubject} in ${TMS}`;
-
         var tstr;
         if(currDay === 3){
             for(i = 0; i < 12; i++) {
