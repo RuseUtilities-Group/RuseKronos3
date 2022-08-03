@@ -1,10 +1,131 @@
 <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html>
-    <body>
-        <input type="file" accept=".ics,.ical" id="icalFileReader"/>
-        <input type="button" id="submitButton" value="Submit" onClick="icalProcess()"/>
+	<head>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="./styles/main.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script type="text/javascript" src="./src/settings.js"></script>
+		<title>Timetable</title>
+	</head>
+	<body onLoad='alterColor()'>
+
+        <div class="topnav">
+            <a class="fa fa-fw fa-calendar" style="height: 20%; width: 3%;" id="timetableButton"></a>
+            <a style="width: 7.5%;" ><img src="./data/KronosLogo.png" style="width: 50%; padding-top: 3% !important;" id="homeButton"></a>
+            <a class="fa fa-fw fa-cog" style="height: 20%; width: 3%;" id="settingsButton"></a>
+        </div>
+
+        <div id="timetablePage">
+
+            <table class="centre" id="timetable">
+            <tr class= "topRow"><td>Week A</td><td>Monday</td><td>Tuesday</td><td>Wednesday</td><td>Thursday</td><td>Friday</td>
+            <tr>
+                <td style= "border: 0px solid;">Period 1</td><td>11EN8 - L1.2</td><td>11EN8 - L1.2</td><td>11EN8 - L1.2</td><td>11EN8 - L1.2</td><td>11EN8 - L1.2</td>
+            </tr>
+            <tr>
+                <td style= "border: 0px solid;">Period 2</td><td>11MT2 - C2.2</td><td>11MT2 - C2.2</td><td>11MT2 - C2.2</td><td>11MT2 - C2.2</td><td>11MT2 - C2.2</td>
+            </tr>
+            <tr>
+                <td style= "border: 0px solid;">Recess</td>
+            </tr>
+            <tr>
+                <td style= "border: 0px solid;">Period 3</td><td>11PHYS5 - P2.2</td><td>11PHYS5 - P2.2</td><td>11PHYS5 - P2.2</td><td>11PHYS5 - P2.2</td><td>11PHYS5 - P2.2</td>
+            </tr>
+            <tr>
+                <td style= "border: 0px solid;">Period 4</td><td>11CHEM7 - P1.1</td><td>11CHEM7 - P1.1</td><td>11CHEM7 - P1.1</td><td>11CHEM7 - P1.1</td><td>11CHEM7 - P1.1</td>
+            </tr>
+            <tr>
+                <td style= "border: 0px solid;">Lunch</td>
+            </tr>
+            <tr>
+                <td style= "border: 0px solid;">Period 5</td><td>11AG1 - F1.1</td><td>11AG1 - F1.1</td><td>11AG1 - F1.1</td><td>11AG1 - F1.1</td><td>11AG1 - F1.1</td>
+            </tr>
+            </table>
+        </div>
+        <div id="bellTimesPage">
+            <p id="HMS"></p>
+            <table class="center">
+            <tr class="tableRow">
+                <td class="alignRight">1</td><td class="smallFont"><b>English (Advanced)</b> <br> 08:50 - Mr Samuel Hague</td><td class="smallColumn">L1.2</td>
+            </tr>
+            <tr class="tableRow">
+                <td class="alignRight">2</td><td class="smallFont"><b> Mathematics Extension 3</b> <br> 09:55 - Ms Sharmila Samy-Pullay</td><td class="smallColumn">C2.2</td>
+            </tr>
+            <tr class="tableRow">
+                <td class="alignRight">R</td><td class="smallFont"><b>Recess</b> - 11:00</td><td class="smallColumn"> </td>
+            </tr>
+            <tr class="tableRow">
+                <td class="alignRight">3</td><td class="smallFont"> <b>Physics</b> <br> 11:25 - Mr Morgan Gengiah</td><td class="smallColumn">P2.1</td>
+            </tr>
+            <tr class="tableRow">
+                <td class="alignRight">4</td><td class="smallFont"><b>Chemistry</b> <br> 12:25 - Ms Sandra Fernandez</td><td class="smallColumn">C0.1</td>
+            </tr>
+            <tr class="tableRow">
+                <td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 13:25</td><td class="smallColumn"> </td>
+            </tr>
+            <tr class="tableRow">
+                <td class="alignRight">5</td><td class="smallFont"><b>Modern History</b> <br> 14:05 - Mr Frank Federico</td><td class="smallColumn">C1.5</td>
+            </tr>
+            </table>
+        </div>
+
+        <div id="settingsPage">
+
+            <div id="buttonText">
+                <p>Upload your timetable here:</p>
+            
+                <input type="file" class="uploadButton" type="file" accept=".ics,.ical" id="icalFileReader"/>
+            
+                <input type="button" class="uploadButton" value="Upload" onClick="icalProcess()"/>
+            </div>
+            
+            <div id="buttonText">
+                <p>Upload a background image here:</p>
+                <input id="test" type="file" class="uploadButton"/>
+                <button type="button" class="uploadButton" onClick="icalProcess()">Upload</button>
+                <br>
+                <button type="button" class="uploadButton" style="margin-top: 1%">Clear background</button>
+            
+            </div>
+            
+            <div id="buttonText">
+                <p>Choose your preferred colours:</p>
+                <div>
+                    <label for="body" class="colorPicker">Primary Color</label>
+                    <input type="color" id="_primaryColor">
+                </div>
+            
+                <div>
+                    <label for="body" class = "colorPicker">Secondary Color</label>
+                    <input type="color" id="_secondaryColor">
+                </div>
+            
+                <button type="button" class="uploadButton" class="UIButton" style="margin-top: 1%" onclick="changeColor()">Click to Change Colour</button>
+                <button type="button" class="uploadButton" class="UIButton" style="margin-top: 1%" onclick="changeDefaultColor()">Click to Revert to Default</button>
+            
+            </div>
+            
+            <div id="buttonText">
+                <h4>Some of our favourite colourways (click to apply):</h4>
+                <button type="button" class="presetColors" onclick="Olivia()" style="color: #f7f2ea; background-color: #c87e74;">GMK Olivia</button>
+                <button type="button" class="presetColors" onclick="Wavez()" style="color: #00773a; background-color: #323437;">GMK Wavez</button>
+                <button type="button" class="presetColors" onclick="Metro()" style="color: #00a4a9; background-color: #323437;">GMK Metropolis R2</button>
+                <button type="button" class="presetColors" onclick="MonkeyType()" style="color: #e2b714; background-color: #323437;">Serika Dark</button>
+                <button type="button" class="presetColors" onclick="BlueSamurai()" style="color: #e5a100; background-color: #0058a3;">GMK Blue Samurai</button>
+                <button type="button" class="presetColors" onclick="RedSamurai()" style="color: #e5a100; background-color: #84202c;">GMK Red Samurai</button>
+            
+            </div>
+        </div>
+
+
         <script type="text/javascript" src="./src/calParser.js"></script>
         <script type="text/javascript" src="./src/ical.js"></script>
         <script type="text/javascript" src="./src/timer.js"></script>
-    </body>
+        <script type="text/javascript" src="./src/navHandler.js"></script>
+	</body>
 </html>
+

@@ -1,4 +1,4 @@
-timetable = JSON.parse(localStorage.getItem("timetable"));
+var timetable = JSON.parse(localStorage.getItem("timetable"));
 
 Date.prototype.getWeek = function (dowOffset) {
     /*getWeek() was developed by Nick Baicoianu at MeanFreePath: http://www.meanfreepath.com */
@@ -117,11 +117,10 @@ Date.prototype.getWeek = function (dowOffset) {
     
     function findNextPeriod(dayWeek, currHour, currMinute, currSecond){
         for(i = 0; i < 10; i++) {
-            var startDate = new Date(timetable[dayWeek][numToPeriod(i)].startDate);
-            if(startDate){
+            if(timetable[dayWeek][numToPeriod(i)].startDate){
+                var startDate = new Date(timetable[dayWeek][numToPeriod(i)].startDate);
                 if((startDate.getHours() === currHour && startDate.getMinutes() > currMinute) || startDate.getHours() > currHour){
                     return numToPeriod(i);
-                    i = 11;
                 }
             }
         }
@@ -129,11 +128,11 @@ Date.prototype.getWeek = function (dowOffset) {
     
     function wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond){
         for(i = 0; i < 12; i++) {
-            var startDate = new Date(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate);
-            if(startDate){
+            console.log(wednesdayNumToPeriod(i));
+            if(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate){
+                var startDate = new Date(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate);
                 if((startDate.getHours() === currHour && startDate.getMinutes() > currMinute)|| startDate.getHours() > currHour){
                     return wednesdayNumToPeriod(i);
-                    i = 13;
                 }
             }
         }
@@ -162,22 +161,16 @@ Date.prototype.getWeek = function (dowOffset) {
         var dayWeek = currDay+weekLetter;
     
         if(localStorage.getItem("timetable")){
-            if(currDay !== 3){
-                nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
-                if(!nextPeriod){
-                    if(currDay === 5) currDay = 1;
-                    else currDay++;
-                    dayWeek = (currDay)+weekLetter;
-                    if(currDay === 3){
-                        nextPeriod = wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond);
-                    } else nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
-                }
-            } if(currDay === 3){
-                nextPeriod = wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond);
-                if(!nextPeriod){
-                    dayWeek = (currDay+1)+weekLetter;
-                    nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
-                }
+            if(currDay === 1 || weekLetter === "A") nextPeriod = findNextPeriod("1B", currHour, currMinute, currSecond);
+            else if(currDay === 1 || weekLetter === "B") nextPeriod = findNextPeriod("1A", currHour, currMinute, currSecond);
+            else if(currDay === 3) nextPeriod = wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond);
+            else nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
+            if(!nextPeriod){
+                currDay++;
+                if(currDay === 6 || currDay === 7) currDay = 1;
+                dayWeek = (currDay)+weekLetter;
+                if(currDay === 3) nextPeriod = wednesdayfindNextPeriod(dayWeek, 0, 0, 0);
+                else nextPeriod = findNextPeriod(dayWeek, 0, 0, 0);
             }
         }
 
@@ -189,24 +182,21 @@ Date.prototype.getWeek = function (dowOffset) {
         else if(currDate.getDay() === 0) hoursLeft = nextPeriodDate.getHours() + (24 - currHour);
         else if(currDate.getDay() === 6) hoursLeft = nextPeriod.getHours() + 24 + (24 - currHour);
         else hoursLeft = nextPeriodDate.getHours() - currHour;
+        if(currMinute <= nextPeriodDate.getMinutes()) minutesLeft = nextPeriodDate.getMinutes() - currMinute;
+        else minutesLeft = 60 - currMinute + nextPeriodDate.getMinutes() -1;
+        if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) location.reload();
 
-        if(hoursLeft === 0) minutesLeft = nextPeriodDate.getMinutes() - currMinute - 1;
-        else minutesleft = 60 - currMinute + nextPeriodDate.getMinutes() -1;
+        if(hoursLeft / 10 < 1) hoursLeft = "0" + hoursLeft;
 
-        if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) //reload page;
-        if(hoursLeft === 0) hoursLeft = "00";
-        else if(hoursLeft / 10 <= 0) hoursleft = `0${hoursLeft}`
+        if(minutesLeft / 10 < 1) minutesLeft = "0" + minutesLeft;
 
-        if(minutesLeft === 0) minutesLeft = `00`;
-        else if(minutesLeft / 10 <= 0) minutesLeft = `0${minutesLeft}`;
-
-        if(secondsLeft / 10 <= 0) secondsLeft = `0${secondsLeft}`;
+        if(secondsLeft / 10 < 1) secondsLeft = "0" + secondsLeft;
 
         var TMS = `${hoursLeft}:${minutesLeft}:${secondsLeft}`
         
 
         console.log(`${nextPeriodSubject} in ${TMS}`);
+        document.getElementById("HMS").innerHTML = `${nextPeriodSubject} in ${TMS}`;
     }
 
-
-countdownTimer();
+	window.setInterval(countdownTimer, 1000);

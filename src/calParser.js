@@ -1,5 +1,5 @@
 // Manually constructing javascript timetable object (record)
-let timetable = {
+var timetable = {
     "1A": {
         "BS":{
             "teacher": "",

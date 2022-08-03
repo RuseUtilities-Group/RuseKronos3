@@ -134,3 +134,7 @@
 	}
 
 
+#HMS{
+	color: var(--secondary-color);
+	font-size: 150%;
+}

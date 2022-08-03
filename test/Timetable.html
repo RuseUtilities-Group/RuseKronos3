@@ -1,49 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles/main.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script type="text/javascript" src="../src/settings.js"></script>
+	<head>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="../styles/main.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script type="text/javascript" src="../src/settings.js"></script>
+		<title>Timetable</title>
+	</head>
+	<body onLoad='alterColor()'>
+		<div class="topnav">
+			<a class="fa fa-fw fa-calendar" href="Timetable.html" style="height: 20%; width: 3%;"></a>
+			<a href="Bell Times.html" style="width: 7.5%;" ><img src="../data/KronosLogo.png" style="width: 50%; padding-top: 3% !important;" ></a>
+			<a class="fa fa-fw fa-cog" href="Settings.html" style="height: 20%; width: 3%;"></a>
+		</div>
 
-<title>Timetable</title>
+		<table class="centre" id="timetable">
+		<tr class= "topRow"><td>Week A</td><td>Monday</td><td>Tuesday</td><td>Wednesday</td><td>Thursday</td><td>Friday</td>
+		<tr>
+			<td style= "border: 0px solid;">Period 1</td><td>11EN8 - L1.2</td><td>11EN8 - L1.2</td><td>11EN8 - L1.2</td><td>11EN8 - L1.2</td><td>11EN8 - L1.2</td>
+		</tr>
+		<tr>
+			<td style= "border: 0px solid;">Period 2</td><td>11MT2 - C2.2</td><td>11MT2 - C2.2</td><td>11MT2 - C2.2</td><td>11MT2 - C2.2</td><td>11MT2 - C2.2</td>
+		</tr>
+		<tr>
+			<td style= "border: 0px solid;">Recess</td>
+		</tr>
+		<tr>
+			<td style= "border: 0px solid;">Period 3</td><td>11PHYS5 - P2.2</td><td>11PHYS5 - P2.2</td><td>11PHYS5 - P2.2</td><td>11PHYS5 - P2.2</td><td>11PHYS5 - P2.2</td>
+		</tr>
+		<tr>
+			<td style= "border: 0px solid;">Period 4</td><td>11CHEM7 - P1.1</td><td>11CHEM7 - P1.1</td><td>11CHEM7 - P1.1</td><td>11CHEM7 - P1.1</td><td>11CHEM7 - P1.1</td>
+		</tr>
+		<tr>
+			<td style= "border: 0px solid;">Lunch</td>
+		</tr>
+		<tr>
+			<td style= "border: 0px solid;">Period 5</td><td>11AG1 - F1.1</td><td>11AG1 - F1.1</td><td>11AG1 - F1.1</td><td>11AG1 - F1.1</td><td>11AG1 - F1.1</td>
+		</tr>
+		</table>
 
-
-</head>
-<body onLoad='alterColor()'>
-<div class="topnav">
-	<a class="fa fa-fw fa-calendar" href="Timetable.html" style="height: 20%; width: 3%;"></a>
-  	<a href="Bell Times.html" style="width: 7.5%;" ><img src="../data/KronosLogo.png" style="width: 50%; padding-top: 3% !important;" ></a>
-  	<a class="fa fa-fw fa-cog" href="Settings.html" style="height: 20%; width: 3%;"></a>
-</div>
-
-<table class="centre" id="timetable">
-<tr class= "topRow"><td>Week A</td><td>Monday</td><td>Tuesday</td><td>Wednesday</td><td>Thursday</td><td>Friday</td>
-<tr>
-	<td style= "border: 0px solid;">Period 1</td><td>11EN8 - L1.2</td><td>11EN8 - L1.2</td><td>11EN8 - L1.2</td><td>11EN8 - L1.2</td><td>11EN8 - L1.2</td>
-</tr>
-<tr>
-	<td style= "border: 0px solid;">Period 2</td><td>11MT2 - C2.2</td><td>11MT2 - C2.2</td><td>11MT2 - C2.2</td><td>11MT2 - C2.2</td><td>11MT2 - C2.2</td>
-</tr>
-<tr>
-	<td style= "border: 0px solid;">Recess</td>
-</tr>
-<tr>
-	<td style= "border: 0px solid;">Period 3</td><td>11PHYS5 - P2.2</td><td>11PHYS5 - P2.2</td><td>11PHYS5 - P2.2</td><td>11PHYS5 - P2.2</td><td>11PHYS5 - P2.2</td>
-</tr>
-<tr>
-	<td style= "border: 0px solid;">Period 4</td><td>11CHEM7 - P1.1</td><td>11CHEM7 - P1.1</td><td>11CHEM7 - P1.1</td><td>11CHEM7 - P1.1</td><td>11CHEM7 - P1.1</td>
-</tr>
-<tr>
-	<td style= "border: 0px solid;">Lunch</td>
-</tr>
-<tr>
-	<td style= "border: 0px solid;">Period 5</td><td>11AG1 - F1.1</td><td>11AG1 - F1.1</td><td>11AG1 - F1.1</td><td>11AG1 - F1.1</td><td>11AG1 - F1.1</td>
-</tr>
-</table>
-
-</body>
+	</body>
 </html>
 
