@@ -13,8 +13,9 @@
 	table.center {
   		margin-left: auto; 
   		margin-right: auto;
-		width: 55%;
+		width: 50%;
 	  	border-spacing: 0 15px;
+	  	margin-top: -3%;
 	}
 	.tableRow{
 		outline: thick solid;
@@ -24,8 +25,6 @@
 		background-color: var(--secondary-color, #D8DEE9);
 	}
 	table.center td{
-		padding-right: 2%;
-		padding-left: 1%;
 		padding-top: 2%;
 		padding-bottom: 2%;
 		font-size: 125%;
@@ -40,12 +39,12 @@
 		padding-left: 3% !important;
 	}
 	.smallColumn{
-
 		width: 15%;
 		text-align: center;
 	}
 	.alignRight{
 		text-align: center;
+		width: 7%;
 		padding-left: 2% !important;
 	}
 	.headerText{
@@ -141,7 +140,7 @@
 	margin: 0.5%;
 } 
 
-#KOH{
+#title{
 	color: var(--secondary-color) !important;
 	font-size: 125%;
 	text-align: center;

@@ -193,10 +193,12 @@ function countdownTimer(){
 
     var TMS = `${hoursLeft}:${minutesLeft}:${secondsLeft}`
     
+    var teacher = timetable[dayWeek][nextPeriod].teacher;
+    var room = timetable[dayWeek][nextPeriod].room;
     
     console.log(`${nextPeriodSubject} in ${TMS}`);
     document.getElementById("HMS").innerHTML = `${nextPeriodSubject} in ${TMS}`;
-    document.querySelector('title').textContent = `${nextPeriodSubject} in ${TMS}`;
+    document.getElementById("title").textContent = `with ${teacher} in ${room}`;
 
     var tstr;
     if(currDay === 3){
