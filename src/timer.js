@@ -27,9 +27,6 @@ Date.prototype.getWeek = function (dowOffset) {
         }
         return weeknum;
 };
-function nextPeriod(){
-
-}
 
 function numToPeriod(num){
     // Converts a number to the period i.e. 0 -> BS, 1-> 1, 2-> 2 etc etc
