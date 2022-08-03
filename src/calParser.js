@@ -1,5 +1,5 @@
 // Manually constructing javascript timetable object (record)
-var timetable = {
+let timetable = {
     "1A": {
         "BS":{
             "teacher": "",
@@ -25,6 +25,14 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Recess",
+            "startDate": "2022-07-31T01:00:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
@@ -39,6 +47,14 @@ var timetable = {
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Lunch",
+            "startDate": "2022-07-31T03:25:00.000Z",
             "endDate": ""
         },
         "5":{
@@ -91,6 +107,14 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Recess",
+            "startDate": "2022-07-31T01:00:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
@@ -105,6 +129,14 @@ var timetable = {
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Lunch",
+            "startDate": "2022-07-31T03:25:00.000Z",
             "endDate": ""
         },
         "5":{
@@ -157,12 +189,36 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "ASS":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Assembly",
+            "startDate": "2022-07-31T00:40:00.000Z",
+            "endDate": ""
+        },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Recess",
+            "startDate": "2022-07-31T00:55:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Lunch",
+            "startDate": "2022-07-31T02:10:00.000Z",
             "endDate": ""
         },
         "4":{
@@ -231,6 +287,14 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Recess",
+            "startDate": "2022-07-31T01:00:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
@@ -245,6 +309,14 @@ var timetable = {
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Lunch",
+            "startDate": "2022-07-31T03:25:00.000Z",
             "endDate": ""
         },
         "5":{
@@ -297,6 +369,14 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Recess",
+            "startDate": "2022-07-31T01:00:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
@@ -311,6 +391,14 @@ var timetable = {
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Lunch",
+            "startDate": "2022-07-31T03:25:00.000Z",
             "endDate": ""
         },
         "5":{
@@ -363,6 +451,14 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Recess",
+            "startDate": "2022-07-31T01:00:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
@@ -377,6 +473,14 @@ var timetable = {
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Lunch",
+            "startDate": "2022-07-31T03:25:00.000Z",
             "endDate": ""
         },
         "5":{
@@ -429,6 +533,14 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Recess",
+            "startDate": "2022-07-31T01:00:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
@@ -443,6 +555,14 @@ var timetable = {
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Lunch",
+            "startDate": "2022-07-31T03:25:00.000Z",
             "endDate": ""
         },
         "5":{
@@ -495,12 +615,36 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "ASS":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Assembly",
+            "startDate": "2022-07-31T00:40:00.000Z",
+            "endDate": ""
+        },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Recess",
+            "startDate": "2022-07-31T00:55:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Lunch",
+            "startDate": "2022-07-31T02:10:00.000Z",
             "endDate": ""
         },
         "4":{
@@ -569,6 +713,14 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Recess",
+            "startDate": "2022-07-31T01:00:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
@@ -583,6 +735,14 @@ var timetable = {
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Lunch",
+            "startDate": "2022-07-31T03:25:00.000Z",
             "endDate": ""
         },
         "5":{
@@ -635,6 +795,14 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
+        "R":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Recess",
+            "startDate": "2022-07-31T01:00:00.000Z",
+            "endDate": ""
+        },
         "3":{
             "teacher": "",
             "room": "",
@@ -649,6 +817,14 @@ var timetable = {
             "subjectCode": "",
             "subjectName": "",
             "startDate": "",
+            "endDate": ""
+        },
+        "L":{
+            "teacher": "",
+            "room": "",
+            "subjectCode": "",
+            "subjectName": "Lunch",
+            "startDate": "2022-07-31T03:25:00.000Z",
             "endDate": ""
         },
         "5":{

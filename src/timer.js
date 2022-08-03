@@ -1,3 +1,5 @@
+timetable = JSON.parse(localStorage.getItem("timetable"));
+
 Date.prototype.getWeek = function (dowOffset) {
     /*getWeek() was developed by Nick Baicoianu at MeanFreePath: http://www.meanfreepath.com */
     
@@ -26,722 +28,182 @@ Date.prototype.getWeek = function (dowOffset) {
         return weeknum;
     };
 
-function nextPeriod(){
+    function nextPeriod(){
     
-}
-
-
-
-function countdownTimer(){
-    var timeLeft;
-    var hoursLeft;
-    var minutesLeft;
-    var secondsLeft;
-    const currDate = new Date();
-    const currDay = currDate.getDay();
-    const currHour = currDate.getHours();
-    const currMinute = currDate.getMinutes();
-    const currSecond = currDate.getSeconds();
-    const currWeek = currDate.getWeek();
-    var weekLetter = "A";
-
-    // Odd weeks are Week A, i.e. Week 1 of the year is always A unless a blood moon rises over saturn
-    if(currWeek % 2 === 0) weekLetter = "B";
+    }
     
-    // If Saturday and Sunday, force showing Monday
-    if(currDay === 0 || currDay === 6) currDay = 1;
-
-    var dayWeek = currDay+weekLetter;
-
-    console.log(dayWeek)
-
-    return timeLeft;
-}
-
-
-if (localStorage.getItem("timetable") === null) {
-    timetable = {
-        "1A": {
-            "BS":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "3":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "4":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "5":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            }
-        },
-        "2A": {
-            "BS":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "3":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "4":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "5":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            }
-        },
-        "3A": {
-            "BS":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "3":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "4":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "5":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            }
-        },
-        "4A": {
-            "BS":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "3":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "4":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "5":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            }
-        },
-        "5A": {
-            "BS":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "3":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "4":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "5":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            }
-        },
-        "1B": {
-            "BS":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "3":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "4":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "5":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            }
-        },
-        "2B": {
-            "BS":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "3":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "4":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "5":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            }
-        },
-        "3B": {
-            "BS":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "3":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "4":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "5":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            }
-        },
-        "4B": {
-            "BS":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "3":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "4":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "5":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            }
-        },
-        "5B": {
-            "BS":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "3":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "4":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "5":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS1":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
-            },
-            "AS2":{
-                "teacher": "",
-                "room": "",
-                "subjectCode": "",
-                "subjectName": "",
-                "startDate": "",
-                "endDate": ""
+    function numToPeriod(num){
+        // Converts a number to the period i.e. 0 -> BS, 1-> 1, 2-> 2 etc etc
+        var period;
+        switch(num) {
+            case 0:
+                period = "BS";
+                break;
+            case 1:
+                period = "1";
+                break;
+            case 2:
+                period = "2";
+                break;
+            case 3:
+                period = "R";
+                break;
+            case 4:
+                period = "3";
+                break;
+            case 5:
+                period = "4";
+                break;
+            case 6:
+                period = "L";
+                break;
+            case 7:
+                period = "5";
+                break;
+            case 8:
+                period = "AS1";
+                break;
+            case 9:
+                period = "AS2";
+                break;
+    
+        }
+        return period;
+    }
+    
+    function wednesdayNumToPeriod(num){
+        // Converts a number to the period i.e. 0 -> BS, 1-> 1, 2-> 2 etc etc
+        var period;
+        switch(num) {
+            case 0:
+                period = "BS";
+                break;
+            case 1:
+                period = "1";
+                break;
+            case 2:
+                period = "2";
+                break;
+            case 3:
+                period = "ASS";
+                break;
+            case 4:
+                period = "R";
+                break;
+            case 5:
+                period = "3";
+                break;
+            case 6:
+                period = "L";
+                break;
+            case 7:
+                period = "4";
+                break;
+            case 8:
+                period = "5";
+                break;
+            case 9:
+                period = "AS";
+                break;
+            case 10:
+                period = "AS1";
+                break;
+            case 11:
+                period = "AS2";
+                break;
+        }
+        return period;
+    }
+    
+    function findNextPeriod(dayWeek, currHour, currMinute, currSecond){
+        for(i = 0; i < 10; i++) {
+            var startDate = new Date(timetable[dayWeek][numToPeriod(i)].startDate);
+            if(startDate){
+                if((startDate.getHours() === currHour && startDate.getMinutes() > currMinute) || startDate.getHours() > currHour){
+                    return numToPeriod(i);
+                    i = 11;
+                }
             }
         }
-    };
-}
-else {
-    timetable = JSON.parse(localStorage.getItem("timetable"));
-}
+    }
+    
+    function wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond){
+        for(i = 0; i < 12; i++) {
+            var startDate = new Date(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate);
+            if(startDate){
+                if((startDate.getHours() === currHour && startDate.getMinutes() > currMinute)|| startDate.getHours() > currHour){
+                    return wednesdayNumToPeriod(i);
+                    i = 13;
+                }
+            }
+        }
+    }
+    
+    function countdownTimer(){
+        var timeLeft;
+        var hoursLeft;
+        var minutesLeft;
+        var secondsLeft;
+        const currDate = new Date();
+        var currDay = currDate.getDay();
+        const currHour = currDate.getHours();
+        const currMinute = currDate.getMinutes();
+        const currSecond = currDate.getSeconds();
+        const currWeek = currDate.getWeek();
+        var weekLetter = "A";
+        var nextPeriod;
+    
+        // Odd weeks are Week A, i.e. Week 1 of the year is always A unless a blood moon rises over saturn
+        if(currWeek % 2 === 0) weekLetter = "B";
+        
+        // If Saturday and Sunday, force showing Monday
+        if(currDay === 0 || currDay === 6) currDay = 1;
+    
+        var dayWeek = currDay+weekLetter;
+    
+        if(localStorage.getItem("timetable")){
+            if(currDay !== 3){
+                nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
+                if(!nextPeriod){
+                    if(currDay === 5) currDay = 1;
+                    else currDay++;
+                    dayWeek = (currDay)+weekLetter;
+                    if(currDay === 3){
+                        nextPeriod = wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond);
+                    } else nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
+                }
+            } if(currDay === 3){
+                nextPeriod = wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond);
+                if(!nextPeriod){
+                    dayWeek = (currDay+1)+weekLetter;
+                    nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
+                }
+            }
+        }
+
+        var nextPeriodDate = new Date(timetable[dayWeek][nextPeriod].startDate);
+        var nextPeriodSubject = timetable[dayWeek][nextPeriod].subjectName;
+        
+        secondsLeft = 60 - currSecond;
+        if(currDate.getDay() < nextPeriodDate.getDay()) hoursLeft = nextPeriodDate.getHours() + (24 - currHour);
+        else if(currDate.getDay() === 0) hoursLeft = nextPeriodDate.getHours() + (24 - currHour);
+        else if(currDate.getDay() === 6) hoursLeft = nextPeriod.getHours() + 24 + (24 - currHour);
+        else hoursLeft = nextPeriodDate.getHours() - currHour;
+
+        if(hoursLeft === 0) minutesLeft = nextPeriodDate.getMinutes() - currMinute - 1;
+        else minutesleft = 60 - currMinute + nextPeriodDate.getMinutes() -1;
+
+        if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) //reload page;
+
+        if(hoursLeft / 10 <= 0) hoursleft = `0${hoursLeft}`;
+        if(minutesLeft / 10 <= 0) minutesLeft = `0${minutesLeft}`;
+        if(secondsLeft / 10 <= 0) secondsLeft = `0${secondsLeft}`;
+
+        var TMS = `${hoursLeft}:${minutesLeft}:${secondsLeft}`
+        
+
+        console.log(`${nextPeriodSubject} in ${TMS}`);
+    }
 
 
 countdownTimer();
