@@ -51,7 +51,9 @@ function countdownTimer(){
     // If Saturday and Sunday, force showing Monday
     if(currDay === 0 || currDay === 6) currDay = 1;
 
-    var dayWeek = day+weekLetter;
+    var dayWeek = currDay+weekLetter;
+
+    console.log(dayWeek)
 
     return timeLeft;
 }
