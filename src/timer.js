@@ -194,6 +194,7 @@ function countdownTimer(){
         document.getElementById("HMS").innerHTML = `${nextPeriodSubject} in ${TMS}`;
         document.getElementById("KOH").innerHTML = `with ${timetable[dayWeek][nextPeriod].teacher} in ${timetable[dayWeek][nextPeriod].room}`;
         document.querySelector('title').textContent = `${nextPeriodSubject} in ${TMS}`;
+        if(!timetable) document.getElementById("HMS").innerHTML = "Upload your timetable in the Settings Tab to continue!"
         
         var tstr;
         if(currDay === 3){
