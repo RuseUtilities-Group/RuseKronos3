@@ -772,8 +772,8 @@ async function icalProcess() {
             if(passedFirstDay === 2) i = events.length+69; // If we pass all the days again
             else{
                 // Thanks to Sentral's idiotic and inconsiderate formatting, MonA follows FriB and MonB follows FriA so we need to switch the weeks around for monday.
-                if(day === 1 && week === "B") week = "A";
-                else if(day === 1 && week === "A") week = "B";
+                //if(day === 1 && week === "B") week = "A";
+                //else if(day === 1 && week === "A") week = "B";
 
                 var day = startDate.getDay()+week;
                 // Setting the Object "timetable" data from the readed data above.
