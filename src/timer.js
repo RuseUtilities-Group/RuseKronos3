@@ -191,8 +191,6 @@ function countdownTimer(){
         
         var TMS = `${hoursLeft}:${minutesLeft}:${secondsLeft}`
         
-        
-        console.log(`with ${timetable[dayWeek][nextPeriod].teacher} in ${timetable[dayWeek][nextPeriod].room}`);
         document.getElementById("HMS").innerHTML = `${nextPeriodSubject} in ${TMS}`;
         document.getElementById("KOH").innerHTML = `with ${timetable[dayWeek][nextPeriod].teacher} in ${timetable[dayWeek][nextPeriod].room}`;
         document.querySelector('title').textContent = `${nextPeriodSubject} in ${TMS}`;
