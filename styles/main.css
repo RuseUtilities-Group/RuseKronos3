@@ -135,15 +135,15 @@
 
 
 #HMS{
-	color: var(--secondary-color) !important;
-	font-size: 125%;
-	text-align: center;
-	margin: 0.5%;
+    color: var(--secondary-color) !important;
+    font-size: 125%;
+    text-align: center;
+    margin: 0.5%;
 } 
 
 #KOH{
-	color: var(--secondary-color) !important;
-	font-size: 125%;
-	text-align: center;
-	margin: 0.5%;	
-}
+    color: var(--secondary-color) !important;
+    font-size: 100%;
+    text-align: center;
+    margin: 0.5%;
+} 
