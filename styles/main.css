@@ -82,8 +82,8 @@ td.firstCol {
   /* Add a black background color to the top navigation */
   .topnav {
   overflow: hidden;
-  zoom: 0.8;
-  -moz-transform: scale(0.8);
+  zoom: 0.9;
+  -moz-transform: scale(0.9);
   }
 
   /* Style the links inside the navigation bar */
@@ -135,7 +135,7 @@ td.firstCol {
 
 #HMS{
 color: var(--secondary-color) !important;
-font-size: 125%;
+font-size: 130%;
 text-align: center;
 margin: 0.5%;
 } 
@@ -148,7 +148,7 @@ margin: 0.5%;
 } 
 
 #bellTimesPage{
-	  zoom: 0.9;
-  -moz-transform: scale(0.9);
+	  zoom: 0.95;
+  -moz-transform: scale(0.95);
 
 }
