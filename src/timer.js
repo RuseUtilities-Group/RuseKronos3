@@ -175,7 +175,7 @@ function countdownTimer(){
         if(currDate.getDay() < nextPeriodDate.getDay()) hoursLeft = nextPeriodDate.getHours() + (24 - currHour);
         else if(currDate.getDay() === 0) hoursLeft = nextPeriodDate.getHours() + (24 - currHour);
         else if(currDate.getDay() === 6) hoursLeft = nextPeriod.getHours() + 24 + (24 - currHour);
-        else hoursLeft = nextPeriodDate.getHours() - currHour;
+        else hoursLeft = nextPeriodDate.getHours() - currHour-1;
         if(currMinute <= nextPeriodDate.getMinutes()) minutesLeft = nextPeriodDate.getMinutes() - currMinute;
         else minutesLeft = 60 - currMinute + nextPeriodDate.getMinutes() -1;
         if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) location.reload();
@@ -191,29 +191,54 @@ function countdownTimer(){
         document.getElementById("HMS").innerHTML = `${nextPeriodSubject} in ${TMS}`;
         document.getElementById("KOH").innerHTML = `with ${timetable[dayWeek][nextPeriod].teacher} in ${timetable[dayWeek][nextPeriod].room}`;
         document.querySelector('title').textContent = `${nextPeriodSubject} in ${TMS}`;
-        if(!timetable) document.getElementById("HMS").innerHTML = "Upload your timetable in the Settings Tab to continue!"
+        if(!timetable[dayWeek][nextPeriod].teacher || !timetable[dayWeek][nextPeriod].teacher) document.getElementById("KOH").innerHTML = "";
+        if(!timetable) document.getElementById("HMS").innerHTML = "<a href='./upload.html'>Upload</a> your timetable to continue!"
         
         var tstr;
         if(currDay === 3){
             for(i = 0; i < 12; i++) {
                 if(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate){
+                    var subject = timetable[dayWeek][wednesdayNumToPeriod(i)].subjectName;
+                    if(!subject) subject = "";
+                    var teacher = timetable[dayWeek][wednesdayNumToPeriod(i)].teacher;
+                    if(!teacher) teacher = "";
+                    var room = timetable[dayWeek][wednesdayNumToPeriod(i)].room;
+                    if(!room) room = "";
+                    var startDate = new Date(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate);
+                    var hours = startDate.getHours();
+                    var minutes = startDate.getMinutes();
+                    if(hours / 10 < 1) hours = "0" + hours;
+                    if(minutes / 10 < 1) minutes = "0" + minutes;
+                    var startTime = `${hours}:${minutes}`;
                     if(wednesdayNumToPeriod(i) === "R") tstr += `<tr class="tableRow"><td class="alignRight">R</td><td class="smallFont"><b>Recess</b> - 10:55</td><td class="smallColumn"> </td></tr>`;
                     else if(wednesdayNumToPeriod(i) === "L") tstr += `<tr class="tableRow"><td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 12:10</td><td class="smallColumn"> </td></tr>`;
                     else if(wednesdayNumToPeriod(i) === "ASS") tstr += `<tr class="tableRow"><td class="alignRight">A</td><td class="smallFont"><b>Assembly</b> - 10:40</td><td class="smallColumn"> </td></tr>`;
-                    else tstr += `<tr class="tableRow"><td class="alignRight">${wednesdayNumToPeriod(i)}</td><td class="smallFont"><b>${timetable[dayWeek][wednesdayNumToPeriod(i)].subjectName}</b> <br> 08:50 - ${timetable[dayWeek][wednesdayNumToPeriod(i)].teacher}</td><td class="smallColumn">${timetable[dayWeek][wednesdayNumToPeriod(i)].room}</td></tr>`;
+                    else tstr += `<tr class="tableRow"><td class="alignRight">${wednesdayNumToPeriod(i)}</td><td class="smallFont"><b>${subject}</b> <br> ${startTime} - ${teacher}</td><td class="smallColumn">${room}</td></tr>`;
                 }
             }
         } else {
             for(i = 0; i < 10; i++) {
                 if(timetable[dayWeek][numToPeriod(i)].startDate){
+                    var subject = timetable[dayWeek][numToPeriod(i)].subjectName;
+                    if(!subject) subject = "";
+                    var teacher = timetable[dayWeek][numToPeriod(i)].teacher;
+                    if(!teacher) teacher = "";
+                    var room = timetable[dayWeek][numToPeriod(i)].room;
+                    if(!room) room = "";
+                    var startDate = new Date(timetable[dayWeek][numToPeriod(i)].startDate);
+                    var hours = startDate.getHours();
+                    var minutes = startDate.getMinutes();
+                    if(hours / 10 < 1) hours = "0" + hours;
+                    if(minutes / 10 < 1) minutes = "0" + minutes;
+                    var startTime = `${hours}:${minutes}`;
                     if(numToPeriod(i) === "R") tstr += `<tr class="tableRow"><td class="alignRight">R</td><td class="smallFont"><b>Recess</b> - 11:00</td><td class="smallColumn"> </td></tr>`;
                     else if(numToPeriod(i) === "L") tstr += `<tr class="tableRow"><td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 13:25</td><td class="smallColumn"> </td></tr>`;
-                    else tstr += `<tr class="tableRow"><td class="alignRight">${numToPeriod(i)}</td><td class="smallFont"><b>${timetable[dayWeek][numToPeriod(i)].subjectName}</b> <br> 08:50 - ${timetable[dayWeek][numToPeriod(i)].teacher}</td><td class="smallColumn">${timetable[dayWeek][numToPeriod(i)].room}</td></tr>`;
+                    else tstr += `<tr class="tableRow"><td class="alignRight">${numToPeriod(i)}</td><td class="smallFont"><b>${subject}</b> <br> ${startTime} - ${teacher}</td><td class="smallColumn">${room}</td></tr>`;
                 }
             }
         }
         document.getElementById("classes").innerHTML = tstr;
     } 
 
-    if(!timetable) document.getElementById("HMS").innerHTML = "Upload your timetable in the Settings Tab to continue!"
+    if(!timetable) window.location.href = "./upload.html";
     else window.setInterval(countdownTimer, 1000);
