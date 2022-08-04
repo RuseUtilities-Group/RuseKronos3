@@ -175,6 +175,7 @@ function countdownTimer(){
         if(currDate.getDay() < nextPeriodDate.getDay()) hoursLeft = nextPeriodDate.getHours() + (24 - currHour);
         else if(currDate.getDay() === 0) hoursLeft = nextPeriodDate.getHours() + (24 - currHour);
         else if(currDate.getDay() === 6) hoursLeft = nextPeriod.getHours() + 24 + (24 - currHour);
+        else if(currHour === nextPeriodDate.getHours()) hoursLeft = nextPeriodDate.getHours() - currHour;
         else hoursLeft = nextPeriodDate.getHours() - currHour-1;
         if(currMinute <= nextPeriodDate.getMinutes()) minutesLeft = nextPeriodDate.getMinutes() - currMinute;
         else minutesLeft = 60 - currMinute + nextPeriodDate.getMinutes() -1;
