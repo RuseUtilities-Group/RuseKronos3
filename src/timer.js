@@ -195,7 +195,7 @@ function countdownTimer(){
         if(!timetable[dayWeek][nextPeriod].teacher || !timetable[dayWeek][nextPeriod].teacher) document.getElementById("KOH").innerHTML = "";
         if(!timetable) document.getElementById("HMS").innerHTML = "<a href='./upload.html'>Upload</a> your timetable to continue!"
         
-        var tstr;
+        var tstr = " ";
         if(currDay === 3){
             for(i = 0; i < 12; i++) {
                 if(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate){
