@@ -113,23 +113,27 @@ function wednesdayNumToPeriod(num){
 
 function findNextPeriod(dayWeek, currHour, currMinute, currSecond){
     for(i = 0; i < 10; i++) {
-        if(timetable[dayWeek][numToPeriod(i)].subjectName){
-            var startDate = new Date(timetable[dayWeek][numToPeriod(i)].startDate);
-            if((startDate.getHours() === currHour && startDate.getMinutes() > currMinute) || startDate.getHours() > currHour){
-                return numToPeriod(i);
+        try{
+            if(timetable[dayWeek][numToPeriod(i)].subjectName){
+                var startDate = new Date(timetable[dayWeek][numToPeriod(i)].startDate);
+                if((startDate.getHours() === currHour && startDate.getMinutes() > currMinute) || startDate.getHours() > currHour){
+                    return numToPeriod(i);
+                }
             }
-        }
+        } catch(e){}
     }
 }
 
 function wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond){
     for(i = 0; i < 12; i++) {
-        if(timetable[dayWeek][wednesdayNumToPeriod(i)].subjectName){
-            var startDate = new Date(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate);
-            if((startDate.getHours() === currHour && startDate.getMinutes() > currMinute)|| startDate.getHours() > currHour){
-                return wednesdayNumToPeriod(i);
+        try{
+            if(timetable[dayWeek][wednesdayNumToPeriod(i)].subjectName){
+                var startDate = new Date(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate);
+                if((startDate.getHours() === currHour && startDate.getMinutes() > currMinute)|| startDate.getHours() > currHour){
+                    return wednesdayNumToPeriod(i);
+                }
             }
-        }
+        } catch(e){}
     }
 }
 
@@ -174,7 +178,7 @@ function countdownTimer(){
         secondsLeft = 60 - currSecond;
         if(currDate.getDay() < nextPeriodDate.getDay()) hoursLeft = nextPeriodDate.getHours() + (24 - currHour);
         else if(currDate.getDay() === 0) hoursLeft = nextPeriodDate.getHours() + (24 - currHour);
-        else if(currDate.getDay() === 6) hoursLeft = nextPeriod.getHours() + 24 + (24 - currHour);
+        else if(currDate.getDay() === 6) hoursLeft = nextPeriodDate.getHours() + 24 + (24 - currHour);
         else if(currHour === nextPeriodDate.getHours()) hoursLeft = 0;
         else hoursLeft = nextPeriodDate.getHours() - currHour-1;
         if(currMinute <= nextPeriodDate.getMinutes()) minutesLeft = nextPeriodDate.getMinutes() - currMinute;
@@ -198,44 +202,48 @@ function countdownTimer(){
         var tstr = " ";
         if(currDay === 3){
             for(i = 0; i < 12; i++) {
-                if(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate){
-                    var subject = timetable[dayWeek][wednesdayNumToPeriod(i)].subjectName;
-                    if(!subject) subject = "";
-                    var teacher = timetable[dayWeek][wednesdayNumToPeriod(i)].teacher;
-                    if(!teacher) teacher = "";
-                    var room = timetable[dayWeek][wednesdayNumToPeriod(i)].room;
-                    if(!room) room = "";
-                    var startDate = new Date(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate);
-                    var hours = startDate.getHours();
-                    var minutes = startDate.getMinutes();
-                    if(hours / 10 < 1) hours = "0" + hours;
-                    if(minutes / 10 < 1) minutes = "0" + minutes;
-                    var startTime = `${hours}:${minutes}`;
-                    if(wednesdayNumToPeriod(i) === "R") tstr += `<tr class="tableRow"><td class="alignRight">R</td><td class="smallFont"><b>Recess</b> - 10:55</td><td class="smallColumn"> </td></tr>`;
-                    else if(wednesdayNumToPeriod(i) === "L") tstr += `<tr class="tableRow"><td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 12:10</td><td class="smallColumn"> </td></tr>`;
-                    else if(wednesdayNumToPeriod(i) === "ASS") tstr += `<tr class="tableRow"><td class="alignRight">A</td><td class="smallFont"><b>Assembly</b> - 10:40</td><td class="smallColumn"> </td></tr>`;
-                    else tstr += `<tr class="tableRow"><td class="alignRight">${wednesdayNumToPeriod(i)}</td><td class="smallFont"><b>${subject}</b> <br> ${startTime} - ${teacher}</td><td class="smallColumn">${room}</td></tr>`;
-                }
+                try{
+                    if(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate){
+                        var subject = timetable[dayWeek][wednesdayNumToPeriod(i)].subjectName;
+                        if(!subject) subject = "";
+                        var teacher = timetable[dayWeek][wednesdayNumToPeriod(i)].teacher;
+                        if(!teacher) teacher = "";
+                        var room = timetable[dayWeek][wednesdayNumToPeriod(i)].room;
+                        if(!room) room = "";
+                        var startDate = new Date(timetable[dayWeek][wednesdayNumToPeriod(i)].startDate);
+                        var hours = startDate.getHours();
+                        var minutes = startDate.getMinutes();
+                        if(hours / 10 < 1) hours = "0" + hours;
+                        if(minutes / 10 < 1) minutes = "0" + minutes;
+                        var startTime = `${hours}:${minutes}`;
+                        if(wednesdayNumToPeriod(i) === "R") tstr += `<tr class="tableRow"><td class="alignRight">R</td><td class="smallFont"><b>Recess</b> - 10:55</td><td class="smallColumn"> </td></tr>`;
+                        else if(wednesdayNumToPeriod(i) === "L") tstr += `<tr class="tableRow"><td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 12:10</td><td class="smallColumn"> </td></tr>`;
+                        else if(wednesdayNumToPeriod(i) === "ASS") tstr += `<tr class="tableRow"><td class="alignRight">A</td><td class="smallFont"><b>Assembly</b> - 10:40</td><td class="smallColumn"> </td></tr>`;
+                        else tstr += `<tr class="tableRow"><td class="alignRight">${wednesdayNumToPeriod(i)}</td><td class="smallFont"><b>${subject}</b> <br> ${startTime} - ${teacher}</td><td class="smallColumn">${room}</td></tr>`;
+                    }
+                } catch(e){}
             }
         } else {
             for(i = 0; i < 10; i++) {
-                if(timetable[dayWeek][numToPeriod(i)].startDate){
-                    var subject = timetable[dayWeek][numToPeriod(i)].subjectName;
-                    if(!subject) subject = "";
-                    var teacher = timetable[dayWeek][numToPeriod(i)].teacher;
-                    if(!teacher) teacher = "";
-                    var room = timetable[dayWeek][numToPeriod(i)].room;
-                    if(!room) room = "";
-                    var startDate = new Date(timetable[dayWeek][numToPeriod(i)].startDate);
-                    var hours = startDate.getHours();
-                    var minutes = startDate.getMinutes();
-                    if(hours / 10 < 1) hours = "0" + hours;
-                    if(minutes / 10 < 1) minutes = "0" + minutes;
-                    var startTime = `${hours}:${minutes}`;
-                    if(numToPeriod(i) === "R") tstr += `<tr class="tableRow"><td class="alignRight">R</td><td class="smallFont"><b>Recess</b> - 11:00</td><td class="smallColumn"> </td></tr>`;
-                    else if(numToPeriod(i) === "L") tstr += `<tr class="tableRow"><td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 13:25</td><td class="smallColumn"> </td></tr>`;
-                    else tstr += `<tr class="tableRow"><td class="alignRight">${numToPeriod(i)}</td><td class="smallFont"><b>${subject}</b> <br> ${startTime} - ${teacher}</td><td class="smallColumn">${room}</td></tr>`;
-                }
+                try{
+                    if(timetable[dayWeek][numToPeriod(i)].startDate){
+                        var subject = timetable[dayWeek][numToPeriod(i)].subjectName;
+                        if(!subject) subject = "";
+                        var teacher = timetable[dayWeek][numToPeriod(i)].teacher;
+                        if(!teacher) teacher = "";
+                        var room = timetable[dayWeek][numToPeriod(i)].room;
+                        if(!room) room = "";
+                        var startDate = new Date(timetable[dayWeek][numToPeriod(i)].startDate);
+                        var hours = startDate.getHours();
+                        var minutes = startDate.getMinutes();
+                        if(hours / 10 < 1) hours = "0" + hours;
+                        if(minutes / 10 < 1) minutes = "0" + minutes;
+                        var startTime = `${hours}:${minutes}`;
+                        if(numToPeriod(i) === "R") tstr += `<tr class="tableRow"><td class="alignRight">R</td><td class="smallFont"><b>Recess</b> - 11:00</td><td class="smallColumn"> </td></tr>`;
+                        else if(numToPeriod(i) === "L") tstr += `<tr class="tableRow"><td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 13:25</td><td class="smallColumn"> </td></tr>`;
+                        else tstr += `<tr class="tableRow"><td class="alignRight">${numToPeriod(i)}</td><td class="smallFont"><b>${subject}</b> <br> ${startTime} - ${teacher}</td><td class="smallColumn">${room}</td></tr>`;
+                    }
+                } catch(e){}
             }
         }
         document.getElementById("classes").innerHTML = tstr;
