@@ -1,0 +1,90 @@
+// By Chris Ahn and Ethan Du Toit
+var listOfDays = ['1A', '2A', '3A', '4A', '5A', '1B', '2B', '3B', '4B', '5B'];
+
+function gen_table(json) {
+	table = document.getElementById("timetable");
+	tableIn = "";
+	it = json;
+	if (it === undefined) {
+		console.log ("Error: Variable 'it' is not defined.");
+		it = {};
+	}
+
+	console.log(it)
+
+	var period;
+	var startTime;
+	var teacher;
+	var room;
+	for(var day = 0; day < 10; day++) {
+		if(day % 5 == 0) {
+			tableIn += "<tr id=\"Weeks\">";
+		}
+		tableIn += "<td id=\"timetableTd\"><table id=\"timetableDay\">";
+		tableIn += `<tr><th style="padding-left: 14px">${listOfDays[day].substring(0, listOfDays[day].length-1)[0].toUpperCase() + listOfDays[day].substring(0, listOfDays[day].length-1).slice(1) + " " + listOfDays[day][listOfDays[day].length-1]}</th></tr>`;
+		period = 1;
+		while(typeof it[listOfDays[day]][period] !== "undefined") {
+			tableIn += "<tr>";
+
+			var startDate = new Date(it[listOfDays[day]][period].startDate);
+			var hours = startDate.getHours();
+			var minutes = startDate.getMinutes();
+			if(hours / 10 < 1) hours = "0" + hours;
+			if(minutes / 10 < 1) minutes = "0" + minutes;
+			startTime = `${hours}:${minutes}`;
+			teacher = it[listOfDays[day]][period].teacher;
+			subject = it[listOfDays[day]][period].subjectCode;
+			room = it[listOfDays[day]][period].room;
+			if(!room) room = "";
+			if(startTime.startsWith("9") || startTime.startsWith("8")) startTime = "0" + startTime
+
+			//if((day % 5 != 2 && period == 3) || (day % 5 == 2 && period == 2)) {
+			//	startTime = it[listOfDays[day]]["Recess"].startTime;
+			//	tableIn += `<tr><td style="padding-left: 14px;">Recess</td>`;
+			//	tableIn += `<td id="startTimeTd" style="padding-left: 7px"></td>`;
+			//	tableIn += `<td id="startTimeTd" style="padding-left: 7px">${startTime}</td>`;
+			//	tableIn += "</tr>";
+			//}
+			if((day % 5 != 2 && period == 5) || (day % 5 == 2 && period == 4)) {
+				tableIn += `<tr><td style="padding-left: 14px;">Lunch</td>`;
+				tableIn += `<td id="startTimeTd" style="padding-left: 7px"></td>`;
+				tableIn += `<td id="startTimeTd" style="padding-left: 7px"></td>`;
+				tableIn += "</tr>";
+			}
+			if((day % 5 != 2 && period == 3) || (day % 5 == 2 && period == 3)) {
+				tableIn += `<tr><td style="padding-left: 14px;">Recess</td>`;
+				tableIn += `<td id="startTimeTd" style="padding-left: 7px"></td>`;
+				tableIn += `<td id="startTimeTd" style="padding-left: 7px"></td>`;
+				tableIn += "</tr>";
+			}
+			if(teacher !== "") {
+				tableIn += `<td id="timetableTd1" style="padding-left: 14px;">${period}: ${subject} <br></td>`;
+			}
+			else if (room === "Sport"){
+				tableIn += `<td id="timetableTd1" style="padding-left: 14px;">Sports</td>`;
+			}
+			else if (room === "Scripture"){
+				tableIn += `<td id="timetableTd1" style="padding-left: 14px;">Scripture</td>`
+			}
+			else if (subject === "Place Holder") {
+				tableIn += `<td id="timetableTd1" style="padding-left: 14px;">Sports</td>`;
+			}	
+			else {
+				tableIn += `<td id="timetableTd1" style="padding-left: 14px;">Free Period</td>`;
+			}
+			tableIn += `<td id="startTimeTd" style="padding-left: 7px">${room}</td>`;
+			tableIn += `<td id="startTimeTd" style="padding-left: 7px">${startTime}</td>`;
+			tableIn += "</tr>";
+			period++;
+		}
+		tableIn += "</table></td>";
+		if(day % 5 == 4) {
+			tableIn += "</tr>";
+		}
+	}
+	table.innerHTML = tableIn;
+}
+
+json = JSON.parse(localStorage.getItem("timetable"));
+console.log(json);
+gen_table(json);
