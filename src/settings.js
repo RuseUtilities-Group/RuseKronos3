@@ -46,8 +46,8 @@ function Olivia(){
 }
 
 function Irish(){
-	primaryColor = '#fffaf3';
-	secondaryColor = '#58956b';
+	primaryColor = '#f7f2ea';
+	secondaryColor = '#252525';
 
 	root.style.setProperty('--primary-color', primaryColor);
 	root.style.setProperty('--secondary-color', secondaryColor);
@@ -105,7 +105,7 @@ function RedSamurai(){
 
 }
 function Classic(){
-	primaryColor = '#171718';
+	primaryColor = '#252525';
 	secondaryColor = '#f7f2ea';
 
 	root.style.setProperty('--primary-color', primaryColor);
@@ -138,7 +138,7 @@ function Vapor(){
 
 }
 function Botanical(){
-	primaryColor = '#7b9c98';
+	primaryColor = '#8AAC00';
 	secondaryColor = '#eaf1f3';
 
 	root.style.setProperty('--primary-color', primaryColor);
