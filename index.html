@@ -22,8 +22,8 @@
         </div>
 
         <div id="timetablePage" style="display: none;">
-            <p style="color: var(--secondary-color);">The timetable feature is still in development :)</p>
-            <table class="centre" id="timetable">
+<!--            <p style="color: var(--secondary-color);">The timetable feature is still in development :)</p> !-->
+            <table class="centre" id="timetable" style="width: 100% ;margin-left: auto; margin-right: auto;">
             </table>
         </div>
         <div id="bellTimesPage" style="display: block;">
@@ -47,11 +47,9 @@
             
             <div id="buttonText">
                 <p>Upload a background image here:</p>
-                <input id="test" type="file" class="uploadButton"/>
-                <button type="button" class="uploadButton" onClick="icalProcess()">Upload</button>
+                <input id="test" type="file" class="uploadButton" onchange="loadImageFile(this)" />
                 <br>
-                <button type="button" class="uploadButton" style="margin-top: 1%">Clear background</button>
-            
+                <button type="button" class="uploadButton" style="margin-top: 1%"onclick="removeImageFile()">Clear background</button>
             </div>
             
             <div id="buttonText">
