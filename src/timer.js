@@ -160,8 +160,8 @@ function countdownTimer(){
     var dayWeek = currDay+weekLetter;
 
     if(localStorage.getItem("timetable")){
-        if(currDay === 1 || weekLetter === "A") nextPeriod = findNextPeriod("1B", currHour, currMinute, currSecond);
-        else if(currDay === 1 || weekLetter === "B") nextPeriod = findNextPeriod("1A", currHour, currMinute, currSecond);
+        if(currDay === 1 || weekLetter === "A") nextPeriod = findNextPeriod("1A", currHour, currMinute, currSecond);
+        else if(currDay === 1 || weekLetter === "B") nextPeriod = findNextPeriod("1B", currHour, currMinute, currSecond);
         else if(currDay === 3) nextPeriod = wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond);
         else nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
         if(!nextPeriod){
