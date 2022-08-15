@@ -10,8 +10,6 @@ function gen_table(json) {
 		it = {};
 	}
 
-	console.log(it)
-
 	var period;
 	var startTime;
 	var teacher;
@@ -97,5 +95,4 @@ function gen_table(json) {
 }
 
 json = JSON.parse(localStorage.getItem("timetable"));
-console.log(json);
 gen_table(json);
