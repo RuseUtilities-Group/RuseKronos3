@@ -157,19 +157,22 @@ function countdownTimer(){
     // If Saturday and Sunday, force showing Monday
     if(currDay === 0 || currDay === 6) currDay = 1;
 
-    var dayWeek = currDay+weekLetter;
+    var dayWeek = (currDay+weekLetter).toString();
+    console.log(dayWeek);
 
     if(localStorage.getItem("timetable")){
-        if(currDay === 1 || weekLetter === "A") nextPeriod = findNextPeriod("1A", currHour, currMinute, currSecond);
-        else if(currDay === 1 || weekLetter === "B") nextPeriod = findNextPeriod("1B", currHour, currMinute, currSecond);
+        if(dayWeek === "1A") nextPeriod = findNextPeriod("1B", currHour, currMinute, currSecond);
+        else if(dayWeek === "1B") nextPeriod = findNextPeriod("1A", currHour, currMinute, currSecond);
         else if(currDay === 3) nextPeriod = wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond);
         else nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
         if(!nextPeriod){
             currDay++;
             if(currDay === 6 || currDay === 7) currDay = 1;
             dayWeek = (currDay)+weekLetter;
-            if(currDay === 3) nextPeriod = wednesdayfindNextPeriod(dayWeek, 0, 0, 0);
-            else nextPeriod = findNextPeriod(dayWeek, 0, 0, 0);
+            if(dayWeek === "1A") nextPeriod = findNextPeriod("1B", currHour, currMinute, currSecond);
+            else if(dayWeek === "1B") nextPeriod = findNextPeriod("1A", currHour, currMinute, currSecond);
+            else if(currDay === 3) nextPeriod = wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond);
+            else nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
         }
     }
         var nextPeriodDate = new Date(timetable[dayWeek][nextPeriod].startDate);
@@ -224,6 +227,8 @@ function countdownTimer(){
                 } catch(e){}
             }
         } else {
+            if(dayWeek === "1A") dayWeek = "1B";
+            else if(dayWeek === "1B") dayWeek = "1A";
             for(i = 0; i < 10; i++) {
                 try{
                     if(timetable[dayWeek][numToPeriod(i)].startDate){
