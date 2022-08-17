@@ -267,7 +267,7 @@ function countdownTimer(){
                         else if(wednesdayNumToPeriod(i) === "L") tstr += `<tr class="tableRow"><td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 12:10</td><td class="smallColumn"> </td></tr>`;
                         else if(wednesdayNumToPeriod(i) === "ASS") tstr += `<tr class="tableRow"><td class="alignRight">A</td><td class="smallFont"><b>Assembly</b> - 10:40</td><td class="smallColumn"> </td></tr>`;
                         else tstr += `<tr class="tableRow"><td class="alignRight">${wednesdayNumToPeriod(i)}</td><td class="smallFont"><b>${subject}</b> <br> ${startTime} - ${teacher}</td><td class="smallColumn">${room}</td></tr>`;
-                    } else tstr += `<tr class="tableRow"><td class="alignRight">${wednesdayNumToPeriod(i)}</td><td class="smallFont"><b>Free Period</b></td><td class="smallColumn"></td></tr>`;
+                    } else if(wednesdayNumToPeriod(i) !== "BS" && wednesdayNumToPeriod(i) !== "AS" && wednesdayNumToPeriod(i) !== "AS1" && wednesdayNumToPeriod(i) !== "AS2") tstr += `<tr class="tableRow"><td class="alignRight">${wednesdayNumToPeriod(i)}</td><td class="smallFont"><b>Free Period</b></td><td class="smallColumn"></td></tr>`;
                 } catch(e){}
             }
         } else {
@@ -291,7 +291,7 @@ function countdownTimer(){
                         if(numToPeriod(i) === "R") tstr += `<tr class="tableRow"><td class="alignRight">R</td><td class="smallFont"><b>Recess</b> - 11:00</td><td class="smallColumn"> </td></tr>`;
                         else if(numToPeriod(i) === "L") tstr += `<tr class="tableRow"><td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 13:25</td><td class="smallColumn"> </td></tr>`;
                         else tstr += `<tr class="tableRow"><td class="alignRight">${numToPeriod(i)}</td><td class="smallFont"><b>${subject}</b> <br> ${startTime} - ${teacher}</td><td class="smallColumn">${room}</td></tr>`;
-                    } else tstr += `<tr class="tableRow"><td class="alignRight">${numToPeriod(i)}</td><td class="smallFont"><b>Free Period</b></td><td class="smallColumn"></td></tr>`;
+                    } else if(numToPeriod(i) !== "BS" && numToPeriod(i) !== "AS1" && numToPeriod(i) !== "AS2")tstr += `<tr class="tableRow"><td class="alignRight">${numToPeriod(i)}</td><td class="smallFont"><b>Free Period</b></td><td class="smallColumn"></td></tr>`;
                 } catch(e){}
             }
         }
