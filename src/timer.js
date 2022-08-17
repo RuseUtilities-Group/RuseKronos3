@@ -224,7 +224,7 @@ function countdownTimer(){
             else if(currDate.getDay() === 0) hoursLeft = nextPeriodDate.getHours() + (24 - currHour);
             else if(currDate.getDay() === 6) hoursLeft = nextPeriodDate.getHours() + 24 + (24 - currHour);
             else if(currHour === nextPeriodDate.getHours()) hoursLeft = 0;
-            else hoursLeft = nextPeriodDate.getHours() - currHour-1;
+            else hoursLeft = nextPeriodDate.getHours() - currHour;
             if(currMinute <= nextPeriodDate.getMinutes()) minutesLeft = nextPeriodDate.getMinutes() - currMinute;
             else minutesLeft = 60 - currMinute + nextPeriodDate.getMinutes() -1;
             if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) location.reload();
