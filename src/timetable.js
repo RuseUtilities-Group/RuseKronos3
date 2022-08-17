@@ -34,29 +34,29 @@ function gen_table(json) {
 			dayWord = "Friday ";
 		}
 		tableIn += `<tr><th style="text-align: left;">${dayWord + listOfDays[day].substring(0, listOfDays[day].length-1).slice(1) + listOfDays[day][listOfDays[day].length-1] + " "}</th></tr>`;
+		
+		period = "BS";
+		teacher = it[listOfDays[day]][period].teacher;
+		subject = it[listOfDays[day]][period].subjectCode;
+		room = it[listOfDays[day]][period].room;
+		if(!room) room = "";
+		
+		if(subject !== "") {
+			tableIn += "<tr>";
+			tableIn += `<td id="timetableTd1" style="padding: 2%; width: 4%;">${period}: ${subject} <br></td>`;
+			tableIn += `<td id="startTimeTd" style="padding: 2%; width: 4%;">${room}</td>`;
+			tableIn += "</tr>";
+		}
+
 		period = 1;
+		
 		while(typeof it[listOfDays[day]][period] !== "undefined") {
 			tableIn += "<tr>";
-
-			var startDate = new Date(it[listOfDays[day]][period].startDate);
-			var hours = startDate.getHours();
-			var minutes = startDate.getMinutes();
-			if(hours / 10 < 1) hours = "0" + hours;
-			if(minutes / 10 < 1) minutes = "0" + minutes;
-			startTime = `${hours}:${minutes}`;
 			teacher = it[listOfDays[day]][period].teacher;
 			subject = it[listOfDays[day]][period].subjectCode;
 			room = it[listOfDays[day]][period].room;
 			if(!room) room = "";
-			if(startTime.startsWith("9") || startTime.startsWith("8")) startTime = "0" + startTime
 
-			//if((day % 5 != 2 && period == 3) || (day % 5 == 2 && period == 2)) {
-			//	startTime = it[listOfDays[day]]["Recess"].startTime;
-			//	tableIn += `<tr><td style=";">Recess</td>`;
-			//	tableIn += `<td id="startTimeTd" style=""></td>`;
-			//	tableIn += `<td id="startTimeTd" style="">${startTime}</td>`;
-			//	tableIn += "</tr>";
-			//}
 			if(subject !== "") {
 				tableIn += `<td id="timetableTd1" style="padding: 2%; width: 4%;">${period}: ${subject} <br></td>`;
 			}
