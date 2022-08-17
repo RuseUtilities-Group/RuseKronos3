@@ -61,12 +61,56 @@ function gen_table(json) {
 				tableIn += `<td id="timetableTd1" style="padding: 2%; width: 4%;">${period}: ${subject} <br></td>`;
 			}
 			else {
-				tableIn += `<td id="timetableTd1" style="padding: 2%; width: 4%;">${period}: Free Period</td>`;
+				tableIn += `<td id="timetableTd1" style="padding: 2%; width: 4%; font-size: 85%">${period}: Free Period</td>`;
 			}
 			tableIn += `<td id="startTimeTd" style="padding: 2%; width: 4%;">${room}</td>`;
 			tableIn += "</tr>";
 			period++;
 		}
+		
+		try{
+			if(day === 3){
+				period = "AS";
+				teacher = it[listOfDays[day]][period].teacher;
+				subject = it[listOfDays[day]][period].subjectCode;
+				room = it[listOfDays[day]][period].room;
+				if(!room) room = "";
+			
+				if(subject !== "") {
+					tableIn += "<tr>";
+					tableIn += `<td id="timetableTd1" style="padding: 2%; width: 4%;">${period}: ${subject} <br></td>`;
+					tableIn += `<td id="startTimeTd" style="padding: 2%; width: 4%;">${room}</td>`;
+					tableIn += "</tr>";
+				}
+			}
+
+			period = "AS1";
+			teacher = it[listOfDays[day]][period].teacher;
+			subject = it[listOfDays[day]][period].subjectCode;
+			room = it[listOfDays[day]][period].room;
+			if(!room) room = "";
+		
+			if(subject !== "") {
+				tableIn += "<tr>";
+				tableIn += `<td id="timetableTd1" style="padding: 2%; width: 4%;">${period}: ${subject} <br></td>`;
+				tableIn += `<td id="startTimeTd" style="padding: 2%; width: 4%;">${room}</td>`;
+				tableIn += "</tr>";
+			}
+
+			period = "AS2";
+			teacher = it[listOfDays[day]][period].teacher;
+			subject = it[listOfDays[day]][period].subjectCode;
+			room = it[listOfDays[day]][period].room;
+			if(!room) room = "";
+		
+			if(subject !== "") {
+				tableIn += "<tr>";
+				tableIn += `<td id="timetableTd1" style="padding: 2%; width: 4%;">${period}: ${subject} <br></td>`;
+				tableIn += `<td id="startTimeTd" style="padding: 2%; width: 4%;">${room}</td>`;
+				tableIn += "</tr>";
+			}
+		} catch(e){}
+
 		tableIn += "</table></td>";
 		if(day % 5 == 4) {
 			tableIn += "</tr>";
