@@ -33,7 +33,7 @@ function gen_table(json) {
 		}else if (dayNum == "5") {
 			dayWord = "Friday ";
 		}
-		tableIn += `<tr><th style="text-align: left;">${"Week " + listOfDays[day].substring(0, listOfDays[day].length-1).slice(1) + listOfDays[day][listOfDays[day].length-1] + " " + dayWord}</th></tr>`;
+		tableIn += `<tr><th style="text-align: left;">${dayWord + listOfDays[day].substring(0, listOfDays[day].length-1).slice(1) + listOfDays[day][listOfDays[day].length-1] + " "}</th></tr>`;
 		period = 1;
 		while(typeof it[listOfDays[day]][period] !== "undefined") {
 			tableIn += "<tr>";
@@ -57,30 +57,11 @@ function gen_table(json) {
 			//	tableIn += `<td id="startTimeTd" style="">${startTime}</td>`;
 			//	tableIn += "</tr>";
 			//}
-			if((day % 5 != 2 && period == 5) || (day % 5 == 2 && period == 4)) {
-				tableIn += `<tr><td style="padding: 2%; width: 4%;">Lunch</td>`;
-				tableIn += `<td id="startTimeTd" style="padding: 2%; width: 4%;"></td>`;
-				tableIn += "</tr>";
-			}
-			if((day % 5 != 2 && period == 3) || (day % 5 == 2 && period == 3)) {
-				tableIn += `<tr><td style="padding: 2%; width: 4%;">Recess</td>`;
-				tableIn += `<td id="startTimeTd" style="padding: 2%; width: 4%;"></td>`;
-				tableIn += "</tr>";
-			}
-			if(teacher !== "") {
+			if(subject !== "") {
 				tableIn += `<td id="timetableTd1" style="padding: 2%; width: 4%;">${period}: ${subject} <br></td>`;
 			}
-			else if (room === "Sport"){
-				tableIn += `<td id="timetableTd1" style="padding: 2%; width: 4%;">Sports</td>`;
-			}
-			else if (room === "Scripture"){
-				tableIn += `<td id="timetableTd1" style="padding: 2%; width: 4%;">Scripture</td>`
-			}
-			else if (subject === "Place Holder") {
-				tableIn += `<td id="timetableTd1" style="padding: 2%; width: 4%;">Sports</td>`;
-			}	
 			else {
-				tableIn += `<td id="timetableTd1" style="padding: 2%; width: 4%;">Free Period</td>`;
+				tableIn += `<td id="timetableTd1" style="padding: 2%; width: 4%;">${period}: Free Period</td>`;
 			}
 			tableIn += `<td id="startTimeTd" style="padding: 2%; width: 4%;">${room}</td>`;
 			tableIn += "</tr>";
