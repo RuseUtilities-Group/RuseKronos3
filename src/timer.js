@@ -199,7 +199,7 @@ function countdownTimer(){
         
         document.getElementById("HMS").innerHTML = `${lastPeriodSubject} in ${TMS}`;
         document.getElementById("KOH").innerHTML = ``;
-        document.querySelector('title').textContent = `${nextPeriodSubject} in ${TMS}`;
+        document.querySelector('title').textContent = `${lastPeriodSubject} in ${TMS}`;
     } else{
         if(localStorage.getItem("timetable")){
             if(dayWeek === "1A") nextPeriod = findNextPeriod("1B", currHour, currMinute, currSecond);
