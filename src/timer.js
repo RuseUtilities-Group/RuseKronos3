@@ -184,7 +184,7 @@ function countdownTimer(){
         if(currDate.getDay() === 0) hoursLeft = lastPeriodEndDate.getHours() + (24 - currHour);
         else if(currDate.getDay() === 6) hoursLeft = lastPeriodEndDate.getHours() + 24 + (24 - currHour);
         else if(currHour === lastPeriodEndDate.getHours()) hoursLeft = 0;
-        else hoursLeft = lastPeriodEndDate.getHours() - currHour;
+        else hoursLeft = lastPeriodEndDate.getHours() - currHour -1;
         if(currMinute <= lastPeriodEndDate.getMinutes()) minutesLeft = lastPeriodEndDate.getMinutes() - currMinute -1;
         else minutesLeft = 60 - currMinute + lastPeriodEndDate.getMinutes() -1;
         if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) location.reload();
