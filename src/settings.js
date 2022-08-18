@@ -138,7 +138,7 @@ function Vapor(){
 
 }
 function Botanical(){
-	primaryColor = '#8AAC00';
+	primaryColor = '#789048';
 	secondaryColor = '#eaf1f3';
 
 	root.style.setProperty('--primary-color', primaryColor);
