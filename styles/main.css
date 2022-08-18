@@ -64,7 +64,7 @@ table.centre {
 
 table.centre td{
   border: 2px solid;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 0.5%;
   border-color: var(--secondary-color, #D8DEE9);
   text-align: center;
