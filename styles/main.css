@@ -70,6 +70,13 @@ table.centre td{
   text-align: center;
 }
 
+table.centre1 td{
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 0.5%;
+  border-color: var(--secondary-color, #D8DEE9);
+  text-align: left;
+}
 tr.topRow td{
   border: 0px solid;
 }
