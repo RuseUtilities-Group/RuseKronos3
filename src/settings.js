@@ -82,7 +82,7 @@ function MonkeyType(){
 }
 
 function Alpha(){
-	primaryColor = '#00a4a9';
+	primaryColor = '#5eced2';
 	secondaryColor = '#e0ecff';
 
 	root.style.setProperty('--primary-color', primaryColor);
