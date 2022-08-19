@@ -119,5 +119,8 @@ function gen_table(json) {
 	table.innerHTML = tableIn;
 }
 
+
 json = JSON.parse(localStorage.getItem("timetable"));
-gen_table(json);
+try{
+	gen_table(json);
+} catch(e){}
