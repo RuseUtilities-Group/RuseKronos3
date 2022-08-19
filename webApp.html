@@ -74,8 +74,8 @@
         <script type="text/javascript" src="./src/navHandler.js"></script>
         <script type="text/javascript" src="./src/settings.js"></script>
         <script>
-            if(JSON.parse(localStorage.getItem("timetable"))){ 
-                document.getElementById("bruh").innerHTML = " ";
+            if(!JSON.parse(localStorage.getItem("timetable"))){ 
+                document.getElementById("HMS").innerHTML = "To proceed, please upload your timetable on <br>the physical website @ https://dev.rusekronos.xyz/";
             }
         </script>
 	</body>
