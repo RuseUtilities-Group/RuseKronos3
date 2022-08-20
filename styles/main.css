@@ -76,6 +76,7 @@ table.centre1 td{
   padding: 0.5%;
   border-color: var(--secondary-color, #D8DEE9);
   text-align: left;
+  vertical-align: top;
 }
 tr.topRow td{
   border: 0px solid;
