@@ -271,7 +271,7 @@ function countdownTimer(){
                     if(minutes / 10 < 1) minutes = "0" + minutes;
                     var startTime = `${hours}:${minutes}`;
                     if(wednesdayNumToPeriod(i) === "R") tstr += `<tr class="tableRow"><td class="alignRight">R</td><td class="smallFont"><b>Recess</b> - 10:55</td><td class="smallColumn"> </td></tr>`;
-                    else if(wednesdayNumToPeriod(i) === "L") tstr += `<tr class="tableRow"><td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 12:10</td><td class="smallColumn"> </td></tr>`;
+                    else if(wednesdayNumToPeriod(i) === "WL") tstr += `<tr class="tableRow"><td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 12:10</td><td class="smallColumn"> </td></tr>`;
                     else if(wednesdayNumToPeriod(i) === "ASS") tstr += `<tr class="tableRow"><td class="alignRight">A</td><td class="smallFont"><b>Assembly</b> - 10:40</td><td class="smallColumn"> </td></tr>`;
                     else tstr += `<tr class="tableRow"><td class="alignRight">${wednesdayNumToPeriod(i)}</td><td class="smallFont"><b>${subject}</b> <br> ${startTime} - ${teacher}</td><td class="smallColumn">${room}</td></tr>`;
                 } else if(wednesdayNumToPeriod(i) !== "BS" && wednesdayNumToPeriod(i) !== "AS" && wednesdayNumToPeriod(i) !== "AS1" && wednesdayNumToPeriod(i) !== "AS2") tstr += `<tr class="tableRow"><td class="alignRight">${wednesdayNumToPeriod(i)}</td><td class="smallFont"><b>Free Period</b></td><td class="smallColumn"></td></tr>`;

@@ -197,9 +197,13 @@ function countdownTimer(){
         
         var TMS = `${hoursLeft}:${minutesLeft}:${secondsLeft}`
         
-        document.getElementById("HMS").innerHTML = `${lastPeriodSubject} in ${TMS}`;
-        document.getElementById("KOH").innerHTML = ``;
-        document.querySelector('title').textContent = `${lastPeriodSubject} in ${TMS}`;
+        if(timetable[dayWeek][nextPeriod].teacher === ""){
+            document.getElementById("KOH").innerHTML = `in ${timetable[dayWeek][nextPeriod].room}`;
+        } else document.getElementById("KOH").innerHTML = `with ${timetable[dayWeek][nextPeriod].teacher} in ${timetable[dayWeek][nextPeriod].room}`;
+        
+        document.getElementById("HMS").innerHTML = `${nextPeriodSubject} in ${TMS}`;
+        document.querySelector('title').textContent = `${nextPeriodSubject} in ${TMS}`;
+        if(!timetable[dayWeek][nextPeriod].room) document.getElementById("KOH").innerHTML = "";
     } else{
         if(localStorage.getItem("timetable")){
             if(dayWeek === "1A") nextPeriod = findNextPeriod("1B", currHour, currMinute, currSecond);
@@ -238,11 +242,14 @@ function countdownTimer(){
             if(secondsLeft / 10 < 1) secondsLeft = "0" + secondsLeft;
             
             var TMS = `${hoursLeft}:${minutesLeft}:${secondsLeft}`
+
+            if(timetable[dayWeek][nextPeriod].teacher === ""){
+                document.getElementById("KOH").innerHTML = `in ${timetable[dayWeek][nextPeriod].room}`;
+            } else document.getElementById("KOH").innerHTML = `with ${timetable[dayWeek][nextPeriod].teacher} in ${timetable[dayWeek][nextPeriod].room}`;
             
             document.getElementById("HMS").innerHTML = `${nextPeriodSubject} in ${TMS}`;
-            document.getElementById("KOH").innerHTML = `with ${timetable[dayWeek][nextPeriod].teacher} in ${timetable[dayWeek][nextPeriod].room}`;
             document.querySelector('title').textContent = `${nextPeriodSubject} in ${TMS}`;
-            if(!timetable[dayWeek][nextPeriod].teacher || !timetable[dayWeek][nextPeriod].teacher) document.getElementById("KOH").innerHTML = "";
+            if(!timetable[dayWeek][nextPeriod].room) document.getElementById("KOH").innerHTML = "";
     }
     if(!timetable) document.getElementById("HMS").innerHTML = "<a href='./upload.html'>Upload</a> your timetable to continue!"
     
@@ -264,7 +271,7 @@ function countdownTimer(){
                     if(minutes / 10 < 1) minutes = "0" + minutes;
                     var startTime = `${hours}:${minutes}`;
                     if(wednesdayNumToPeriod(i) === "R") tstr += `<tr class="tableRow"><td class="alignRight">R</td><td class="smallFont"><b>Recess</b> - 10:55</td><td class="smallColumn"> </td></tr>`;
-                    else if(wednesdayNumToPeriod(i) === "L") tstr += `<tr class="tableRow"><td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 12:10</td><td class="smallColumn"> </td></tr>`;
+                    else if(wednesdayNumToPeriod(i) === "WL") tstr += `<tr class="tableRow"><td class="alignRight">L</td><td class="smallFont"><b>Lunch</b> - 12:10</td><td class="smallColumn"> </td></tr>`;
                     else if(wednesdayNumToPeriod(i) === "ASS") tstr += `<tr class="tableRow"><td class="alignRight">A</td><td class="smallFont"><b>Assembly</b> - 10:40</td><td class="smallColumn"> </td></tr>`;
                     else tstr += `<tr class="tableRow"><td class="alignRight">${wednesdayNumToPeriod(i)}</td><td class="smallFont"><b>${subject}</b> <br> ${startTime} - ${teacher}</td><td class="smallColumn">${room}</td></tr>`;
                 } else if(wednesdayNumToPeriod(i) !== "BS" && wednesdayNumToPeriod(i) !== "AS" && wednesdayNumToPeriod(i) !== "AS1" && wednesdayNumToPeriod(i) !== "AS2") tstr += `<tr class="tableRow"><td class="alignRight">${wednesdayNumToPeriod(i)}</td><td class="smallFont"><b>Free Period</b></td><td class="smallColumn"></td></tr>`;
@@ -298,4 +305,4 @@ function countdownTimer(){
     document.getElementById("classes").innerHTML = tstr;
 } 
 
-if(timetable) window.setInterval(countdownTimer, 1000);
+window.setInterval(countdownTimer, 1000);
