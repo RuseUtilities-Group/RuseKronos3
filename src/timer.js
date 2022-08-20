@@ -90,7 +90,7 @@ function wednesdayNumToPeriod(num){
             period = "3";
             break;
         case 6:
-            period = "L";
+            period = "WL";
             break;
         case 7:
             period = "4";

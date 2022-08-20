@@ -213,7 +213,7 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
-        "L":{
+        "WL":{
             "teacher": "",
             "room": "",
             "subjectCode": "",
@@ -639,7 +639,7 @@ var timetable = {
             "startDate": "",
             "endDate": ""
         },
-        "L":{
+        "WL":{
             "teacher": "",
             "room": "",
             "subjectCode": "",
@@ -932,7 +932,11 @@ async function icalProcess() {
                 teacher = `${titleName} ${firstName} ${lastName}`;
             }
             // Plucking raw data continued from the iCal abomination into readable individual variables
-            var period = events[i].getFirstPropertyValue('description').split("\n")[1].split(": ")[1];
+            try{
+                var period = events[i].getFirstPropertyValue('description').split("\n")[1].split(": ")[1];
+            } catch(e){
+                var period = events[i].getFirstPropertyValue('description').split(": ")[1];
+            }
             var subjectCode = events[i].getFirstPropertyValue('summary').split(": ")[0];
             var subjectName = events[i].getFirstPropertyValue('summary').split(": ")[1].split(" Yr")[0];
             var room = events[i].getFirstPropertyValue('location').split(": ")[1];
