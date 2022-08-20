@@ -922,14 +922,18 @@ async function icalProcess() {
         var week = "A";
 
         for(var i = 0; i < events.length; i++) {
-            // Plucking raw data from the iCal abomination into readable individual variables
-            var teacher = events[i].getFirstPropertyValue('description').split("\n")[0].split(": ")[1];
-            // Formating the teacher name because Mr looks like MR on sentral's idiotic formatting
-            if(teacher.startsWith("M") || teacher.startsWith("D")){ // If it starts with M for Ms or D for Dr, if theres any new titles add a or statement with the first letter of the title
-                var titleName = capitalize(teacher.split(" ")[0]);
-                var firstName = teacher.split(" ")[1];
-                var lastName = teacher.split(" ")[2];
-                teacher = `${titleName} ${firstName} ${lastName}`;
+            try{
+                // Plucking raw data from the iCal abomination into readable individual variables
+                var teacher = events[i].getFirstPropertyValue('description').split("\n")[0].split(": ")[1];
+                // Formating the teacher name because Mr looks like MR on sentral's idiotic formatting
+                if(teacher.startsWith("M") || teacher.startsWith("D")){ // If it starts with M for Ms or D for Dr, if theres any new titles add a or statement with the first letter of the title
+                    var titleName = capitalize(teacher.split(" ")[0]);
+                    var firstName = teacher.split(" ")[1];
+                    var lastName = teacher.split(" ")[2];
+                    teacher = `${titleName} ${firstName} ${lastName}`;
+                }
+            } catch(e){
+                var teacher = "";
             }
             // Plucking raw data continued from the iCal abomination into readable individual variables
             try{
