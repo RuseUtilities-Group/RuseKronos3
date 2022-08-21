@@ -197,7 +197,7 @@ function countdownTimer(){
         
         var TMS = `${hoursLeft}:${minutesLeft}:${secondsLeft}`
         
-        if(timetable[dayWeek][nextPeriod].teacher === ""){
+        if(!timetable[dayWeek][nextPeriod].teacher || timetable[dayWeek][nextPeriod].teacher === " "){
             document.getElementById("KOH").innerHTML = `in ${timetable[dayWeek][nextPeriod].room}`;
         } else document.getElementById("KOH").innerHTML = `with ${timetable[dayWeek][nextPeriod].teacher} in ${timetable[dayWeek][nextPeriod].room}`;
         
@@ -243,7 +243,7 @@ function countdownTimer(){
             
             var TMS = `${hoursLeft}:${minutesLeft}:${secondsLeft}`
 
-            if(timetable[dayWeek][nextPeriod].teacher === ""){
+            if(!timetable[dayWeek][nextPeriod].teacher || timetable[dayWeek][nextPeriod].teacher === " "){
                 document.getElementById("KOH").innerHTML = `in ${timetable[dayWeek][nextPeriod].room}`;
             } else document.getElementById("KOH").innerHTML = `with ${timetable[dayWeek][nextPeriod].teacher} in ${timetable[dayWeek][nextPeriod].room}`;
             
