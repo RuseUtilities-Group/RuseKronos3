@@ -47,7 +47,7 @@ function Olivia(){
 
 function Light(){
 	primaryColor = '#f7f2ea';
-	secondaryColor = '#575d5e';
+	secondaryColor = '#555555';
 
 	root.style.setProperty('--primary-color', primaryColor);
 	root.style.setProperty('--secondary-color', secondaryColor);
