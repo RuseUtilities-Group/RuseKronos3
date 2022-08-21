@@ -197,13 +197,11 @@ function countdownTimer(){
         
         var TMS = `${hoursLeft}:${minutesLeft}:${secondsLeft}`
         
-        if(!timetable[dayWeek][nextPeriod].teacher || timetable[dayWeek][nextPeriod].teacher === " "){
-            document.getElementById("KOH").innerHTML = `in ${timetable[dayWeek][nextPeriod].room}`;
-        } else document.getElementById("KOH").innerHTML = `with ${timetable[dayWeek][nextPeriod].teacher} in ${timetable[dayWeek][nextPeriod].room}`;
-        
-        document.getElementById("HMS").innerHTML = `${nextPeriodSubject} in ${TMS}`;
-        document.querySelector('title').textContent = `${nextPeriodSubject} in ${TMS}`;
-        if(!timetable[dayWeek][nextPeriod].room) document.getElementById("KOH").innerHTML = "";
+        if(!timetable[dayWeek][lastPeriod].teacher || timetable[dayWeek][lastPeriod].teacher === " "){
+            document.getElementById("KOH").innerHTML = `in ${timetable[dayWeek][lastPeriod].room}`;
+        }
+        document.getElementById("HMS").innerHTML = `${lastPeriodSubject} in ${TMS}`;
+        document.querySelector('title').textContent = `${lastPeriodSubject} in ${TMS}`;
     } else{
         if(localStorage.getItem("timetable")){
             if(dayWeek === "1A") nextPeriod = findNextPeriod("1B", currHour, currMinute, currSecond);

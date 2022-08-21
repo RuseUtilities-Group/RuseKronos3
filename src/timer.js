@@ -198,11 +198,9 @@ function countdownTimer(){
         
         if(!timetable[dayWeek][lastPeriod].teacher || timetable[dayWeek][lastPeriod].teacher === " "){
             document.getElementById("KOH").innerHTML = `in ${timetable[dayWeek][lastPeriod].room}`;
-        } else document.getElementById("KOH").innerHTML = `with ${timetable[dayWeek][lastPeriod].teacher} in ${timetable[dayWeek][lastPeriod].room}`;
-        
+        }
         document.getElementById("HMS").innerHTML = `${lastPeriodSubject} in ${TMS}`;
         document.querySelector('title').textContent = `${lastPeriodSubject} in ${TMS}`;
-        if(!timetable[dayWeek][lastPeriod].room) document.getElementById("KOH").innerHTML = "";
     } else{
         if(localStorage.getItem("timetable")){
             if(dayWeek === "1A") nextPeriod = findNextPeriod("1B", currHour, currMinute, currSecond);
