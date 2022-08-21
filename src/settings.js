@@ -81,8 +81,8 @@ function MonkeyType(){
 
 }
 
-function Alpha(){
-	primaryColor = '#5eced2';
+function Shoko(){
+	primaryColor = '#00589f';
 	secondaryColor = '#e0ecff';
 
 	root.style.setProperty('--primary-color', primaryColor);
