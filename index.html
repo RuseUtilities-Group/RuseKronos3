@@ -12,6 +12,8 @@
         <script>
             if(!JSON.parse(localStorage.getItem("timetable"))) window.location.href = "./upload.html";
         </script>
+          <meta content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
 	</head>
 	<body onLoad='alterColor()'>
 
@@ -44,14 +46,15 @@
                 <br>
                 <button type="button" class="uploadButton" onClick="localStorage.removeItem('timetable'); location.reload();" style="margin-top: 1%">Clear timetable</button>
             </div>
-            
+
+<!--            
             <div id="buttonText">
                 <p>Upload a background image here:</p>
                 <input id="test" type="file" class="uploadButton" onchange="loadImageFile(this)" />
                 <br>
                 <button type="button" class="uploadButton" style="margin-top: 1%"onclick="removeImageFile()">Clear background</button>
             </div>
-            
+-->
             <div id="buttonText">
                 <p>Choose your preferred colours:</p>
                 <div>
@@ -70,7 +73,7 @@
             </div>
             
             <div id="buttonText">
-                <h4>Some of our favourite colourways (click to apply):</h4>
+                <p>Some of our favourite colourways (click to apply):</p>
                 <button type="button" class="presetColors" onclick="Irish()" style="color: #171718; background-color: #f7f2ea;">Light</button>
                 <button type="button" class="presetColors" onclick="Olivia()" style="color: #f7f2ea; background-color: #c87e74;">Olivia</button>
                 <button type="button" class="presetColors" onclick="Alpha()" style="color: #e0ecff; background-color: #5eced2;">Shoko</button>
@@ -80,10 +83,13 @@
                 <br> <br>
                 
                 <button type="button" class="presetColors" onclick="Classic()" style="color: #f7f2ea; background-color: #252525;">Dark</button>
-                <button type="button" class="presetColors" onclick="Metro()" style="color: #00a4a9; background-color: #323437;">Ocean Night</button>
+                <button type="button" class="presetColors" onclick="Metro()" style="color: #00a4a9; background-color: #323437;">Ocean</button>
                 <button type="button" class="presetColors" onclick="MonkeyType()" style="color: #e2b714; background-color: #323437;">Monkeytype</button>
-                <button type="button" class="presetColors" onclick="Blueberry()" style="color: #add7ff; background-color: #212b42;">Blueberry</button>
+                <button type="button" class="presetColors" onclick="Blueberry()" style="color: #add7ff; background-color: #212b42;">Yurui</button>
 
+            </div>
+            <div id="buttonText">
+                <p>Created by Joshua Koh and Yurui Zi <br> Students of James Ruse Agricultural High School</p>
             </div>
         </div>
 
