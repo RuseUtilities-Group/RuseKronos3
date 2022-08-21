@@ -45,9 +45,9 @@ function Olivia(){
 
 }
 
-function Irish(){
+function Light(){
 	primaryColor = '#f7f2ea';
-	secondaryColor = '#252525';
+	secondaryColor = '#555555';
 
 	root.style.setProperty('--primary-color', primaryColor);
 	root.style.setProperty('--secondary-color', secondaryColor);
@@ -81,8 +81,8 @@ function MonkeyType(){
 
 }
 
-function Alpha(){
-	primaryColor = '#5eced2';
+function Shoko(){
+	primaryColor = '#00589f';
 	secondaryColor = '#e0ecff';
 
 	root.style.setProperty('--primary-color', primaryColor);

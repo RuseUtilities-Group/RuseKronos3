@@ -160,14 +160,13 @@ function countdownTimer(){
     const currWeek = currDate.getWeek();
     var weekLetter = "A";
     var nextPeriod;
-    var lastPeriod;
-
+    var lastPeriod;     
     // Odd weeks are Week A, i.e. Week 1 of the year is always A unless a blood moon rises over saturn
     if(currWeek % 2 === 0) weekLetter = "B";
     
     // If Saturday and Sunday, force showing Monday
     if(currDay === 0 || currDay === 6) currDay = 1;
-
+    
     var dayWeek = (currDay+weekLetter).toString();
 
     lastPeriod = findLastPeriod(dayWeek);

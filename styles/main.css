@@ -116,17 +116,21 @@ td.firstCol {
   border-radius: 5px !important;
   border-color: var(--secondary-color, #D8DEE9);
   background-color: var(--secondary-color, #D8DEE9);
+  font-family: 'Quicksand', sans-serif;
+
 }
 
 .uploadButton{
   outline: thin solid;
   color: var(--primary-color, #2E3440);
-  padding: 0.5%;
-  font-size: 70%;
+  padding: 0.75% 0.5%;
+  font-size: 85%;
   text-align: center;
   border-radius: 5px !important;
   border-color: var(--secondary-color, #D8DEE9);
   background-color: var(--secondary-color, #D8DEE9);
+  font-family: 'Quicksand', sans-serif;
+
 }
 
 .colorPicker{
@@ -134,11 +138,12 @@ td.firstCol {
 }
 
 .presetColors{
-  padding: 1%;
-  font-size: 80%;
+  padding: 0.75% 1%;
+  font-size: 85%;
   text-align: center;
-  border-radius: 5px !important;
+  border-radius: 7px !important;
   margin-left: 2%;
+
 }
 
 
@@ -160,4 +165,13 @@ margin: 0.5%;
 	  zoom: 0.95;
   -moz-transform: scale(0.95);
 
+}
+
+.feedback{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
 }

@@ -12,6 +12,8 @@
         <script>
             if(!JSON.parse(localStorage.getItem("timetable"))) window.location.href = "./upload.html";
         </script>
+          <meta content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
 	</head>
 	<body onLoad='alterColor()'>
 
@@ -26,6 +28,7 @@
             <table class="centre1" id="timetable" style="width: 100% ;margin-left: auto; margin-right: auto;">
             </table>
         </div>
+
         <div id="bellTimesPage" style="display: block;">
 			<p id="HMS" ></p>
           	<p id="KOH" style= "font-size: 100% !important"></p>
@@ -34,7 +37,6 @@
         </div>
 
         <div id="settingsPage" style="display: none;">
-
             <div id="buttonText">
                 <p>Reupload your timetable here:</p>
             
@@ -44,24 +46,25 @@
                 <br>
                 <button type="button" class="uploadButton" onClick="localStorage.removeItem('timetable'); location.reload();" style="margin-top: 1%">Clear timetable</button>
             </div>
-            
+
+<!--            
             <div id="buttonText">
                 <p>Upload a background image here:</p>
                 <input id="test" type="file" class="uploadButton" onchange="loadImageFile(this)" />
                 <br>
                 <button type="button" class="uploadButton" style="margin-top: 1%"onclick="removeImageFile()">Clear background</button>
             </div>
-            
+-->
             <div id="buttonText">
                 <p>Choose your preferred colours:</p>
                 <div>
                     <label for="body" class="colorPicker">Primary Color</label>
-                    <input type="color" id="_primaryColor">
+                    <input type="color" id="_primaryColor" value="#2E3440">
                 </div>
             
                 <div>
                     <label for="body" class = "colorPicker">Secondary Color</label>
-                    <input type="color" id="_secondaryColor">
+                    <input type="color" id="_secondaryColor" value="#D8DEE9">
                 </div>
             
                 <button type="button" class="uploadButton" class="UIButton" style="margin-top: 1%" onclick="changeColor()">Click to Change Colour</button>
@@ -70,20 +73,25 @@
             </div>
             
             <div id="buttonText">
-                <h4>Some of our favourite colourways (click to apply):</h4>
-                <button type="button" class="presetColors" onclick="Irish()" style="color: #171718; background-color: #f7f2ea;">Light</button>
+                <p>Some of our favourite colourways (click to apply):</p>
+                <button type="button" class="presetColors" onclick="Light()" style="color: #555555; background-color: #f7f2ea;">Light</button>
                 <button type="button" class="presetColors" onclick="Olivia()" style="color: #f7f2ea; background-color: #c87e74;">Olivia</button>
-                <button type="button" class="presetColors" onclick="Alpha()" style="color: #e0ecff; background-color: #5eced2;">Shoko</button>
+                <button type="button" class="presetColors" onclick="Shoko()" style="color: #e0ecff; background-color: #00589f;">Shoko</button>
                 <button type="button" class="presetColors" onclick="Vapor()" style="color: #f1ebf1; background-color: #a4a7ea;">Taro</button>
                 <button type="button" class="presetColors" onclick="Botanical()" style="color: #eaf1f3; background-color: #789048;">Matcha</button>
 
-                <br> <br>
-                
+                <br>
+                <div style="margin-top: 1%">
                 <button type="button" class="presetColors" onclick="Classic()" style="color: #f7f2ea; background-color: #252525;">Dark</button>
                 <button type="button" class="presetColors" onclick="Metro()" style="color: #00a4a9; background-color: #323437;">Ocean Night</button>
                 <button type="button" class="presetColors" onclick="MonkeyType()" style="color: #e2b714; background-color: #323437;">Monkeytype</button>
                 <button type="button" class="presetColors" onclick="Blueberry()" style="color: #add7ff; background-color: #212b42;">Blueberry</button>
-
+                </div>
+            </div>
+            <div id="buttonText">
+                <p style="margin: 1% 0">Got any feedback, suggestions or comments? Let us know!</p>
+                <input type="button" onclick="location.href='https://forms.gle/EKsCJUuF7Cetc8UG7';" class="uploadButton" value="Feedback Form" />
+                <p style="margin: 0.5% 0">Created by Joshua Koh and Yurui Zi <br> Students of James Ruse Agricultural High School, Class of 2023</p>
             </div>
         </div>
 
