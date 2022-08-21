@@ -45,9 +45,9 @@ function Olivia(){
 
 }
 
-function Irish(){
+function Light(){
 	primaryColor = '#f7f2ea';
-	secondaryColor = '#252525';
+	secondaryColor = '#575d5e';
 
 	root.style.setProperty('--primary-color', primaryColor);
 	root.style.setProperty('--secondary-color', secondaryColor);
