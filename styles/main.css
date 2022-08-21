@@ -3,6 +3,15 @@
 	--secondary-color: #D8DEE9;
 }
 
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
 body {
   font-family: 'Quicksand', sans-serif;
   font-size: 145%;
