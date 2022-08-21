@@ -160,33 +160,30 @@ function countdownTimer(){
     const currWeek = currDate.getWeek();
     var weekLetter = "A";
     var nextPeriod;
-    var lastPeriod;
-
+    var lastPeriod;     
     // Odd weeks are Week A, i.e. Week 1 of the year is always A unless a blood moon rises over saturn
     if(currWeek % 2 === 0) weekLetter = "B";
     
     // If Saturday and Sunday, force showing Monday
-    if(currDay === 0 || currDay === 6) currDay = 1;
-
-    var dayWeek = (currDay+weekLetter).toString();
-
-    lastPeriod = findLastPeriod(dayWeek);
-    var lastPeriodStartDate = new Date(timetable[dayWeek][lastPeriod].startDate);
-    var lastPeriodEndDate = new Date(timetable[dayWeek][lastPeriod].endDate);
-    var lastPeriodSubject = "End of Day";
-    var lastPeriodStartHour = lastPeriodStartDate.getHours();
-    var lastPeriodEndHour = lastPeriodEndDate.getHours();
-    var lastPeriodEndMinute = lastPeriodEndDate.getMinutes();
-    var lastPeriodStartMinute = lastPeriodStartDate.getMinutes();
-    
-    if((currHour < lastPeriodEndHour && currHour > lastPeriodStartHour) || (currHour < lastPeriodEndHour && currHour === lastPeriodStartHour && currMinute >= lastPeriodStartMinute)|| (currHour === lastPeriodEndHour && currMinute < lastPeriodEndMinute)){
+    if(currDay === 0 || currDay === 6) {
+        currDay = 1;
+        var dayWeek = (currDay+weekLetter).toString();
+        if(dayWeek === "1A") dayWeek = "1B";
+        else if(dayWeek === "1B") dayWeek = "1A";
+        nextPeriod = findNextPeriod(dayWeek, 0, 0, 0);
+        var nextPeriodDate = new Date(timetable[dayWeek][nextPeriod].startDate);
+        var nextPeriodSubject = timetable[dayWeek][nextPeriod].subjectName;
+        
         secondsLeft = 60 - currSecond;
-        if(currDate.getDay() === 0) hoursLeft = lastPeriodEndDate.getHours() + (24 - currHour) -1;
-        else if(currDate.getDay() === 6) hoursLeft = lastPeriodEndDate.getHours() + 24 + (24 - currHour) -1;
-        else if(currHour === lastPeriodEndDate.getHours()) hoursLeft = 0;
-        else hoursLeft = lastPeriodEndDate.getHours() - currHour - 1;
-        if(currMinute <= lastPeriodEndDate.getMinutes()) minutesLeft = lastPeriodEndDate.getMinutes() - currMinute -1;
-        else minutesLeft = 60 - currMinute + lastPeriodEndDate.getMinutes() -1;
+        if(currDate.getDay() < nextPeriodDate.getDay()) hoursLeft = nextPeriodDate.getHours() + (24 - currHour) -1;
+        else if(currDate.getDay() === 0) hoursLeft = nextPeriodDate.getHours() + (24 - currHour) -1;
+        else if(currDate.getDay() === 6) hoursLeft = nextPeriodDate.getHours() + 24 + (24 - currHour) -1;
+        else if(currHour === nextPeriodDate.getHours()) hoursLeft = 0;
+        else hoursLeft = nextPeriodDate.getHours() - currHour - 1;
+        if(currMinute <= nextPeriodDate.getMinutes() && currSecond !== 0) minutesLeft = nextPeriodDate.getMinutes() - currMinute -1;
+        else if(currMinute <= nextPeriodDate && currSecond === 0) minutesLeft = nextPeriodDate.getMinutes() - currMinute;
+        else if(currSecond === 0) minutesLeft = 60 - currMinute + nextPeriodDate.getMinutes() - 1;
+        else minutesLeft = 60 - currMinute + nextPeriodDate.getMinutes() -1;
         if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) location.reload();
 
         if(hoursLeft / 10 < 1) hoursLeft = "0" + hoursLeft;
@@ -196,41 +193,37 @@ function countdownTimer(){
         if(secondsLeft / 10 < 1) secondsLeft = "0" + secondsLeft;
         
         var TMS = `${hoursLeft}:${minutesLeft}:${secondsLeft}`
+
+        if(!timetable[dayWeek][nextPeriod].teacher || timetable[dayWeek][nextPeriod].teacher === " "){
+            document.getElementById("KOH").innerHTML = `in ${timetable[dayWeek][nextPeriod].room}`;
+        } else document.getElementById("KOH").innerHTML = `with ${timetable[dayWeek][nextPeriod].teacher} in ${timetable[dayWeek][nextPeriod].room}`;
         
-        if(!timetable[dayWeek][lastPeriod].teacher || timetable[dayWeek][lastPeriod].teacher === " "){
-            document.getElementById("KOH").innerHTML = `in ${timetable[dayWeek][lastPeriod].room}`;
-        }
-        document.getElementById("HMS").innerHTML = `${lastPeriodSubject} in ${TMS}`;
-        document.querySelector('title').textContent = `${lastPeriodSubject} in ${TMS}`;
+        document.getElementById("HMS").innerHTML = `${nextPeriodSubject} in ${TMS}`;
+        document.querySelector('title').textContent = `${nextPeriodSubject} in ${TMS}`;
+        if(!timetable[dayWeek][nextPeriod].room) document.getElementById("KOH").innerHTML = "";
+        if(dayWeek === "1A") dayWeek = "1B";
+        else if(dayWeek === "1B") dayWeek = "1A";
     } else{
-        if(localStorage.getItem("timetable")){
-            if(dayWeek === "1A") nextPeriod = findNextPeriod("1B", currHour, currMinute, currSecond);
-            else if(dayWeek === "1B") nextPeriod = findNextPeriod("1A", currHour, currMinute, currSecond);
-            else if(currDay === 3) nextPeriod = wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond);
-            else nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
-            if(!nextPeriod){
-                currDay++;
-                if(currDay === 6 || currDay === 7) currDay = 1;
-                dayWeek = currDay+weekLetter;
-                if(dayWeek === "1A") nextPeriod = findNextPeriod("1B", 0, 0, 0);
-                else if(dayWeek === "1B") nextPeriod = findNextPeriod("1A", 0, 0, 0);
-                else if(currDay === 3) nextPeriod = wednesdayfindNextPeriod(dayWeek, 0, 0, 0);
-                else nextPeriod = findNextPeriod(dayWeek, 0, 0, 0);
-            }
-        }
-            var nextPeriodDate = new Date(timetable[dayWeek][nextPeriod].startDate);
-            var nextPeriodSubject = timetable[dayWeek][nextPeriod].subjectName;
-            
+    
+        var dayWeek = (currDay+weekLetter).toString();
+
+        lastPeriod = findLastPeriod(dayWeek);
+        var lastPeriodStartDate = new Date(timetable[dayWeek][lastPeriod].startDate);
+        var lastPeriodEndDate = new Date(timetable[dayWeek][lastPeriod].endDate);
+        var lastPeriodSubject = "End of Day";
+        var lastPeriodStartHour = lastPeriodStartDate.getHours();
+        var lastPeriodEndHour = lastPeriodEndDate.getHours();
+        var lastPeriodEndMinute = lastPeriodEndDate.getMinutes();
+        var lastPeriodStartMinute = lastPeriodStartDate.getMinutes();
+        
+        if((currHour < lastPeriodEndHour && currHour > lastPeriodStartHour) || (currHour < lastPeriodEndHour && currHour === lastPeriodStartHour && currMinute >= lastPeriodStartMinute)|| (currHour === lastPeriodEndHour && currMinute < lastPeriodEndMinute)){
             secondsLeft = 60 - currSecond;
-            if(currDate.getDay() < nextPeriodDate.getDay()) hoursLeft = nextPeriodDate.getHours() + (24 - currHour) -1;
-            else if(currDate.getDay() === 0) hoursLeft = nextPeriodDate.getHours() + (24 - currHour) -1;
-            else if(currDate.getDay() === 6) hoursLeft = nextPeriodDate.getHours() + 24 + (24 - currHour) -1;
-            else if(currHour === nextPeriodDate.getHours()) hoursLeft = 0;
-            else hoursLeft = nextPeriodDate.getHours() - currHour - 1;
-            if(currMinute <= nextPeriodDate.getMinutes() && currSecond !== 0) minutesLeft = nextPeriodDate.getMinutes() - currMinute -1;
-            else if(currMinute <= nextPeriodDate && currSecond === 0) minutesLeft = nextPeriodDate.getMinutes() - currMinute;
-            else if(currSecond === 0) minutesLeft = 60 - currMinute + nextPeriodDate.getMinutes() - 1;
-            else minutesLeft = 60 - currMinute + nextPeriodDate.getMinutes() -1;
+            if(currDate.getDay() === 0) hoursLeft = lastPeriodEndDate.getHours() + (24 - currHour) -1;
+            else if(currDate.getDay() === 6) hoursLeft = lastPeriodEndDate.getHours() + 24 + (24 - currHour) -1;
+            else if(currHour === lastPeriodEndDate.getHours()) hoursLeft = 0;
+            else hoursLeft = lastPeriodEndDate.getHours() - currHour - 1;
+            if(currMinute <= lastPeriodEndDate.getMinutes()) minutesLeft = lastPeriodEndDate.getMinutes() - currMinute -1;
+            else minutesLeft = 60 - currMinute + lastPeriodEndDate.getMinutes() -1;
             if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) location.reload();
 
             if(hoursLeft / 10 < 1) hoursLeft = "0" + hoursLeft;
@@ -240,17 +233,64 @@ function countdownTimer(){
             if(secondsLeft / 10 < 1) secondsLeft = "0" + secondsLeft;
             
             var TMS = `${hoursLeft}:${minutesLeft}:${secondsLeft}`
-
-            if(!timetable[dayWeek][nextPeriod].teacher || timetable[dayWeek][nextPeriod].teacher === " "){
-                document.getElementById("KOH").innerHTML = `in ${timetable[dayWeek][nextPeriod].room}`;
-            } else document.getElementById("KOH").innerHTML = `with ${timetable[dayWeek][nextPeriod].teacher} in ${timetable[dayWeek][nextPeriod].room}`;
             
-            document.getElementById("HMS").innerHTML = `${nextPeriodSubject} in ${TMS}`;
-            document.querySelector('title').textContent = `${nextPeriodSubject} in ${TMS}`;
-            if(!timetable[dayWeek][nextPeriod].room) document.getElementById("KOH").innerHTML = "";
+            if(!timetable[dayWeek][lastPeriod].teacher || timetable[dayWeek][lastPeriod].teacher === " "){
+                document.getElementById("KOH").innerHTML = `in ${timetable[dayWeek][lastPeriod].room}`;
+            }
+            document.getElementById("HMS").innerHTML = `${lastPeriodSubject} in ${TMS}`;
+            document.querySelector('title').textContent = `${lastPeriodSubject} in ${TMS}`;
+        } else{
+            if(localStorage.getItem("timetable")){
+                if(dayWeek === "1A") dayWeek = "1B";
+                else if(dayWeek === "1B") dayWeek = "1A"
+
+                if(currDay === 3) nextPeriod = wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond);
+                else nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
+                if(!nextPeriod){
+                    currDay++;
+                    if(currDay === 6 || currDay === 7) currDay = 1;
+                    dayWeek = currDay+weekLetter;
+                    if(dayWeek === "1A") nextPeriod = findNextPeriod("1B", 0, 0, 0);
+                    else if(dayWeek === "1B") nextPeriod = findNextPeriod("1A", 0, 0, 0);
+                    else if(currDay === 3) nextPeriod = wednesdayfindNextPeriod(dayWeek, 0, 0, 0);
+                    else nextPeriod = findNextPeriod(dayWeek, 0, 0, 0);
+                }
+            }
+                var nextPeriodDate = new Date(timetable[dayWeek][nextPeriod].startDate);
+                var nextPeriodSubject = timetable[dayWeek][nextPeriod].subjectName;
+                
+                secondsLeft = 60 - currSecond;
+                if(currDate.getDay() < nextPeriodDate.getDay()) hoursLeft = nextPeriodDate.getHours() + (24 - currHour) -1;
+                else if(currDate.getDay() === 0) hoursLeft = nextPeriodDate.getHours() + (24 - currHour) -1;
+                else if(currDate.getDay() === 6) hoursLeft = nextPeriodDate.getHours() + 24 + (24 - currHour) -1;
+                else if(currHour === nextPeriodDate.getHours()) hoursLeft = 0;
+                else hoursLeft = nextPeriodDate.getHours() - currHour - 1;
+                if(currMinute <= nextPeriodDate.getMinutes() && currSecond !== 0) minutesLeft = nextPeriodDate.getMinutes() - currMinute -1;
+                else if(currMinute <= nextPeriodDate && currSecond === 0) minutesLeft = nextPeriodDate.getMinutes() - currMinute;
+                else if(currSecond === 0) minutesLeft = 60 - currMinute + nextPeriodDate.getMinutes() - 1;
+                else minutesLeft = 60 - currMinute + nextPeriodDate.getMinutes() -1;
+                if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) location.reload();
+
+                if(hoursLeft / 10 < 1) hoursLeft = "0" + hoursLeft;
+                
+                if(minutesLeft / 10 < 1) minutesLeft = "0" + minutesLeft;
+                
+                if(secondsLeft / 10 < 1) secondsLeft = "0" + secondsLeft;
+                
+                var TMS = `${hoursLeft}:${minutesLeft}:${secondsLeft}`
+
+                if(!timetable[dayWeek][nextPeriod].teacher || timetable[dayWeek][nextPeriod].teacher === " "){
+                    document.getElementById("KOH").innerHTML = `in ${timetable[dayWeek][nextPeriod].room}`;
+                } else document.getElementById("KOH").innerHTML = `with ${timetable[dayWeek][nextPeriod].teacher} in ${timetable[dayWeek][nextPeriod].room}`;
+                
+                document.getElementById("HMS").innerHTML = `${nextPeriodSubject} in ${TMS}`;
+                document.querySelector('title').textContent = `${nextPeriodSubject} in ${TMS}`;
+                if(!timetable[dayWeek][nextPeriod].room) document.getElementById("KOH").innerHTML = "";
+                if(dayWeek === "1A") dayWeek = "1B";
+                else if(dayWeek === "1B") dayWeek = "1A"
+        }
+        if(!timetable) document.getElementById("HMS").innerHTML = "<a href='./upload.html'>Upload</a> your timetable to continue!"
     }
-    if(!timetable) document.getElementById("HMS").innerHTML = "<a href='./upload.html'>Upload</a> your timetable to continue!"
-    
     var tstr = " ";
     if(currDay === 3){
         for(i = 0; i < 12; i++) {
