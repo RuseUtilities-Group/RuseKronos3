@@ -168,8 +168,7 @@ function countdownTimer(){
     if(currDay === 0 || currDay === 6) {
         currDay = 1;
         var dayWeek = (currDay+weekLetter).toString();
-        if(dayWeek === "1A") dayWeek = "1B";
-        else if(dayWeek === "1B") dayWeek = "1A";
+
         nextPeriod = findNextPeriod(dayWeek, 0, 0, 0);
         var nextPeriodDate = new Date(timetable[dayWeek][nextPeriod].startDate);
         var nextPeriodSubject = timetable[dayWeek][nextPeriod].subjectName;
@@ -201,8 +200,7 @@ function countdownTimer(){
         document.getElementById("HMS").innerHTML = `${nextPeriodSubject} in ${TMS}`;
         document.querySelector('title').textContent = `${nextPeriodSubject} in ${TMS}`;
         if(!timetable[dayWeek][nextPeriod].room) document.getElementById("KOH").innerHTML = "";
-        if(dayWeek === "1A") dayWeek = "1B";
-        else if(dayWeek === "1B") dayWeek = "1A";
+
     } else{
     
         var dayWeek = (currDay+weekLetter).toString();
@@ -316,8 +314,6 @@ function countdownTimer(){
             } catch(e){}
         }
     } else {
-        if(dayWeek === "1A") dayWeek = "1B";
-        else if(dayWeek === "1B") dayWeek = "1A";
         for(i = 0; i < 10; i++) {
             try{
                 if(timetable[dayWeek][numToPeriod(i)].startDate){
