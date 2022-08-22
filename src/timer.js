@@ -339,5 +339,4 @@ function countdownTimer(){
     document.getElementById("classes").innerHTML = tstr;
 } 
 
-if(!timetable) window.location.href = "./upload.html";
-else window.setInterval(countdownTimer, 1000);
+window.setInterval(countdownTimer, 1000);
