@@ -1,5 +1,5 @@
 // By Chris Ahn and Ethan Du Toit
-var listOfDays = ['1B', '2A', '3A', '4A', '5A', '1A', '2B', '3B', '4B', '5B'];
+var listOfDays = ['1A', '2A', '3A', '4A', '5A', '1B', '2B', '3B', '4B', '5B'];
 
 function gen_table(json) {
 	table = document.getElementById("timetable");
@@ -33,9 +33,7 @@ function gen_table(json) {
 		}else if (dayNum == "5") {
 			dayWord = "Friday ";
 		}
-		if(dayWord + listOfDays[day].substring(0, listOfDays[day].length-1).slice(1) + listOfDays[day][listOfDays[day].length-1] + " " === "Monday A ") tableIn += `<tr><th style="text-align: left;">Monday B</th></tr>`
-		else if(dayWord + listOfDays[day].substring(0, listOfDays[day].length-1).slice(1) + listOfDays[day][listOfDays[day].length-1] + " " === "Monday B ") tableIn += `<tr><th style="text-align: left;">Monday A</th></tr>`
-		else tableIn += `<tr><th style="text-align: left;">${dayWord + listOfDays[day].substring(0, listOfDays[day].length-1).slice(1) + listOfDays[day][listOfDays[day].length-1] + " "}</th></tr>`;
+		tableIn += `<tr><th style="text-align: left;">${dayWord + listOfDays[day].substring(0, listOfDays[day].length-1).slice(1) + listOfDays[day][listOfDays[day].length-1] + " "}</th></tr>`;
 		
 		period = "BS";
 		teacher = it[listOfDays[day]][period].teacher;
