@@ -14,7 +14,7 @@ html {
 
 body {
   font-family: 'Quicksand', sans-serif;
-  font-size: 145%;
+  font-size: 1.4vw;
   background-color: var(--primary-color);
   color: var(--primary-color);
   text-align: center;
@@ -37,14 +37,14 @@ table.center {
 table.center td{
   padding-top: 2%;
   padding-bottom: 2%;
-  font-size: 125%;
+  font-size: 1.8vw;
 }
 #timetable{
   color: var(--secondary-color);
 }
 
 .smallFont{
-  font-size: 70% !important;
+  font-size: 1vw !important;
   text-align: left !important;
   padding-left: 3% !important;
 }
@@ -112,7 +112,7 @@ td.firstCol {
   text-align: center;
   padding: 0.5% 2%;
   text-decoration: none;
-  font-size: 175%;
+  font-size: 2.5vw;
   }
 
   /* Change the color of links on hover */
@@ -133,7 +133,7 @@ td.firstCol {
   outline: thin solid;
   color: var(--primary-color, #2E3440);
   padding: 0.75% 0.5%;
-  font-size: 85%;
+  font-size: 1.2vw;
   text-align: center;
   border-radius: 5px !important;
   border-color: var(--secondary-color, #D8DEE9);
@@ -148,7 +148,7 @@ td.firstCol {
 
 .presetColors{
   padding: 0.75% 1%;
-  font-size: 85%;
+  font-size: 1.2vw;
   text-align: center;
   border-radius: 7px !important;
   margin-left: 2%;
@@ -158,14 +158,14 @@ td.firstCol {
 
 #HMS{
 color: var(--secondary-color) !important;
-font-size: 130%;
+font-size: 1.8vw;
 text-align: center;
 margin: 0.5%;
 } 
 
 #KOH{
 	color: var(--secondary-color) !important;
-	font-size: 100%;
+	font-size: 1vw;
 	text-align: center;
 	margin: 0.5%;
 } 
