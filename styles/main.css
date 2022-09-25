@@ -18,6 +18,18 @@ html {
   table.center {
     width: 100%;
   }
+  table.centre1{
+  	width: 100%;
+  }
+  table.centre{
+  	width: 100%;
+  }
+  #homeButton{
+  	width: 5% !!important;
+  }
+  body{
+  	width: 100%;
+  }
 }
 
 body {
