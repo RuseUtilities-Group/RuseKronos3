@@ -17,6 +17,9 @@ html {
 		width: 90% !important; 
 		border-radius: 30px !important;
 	} 
+	.tableRow{
+		border-radius: 30px !important;
+	}
 
 	#homeButton{
 		width: 10% !!important;
