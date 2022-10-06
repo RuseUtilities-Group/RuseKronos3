@@ -11,7 +11,7 @@ html {
     width: 0;  /* Remove scrollbar space */
     background: transparent;  /* Optional: just make scrollbar invisible */
 }
-@media only screen and (max-width: 450px) { 
+@media only screen and (max-width: 501px) { 
 	/* For mobile phones: */ 
 	table.center { 
 		width: 90% !important; 
