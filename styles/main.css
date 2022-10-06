@@ -44,7 +44,7 @@ body {
   font-family: 'Quicksand', sans-serif;
   font-size: 145%;
   background-color: var(--primary-color);
-  color: var(--primary-color);
+  color: var(--secondary-color);
   text-align: center;
 }
 table.center {
