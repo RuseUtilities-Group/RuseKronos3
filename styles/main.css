@@ -23,9 +23,9 @@ html {
 	}
 
 	#homeButton{
-		width: 10% !!important;
-		margin-left: 10% !important;
-		margin-right: 5% !important;
+		max-width: 12% !important;
+		margin-left: 8% !important;
+		margin-right: 8% !important;
 
 	}
 	#kronosLogoBrov{
@@ -34,10 +34,37 @@ html {
 	body{
 	 	font-size: 200%; 
 	} 
+	#settingsPage{
+		font-size: 75%;
+	}
 	.uploadButton{
 		padding: 2% !important;
 	}
+
+	#settingsButton{
+		max-width: 10% !important;
+	}
+	#timetableButton{
+		max-width: 10% !important;
+	}
+
+	.centre1{
+		margin-top: 5% !important;
+		font-size: 55%;
+	}
+	.presetColors{
+		padding: 1.5% 2.5% !important;
+	}
+	#timetableTd1{
+		padding: 1% !important;
+		max-width: 20% !important;
+	}
+	#startTimeTd{
+		padding: 1% !important;
+		max-width: 5% !important;
+	}
 }
+
 
 
 body {
