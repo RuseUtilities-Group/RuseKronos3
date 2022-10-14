@@ -105,6 +105,22 @@
             </div>
         </div>
 
+<!--
+        <div id="notesPage" style="display: none;">
+            <script>
+                window.onload = function() {
+                    result = localStorage.getItem('note');
+                    if(!result) document.getElementById('area').value = "Type notes, reminders or anything here and it will save!" ;
+                    else document.getElementById('area').value = result;
+                }
+                function save() {
+                        var area = document.getElementById("area");
+                        localStorage.setItem("note", area.value);
+                }
+            </script>
+            <textarea id="area" rows="100" cols="50" onchange="save()"></textarea>
+        </div>
+!-->
 
         <script type="text/javascript" src="./src/calParser.js"></script>
         <script type="text/javascript" src="./src/ical.js"></script>
