@@ -1,8 +1,7 @@
 # RuseKronos3
-Welcome to RuseKronos, Version 3, a student organiser designed for JRAHS's students and teachers, notifying when to go to class, extracurricular activities or break, bringing together important and useful functions in one ergonomic website with customisable colour preferences and a sleek user interface.
+Welcome to RuseKronos, Version 3, a student organiser designed for JRAHS's students and teachers, notifying when to go to class (including before and after school classes), study periods, extracurricular activities or breaks, bringing together important and useful functions in one ergonomic website with customisable colour preferences and a sleek user interface.
 
 Made by Joshua Koh and Yurui Zi
-
 Students of James Ruse Agricultural High School, Class of 2023
 
 For the old version, please see the Kronos or the RuseKronos Repository.
