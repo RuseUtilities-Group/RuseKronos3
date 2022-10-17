@@ -57,9 +57,9 @@ function Light(){
 
 }
 
-function Metro(){
-	primaryColor = '#323437';
-	secondaryColor = '#00a4a9';
+function RacingGreen(){
+	primaryColor = '#204C4B';
+	secondaryColor = '#BCB79A';
 
 	root.style.setProperty('--primary-color', primaryColor);
 	root.style.setProperty('--secondary-color', secondaryColor);
@@ -104,7 +104,7 @@ function RedSamurai(){
   	localStorage.setItem("---secondary-color", secondaryColor);
 
 }
-function Classic(){
+function Dark(){
 	primaryColor = '#252525';
 	secondaryColor = '#f7f2ea';
 
@@ -126,7 +126,7 @@ function Blueberry(){
   	localStorage.setItem("---secondary-color", secondaryColor);
 
 }
-function Vapor(){
+function Taro(){
 	primaryColor = '#a4a7ea';
 	secondaryColor = '#f1ebf1';
 
@@ -137,7 +137,7 @@ function Vapor(){
   	localStorage.setItem("---secondary-color", secondaryColor);
 
 }
-function Botanical(){
+function Matcha(){
 	primaryColor = '#789048';
 	secondaryColor = '#eaf1f3';
 
@@ -149,9 +149,21 @@ function Botanical(){
 
 }
 
-function Darling(){
-	primaryColor = '#fec8cd';
-	secondaryColor = '#ffffff';
+function Atlantis(){
+	primaryColor = '#30303B';
+	secondaryColor = '#6D99A2';
+
+	root.style.setProperty('--primary-color', primaryColor);
+	root.style.setProperty('--secondary-color', secondaryColor);
+
+	localStorage.setItem("---primary-color", primaryColor);
+  	localStorage.setItem("---secondary-color", secondaryColor);
+
+}
+
+function Aphrodite(){
+	primaryColor = '#4C2033';
+	secondaryColor = '#D2A3BA';
 
 	root.style.setProperty('--primary-color', primaryColor);
 	root.style.setProperty('--secondary-color', secondaryColor);
