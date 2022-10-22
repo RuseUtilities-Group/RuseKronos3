@@ -24,12 +24,12 @@
           <meta content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
 
 	</head>
-	<body onLoad='alterColor()'>
+	<body onLoad="alterColor()">
 
         <div class="topnav">
-            <a class="fa fa-fw fa-calendar" style="height: 20%; width: 3%; padding: 1% 2%;" id="timetableButton"></a>
-            <a id="homeButton" style="width: 7%"><img src="./data/KronosLogo.png" style="width: 50%; padding: 4% 2% 1% 2%;"></a>
-            <a class="fa fa-fw fa-cog" style="height: 20%; width: 3%; padding: 1% 2%;" id="settingsButton"></a>
+            <a class="fa fa-fw fa-calendar" style="height: 20%; max-width: 3%; padding: 1% 2%;" id="timetableButton"></a>
+            <a id="homeButton" style="max-width: 7%"><img id="kronosLogoBrov" src="./data/KronosLogo.png" style="width: 50%; padding: 4% 2% 1% 2%;"></a>
+            <a class="fa fa-fw fa-cog" style="height: 20%; max-width: 3%; padding: 1% 2%;" id="settingsButton"></a>
         </div>
 
         <div id="timetablePage" style="display: none;">
@@ -86,14 +86,16 @@
                 <button type="button" class="presetColors" onclick="Light()" style="color: #555555; background-color: #f7f2ea;">Light</button>
                 <button type="button" class="presetColors" onclick="Olivia()" style="color: #f7f2ea; background-color: #c87e74;">Olivia</button>
                 <button type="button" class="presetColors" onclick="Shoko()" style="color: #e0ecff; background-color: #00589f;">Shoko</button>
-                <button type="button" class="presetColors" onclick="Vapor()" style="color: #f1ebf1; background-color: #a4a7ea;">Taro</button>
-                <button type="button" class="presetColors" onclick="Botanical()" style="color: #eaf1f3; background-color: #789048;">Matcha</button>
+                <button type="button" class="presetColors" onclick="Taro()" style="color: #f1ebf1; background-color: #a4a7ea;">Taro</button>
+                <button type="button" class="presetColors" onclick="Matcha()" style="color: #eaf1f3; background-color: #789048;">Matcha</button>
+                <button type="button" class="presetColors" onclick="RacingGreen()" style="color: #BCB79A; background-color: #204C4B;">Racing Green</button>
 
                 <br>
                 <div style="margin-top: 1%">
-                <button type="button" class="presetColors" onclick="Classic()" style="color: #f7f2ea; background-color: #252525;">Dark</button>
-                <button type="button" class="presetColors" onclick="Metro()" style="color: #00a4a9; background-color: #323437;">Ocean Night</button>
+                <button type="button" class="presetColors" onclick="Dark()" style="color: #f7f2ea; background-color: #252525;">Dark</button>
+                <button type="button" class="presetColors" onclick="Atlantis()" style="color: #6D99A2; background-color: #30303B;">Atlantis</button>
                 <button type="button" class="presetColors" onclick="MonkeyType()" style="color: #e2b714; background-color: #323437;">Monkeytype</button>
+                <button type="button" class="presetColors" onclick="Aphrodite()" style="color: #D2A3BA; background-color: #4C2033;">Aphrodite</button>
                 <button type="button" class="presetColors" onclick="Blueberry()" style="color: #add7ff; background-color: #212b42;">Blueberry</button>
                 </div>
             </div>
@@ -105,6 +107,22 @@
             </div>
         </div>
 
+<!--
+        <div id="notesPage" style="display: none;">
+            <script>
+                window.onload = function() {
+                    result = localStorage.getItem('note');
+                    if(!result) document.getElementById('area').value = "Type notes, reminders or anything here and it will save!" ;
+                    else document.getElementById('area').value = result;
+                }
+                function save() {
+                        var area = document.getElementById("area");
+                        localStorage.setItem("note", area.value);
+                }
+            </script>
+            <textarea id="area" rows="100" cols="50" onchange="save()"></textarea>
+        </div>
+!-->
 
         <script type="text/javascript" src="./src/calParser.js"></script>
         <script type="text/javascript" src="./src/ical.js"></script>

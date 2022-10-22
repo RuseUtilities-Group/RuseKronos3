@@ -933,6 +933,7 @@ function capitalize(word) {
 
 
 async function icalProcess() {
+    localStorage.removeItem("timetable");
     try {
         // Taking the parsed data from the readFile function into this main function, also waiting for it to end before moving on.
         var icalData = await readFile();

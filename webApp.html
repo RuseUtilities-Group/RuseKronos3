@@ -20,12 +20,10 @@
         <link rel="icon" href="./data/KronosLogo.png" type="image/icon type">
         <style>
             body {
-                -moz-transform: scale(0.80);
-                zoom: 0.80;
-                margin-left: -185px;
-                margin-top: 10px;
-                width: 1000px;
-                height: 500px;
+                margin-left: 60px;
+                zoom: 80%;
+                width: 500px;
+                height: 600px;
             }
         </style>
 	</head>
@@ -44,13 +42,13 @@
 
         <script type="text/javascript" src="./src/calParser.js"></script>
         <script type="text/javascript" src="./src/ical.js"></script>
-        <script type="text/javascript" src="./src/webAppTimer.js"></script>
+        <script type="text/javascript" src="./src/timer.js"></script>
         <script type="text/javascript" src="./src/timetable.js"></script>
         <script type="text/javascript" src="./src/navHandler.js"></script>
         <script type="text/javascript" src="./src/settings.js"></script>
         <script>
             if(!JSON.parse(localStorage.getItem("timetable"))){ 
-                document.getElementById("HMS").innerHTML = "To proceed, please upload your timetable on <br>the physical website @ https://dev.rusekronos.xyz/";
+                document.getElementById("HMS").innerHTML = "To proceed, please upload your timetable <br> on the physical website <br>@ https://dev.rusekronos.xyz/";
             }
         </script>
 	</body>

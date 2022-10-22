@@ -1,4 +1,4 @@
-:root {
+root {
 	--primary-color: #2E3440;
 	--secondary-color: #D8DEE9;
 }
@@ -11,20 +11,76 @@ html {
     width: 0;  /* Remove scrollbar space */
     background: transparent;  /* Optional: just make scrollbar invisible */
 }
+@media only screen and (max-width: 1000px) { 
+	/* For mobile phones: */ 
+	table.center { 
+		width: 90% !important; 
+		border-radius: 30px !important;
+		color: var(--secondary-color);
+	} 
+	.tableRow{
+		border-radius: 30px !important;
+	}
+
+	#homeButton{
+		max-width: 12% !important;
+		margin-left: 8% !important;
+		margin-right: 8% !important;
+
+	}
+	#kronosLogoBrov{
+		width: 100% !important;
+	}
+	body{
+	 	font-size: 200%; 
+	} 
+	#settingsPage{
+		font-size: 75%;
+	}
+	.uploadButton{
+		padding: 2% !important;
+	}
+
+	#settingsButton{
+		max-width: 10% !important;
+	}
+	#timetableButton{
+		max-width: 10% !important;
+	}
+
+	.centre1{
+		margin-top: 5% !important;
+		font-size: 55%;
+	}
+	.presetColors{
+		padding: 1.5% 2.5% !important;
+	}
+	#timetableTd1{
+		padding: 1% !important;
+		max-width: 20% !important;
+	}
+	#startTimeTd{
+		padding: 1% !important;
+		max-width: 5% !important;
+	}
+}
+
+
 
 body {
   font-family: 'Quicksand', sans-serif;
   font-size: 145%;
   background-color: var(--primary-color);
-  color: var(--primary-color);
+  color: var(--secondary-color);
   text-align: center;
 }
 table.center {
 	margin-left: auto; 
 	margin-right: auto;
-  width: 40%;
+  	width: 40%;
 	border-spacing: 0 15px;
 	margin-top: 1%;
+	color: var(--primary-color) !important;
 }
 .tableRow{
   outline: thick solid;
