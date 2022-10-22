@@ -167,7 +167,10 @@ function countdownTimer(){
     // If Saturday and Sunday, force showing Monday
     if(currDay === 0 || currDay === 6) {
         currDay = 1;
+        if(weekLetter === "A") weekLetter = "B";
+        else weekLetter = "A";
         var dayWeek = (currDay+weekLetter).toString();
+        console.log(dayWeek)
         nextPeriod = findNextPeriod(dayWeek, 0, 0, 0);
         var nextPeriodDate = new Date(timetable[dayWeek][nextPeriod].startDate);
         var nextPeriodSubject = timetable[dayWeek][nextPeriod].subjectName;
@@ -243,9 +246,7 @@ function countdownTimer(){
                     currDay++;
                     if(currDay === 6 || currDay === 7) currDay = 1;
                     dayWeek = currDay+weekLetter;
-                    if(dayWeek === "1A") nextPeriod = findNextPeriod("1B", 0, 0, 0);
-                    else if(dayWeek === "1B") nextPeriod = findNextPeriod("1A", 0, 0, 0);
-                    else if(currDay === 3) nextPeriod = wednesdayfindNextPeriod(dayWeek, 0, 0, 0);
+                    if(currDay === 3) nextPeriod = wednesdayfindNextPeriod(dayWeek, 0, 0, 0);
                     else nextPeriod = findNextPeriod(dayWeek, 0, 0, 0);
                 }
             }

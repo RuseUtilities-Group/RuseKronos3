@@ -9,7 +9,6 @@ function gen_table(json) {
 		console.log ("Error: Variable 'it' is not defined.");
 		it = {};
 	}
-	console.log(it)
 
 	var period;
 	var teacher;
