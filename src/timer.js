@@ -168,8 +168,6 @@ function countdownTimer(){
     if(currDay === 0 || currDay === 6) {
         currDay = 1;
         var dayWeek = (currDay+weekLetter).toString();
-        if(dayWeek === "1A") dayWeek = "1B";
-        else if(dayWeek === "1B") dayWeek = "1A";
         nextPeriod = findNextPeriod(dayWeek, 0, 0, 0);
         var nextPeriodDate = new Date(timetable[dayWeek][nextPeriod].startDate);
         var nextPeriodSubject = timetable[dayWeek][nextPeriod].subjectName;
@@ -201,8 +199,6 @@ function countdownTimer(){
         document.getElementById("HMS").innerHTML = `${nextPeriodSubject} in ${TMS}`;
         document.querySelector('title').textContent = `${nextPeriodSubject} in ${TMS}`;
         if(!timetable[dayWeek][nextPeriod].room) document.getElementById("KOH").innerHTML = "";
-        if(dayWeek === "1A") dayWeek = "1B";
-        else if(dayWeek === "1B") dayWeek = "1A";
     } else{
     
         var dayWeek = (currDay+weekLetter).toString();
@@ -241,9 +237,6 @@ function countdownTimer(){
             document.querySelector('title').textContent = `${lastPeriodSubject} in ${TMS}`;
         } else{
             if(localStorage.getItem("timetable")){
-                if(dayWeek === "1A") dayWeek = "1B";
-                else if(dayWeek === "1B") dayWeek = "1A"
-
                 if(currDay === 3) nextPeriod = wednesdayfindNextPeriod(dayWeek, currHour, currMinute, currSecond);
                 else nextPeriod = findNextPeriod(dayWeek, currHour, currMinute, currSecond);
                 if(!nextPeriod){
@@ -286,8 +279,6 @@ function countdownTimer(){
                 document.getElementById("HMS").innerHTML = `${nextPeriodSubject} in ${TMS}`;
                 document.querySelector('title').textContent = `${nextPeriodSubject} in ${TMS}`;
                 if(!timetable[dayWeek][nextPeriod].room) document.getElementById("KOH").innerHTML = "";
-                if(dayWeek === "1A") dayWeek = "1B";
-                else if(dayWeek === "1B") dayWeek = "1A"
         }
         if(!timetable) document.getElementById("HMS").innerHTML = "<a href='./upload.html'>Upload</a> your timetable to continue!"
     }

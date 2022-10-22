@@ -1,3 +1,31 @@
+Date.prototype.getWeek = function (dowOffset) {
+    /*getWeek() was developed by Nick Baicoianu at MeanFreePath: http://www.meanfreepath.com */
+    
+        dowOffset = typeof(dowOffset) == 'number' ? dowOffset : 0; //default dowOffset to zero
+        var newYear = new Date(this.getFullYear(),0,1);
+        var day = newYear.getDay() - dowOffset; //the day of week the year begins on
+        day = (day >= 0 ? day : day + 7);
+        var daynum = Math.floor((this.getTime() - newYear.getTime() - 
+        (this.getTimezoneOffset()-newYear.getTimezoneOffset())*60000)/86400000) + 1;
+        var weeknum;
+        //if the year starts before the middle of a week
+        if(day < 4) {
+            weeknum = Math.floor((daynum+day-1)/7) + 1;
+            if(weeknum > 52) {
+                nYear = new Date(this.getFullYear() + 1,0,1);
+                nday = nYear.getDay() - dowOffset;
+                nday = nday >= 0 ? nday : nday + 7;
+                /*if the next year starts before the middle of
+                  the week, it is week #1 of that year*/
+                weeknum = nday < 4 ? 1 : 53;
+            }
+        }
+        else {
+            weeknum = Math.floor((daynum+day-1)/7);
+        }
+        return weeknum;
+};
+
 // Manually constructing javascript timetable object (record)
 var timetable = {
     "1A": {
@@ -919,7 +947,6 @@ async function icalProcess() {
         else lastDay = firstDay - 1;
         var passedFirstDay = 0;
         var currLastDay = 69;
-        var week = "A";
 
         var teacher = "";
 
@@ -948,29 +975,16 @@ async function icalProcess() {
             var room = events[i].getFirstPropertyValue('location').split(": ")[1];
             var startDate = convertSentralDateToJSDate(events[i].getFirstPropertyValue('dtstart'));
             var endDate = convertSentralDateToJSDate(events[i].getFirstPropertyValue('dtend'));
-            var day = startDate.getDay();
-
-            // Check if we have passed the week twice or once
-            if(day === firstDay && currLastDay === lastDay) passedFirstDay++;
-            if(passedFirstDay === 1){
-                week = "B";
-            } // If we pass the all the days once we change the week from A to B or vice versa
-            if(passedFirstDay === 2) i = events.length+69; // If we pass all the days again
-            else{
-                // Thanks to Sentral's idiotic and inconsiderate formatting, MonA follows FriB and MonB follows FriA so we need to switch the weeks around for monday.
-                //if(day === 1 && week === "B") week = "A";
-                //else if(day === 1 && week === "A") week = "B";
-
-                var day = startDate.getDay()+week;
-                // Setting the Object "timetable" data from the readed data above.
-                timetable[`${day}`][period].teacher = teacher;
-                timetable[`${day}`][period].subjectCode = subjectCode;
-                timetable[`${day}`][period].subjectName = subjectName;
-                timetable[`${day}`][period].room = room;
-                timetable[`${day}`][period].startDate= startDate;
-                timetable[`${day}`][period].endDate = endDate;
-                currLastDay = startDate.getDay();
-            }
+            var week = "A";
+            if(startDate.getWeek() % 2 === 0) week = "B";
+            var day = startDate.getDay()+week;
+            // Setting the Object "timetable" data from the readed data above.
+            timetable[`${day}`][period].teacher = teacher;
+            timetable[`${day}`][period].subjectCode = subjectCode;
+            timetable[`${day}`][period].subjectName = subjectName;
+            timetable[`${day}`][period].room = room;
+            timetable[`${day}`][period].startDate= startDate;
+            timetable[`${day}`][period].endDate = endDate;
         }
 
         localStorage.setItem("timetable", JSON.stringify(timetable)); // Saving the timetable as a JSON string on local host for future use.
