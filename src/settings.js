@@ -7,6 +7,8 @@ function alterColor(){
 	secondaryColor = localStorage.getItem('---secondary-color');
 	root.style.setProperty('--primary-color', primaryColor);
 	root.style.setProperty('--secondary-color', secondaryColor);
+
+	alert("Hello! \nThank you so much for using RuseKronos. We've heard your reports of the bug regarding the wrong week's timetable showing up. \nPlease CLEAR and REUPLOAD your timetable. \n\nCheers! \n\nJosh and Yurui");
 }
 
 function changeColor(){
