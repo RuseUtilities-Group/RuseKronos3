@@ -167,8 +167,8 @@ function countdownTimer(){
     // If Saturday and Sunday, force showing Monday
     if(currDay === 0 || currDay === 6) {
         currDay = 1;
-        if(weekLetter === "A") weekLetter = "B";
-        else weekLetter = "A";
+        if(weekLetter === "A" && currDay === 6) weekLetter = "B";
+        else if(weekLetter === "B" && currDay === 6) weekLetter = "A";
         var dayWeek = (currDay+weekLetter).toString();
         console.log(dayWeek)
         nextPeriod = findNextPeriod(dayWeek, 0, 0, 0);
