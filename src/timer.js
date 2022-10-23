@@ -185,6 +185,10 @@ function countdownTimer(){
         else if(currMinute <= nextPeriodDate && currSecond === 0) minutesLeft = nextPeriodDate.getMinutes() - currMinute;
         else if(currSecond === 0) minutesLeft = 60 - currMinute + nextPeriodDate.getMinutes() - 1;
         else minutesLeft = 60 - currMinute + nextPeriodDate.getMinutes() -1;
+        if(hoursLeft < 0) hoursLeft = 0;
+        if(minutesLeft < 0) minutesLeft = 0;
+        if(secondsLeft < 0) secondsLeft = 0;
+        if(currSecond === 0) secondsLeft = 0;
         if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) location.reload();
 
         if(hoursLeft / 10 < 1) hoursLeft = "0" + hoursLeft;
@@ -223,6 +227,10 @@ function countdownTimer(){
             else hoursLeft = lastPeriodEndDate.getHours() - currHour - 1;
             if(currMinute <= lastPeriodEndDate.getMinutes()) minutesLeft = lastPeriodEndDate.getMinutes() - currMinute -1;
             else minutesLeft = 60 - currMinute + lastPeriodEndDate.getMinutes() -1;
+            if(hoursLeft < 0) hoursLeft = 0;
+            if(minutesLeft < 0) minutesLeft = 0;
+            if(secondsLeft < 0) secondsLeft = 0;
+            if(currSecond === 0) secondsLeft = 0;
             if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) location.reload();
 
             if(hoursLeft / 10 < 1) hoursLeft = "0" + hoursLeft;
