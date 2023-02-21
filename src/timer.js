@@ -231,7 +231,7 @@ function countdownTimer(){
             if(minutesLeft < 0) minutesLeft = 0;
             if(secondsLeft < 0) secondsLeft = 0;
             if(currSecond === 0) secondsLeft = 0;
-            if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) location.reload();
+            //if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) location.reload();
 
             if(hoursLeft / 10 < 1) hoursLeft = "0" + hoursLeft;
             
@@ -275,7 +275,7 @@ function countdownTimer(){
                 if(minutesLeft < 0) minutesLeft = 0;
                 if(secondsLeft < 0) secondsLeft = 0;
                 if(currSecond === 0) secondsLeft = 0;
-                if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) location.reload();
+                //if(hoursLeft === 0 && minutesLeft === 0 && secondsLeft <= 3) location.reload();
 
                 if(hoursLeft / 10 < 1) hoursLeft = "0" + hoursLeft;
                 
